@@ -13,7 +13,7 @@ git config --local user.email sasha-is-permi@mail.ru         - e-mail
 
 // После создания или изменения файлов в проекте
 git add -A
-git commit -m "first commit"
+git commit -m"1"
 
 // Только первый раз при создании.
 // Информация записывается в .git/config
