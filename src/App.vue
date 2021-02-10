@@ -6,20 +6,27 @@
       </v-col>
     </v-row>
       
+    <!-- Общий размер раздела-карточки-->  
     <v-card
       style="margin-top:20px;" 
       height="600"
       width="250"
     >
+    <!-- навигационное меню (выдвижное- возможность) 
+    permanent - Панель остаётся видимой независимо от размера экрана
+              Панель остаётся видимой независимо от размера экрана
+    mini-variant - сжимать панель -только картинки показываются
+    expandOnHover - при включенном mini-variant при наведении на меню оно
+     раскрывается
+    
+
+    -->
       <v-navigation-drawer
         v-model="drawer"
         :color="color"
         :expand-on-hover="xpandOnHover"
         :mini-variant="miniVariant"
-        :right="right"
         :permanent="permanent"
-        :src="bg"
-        absolute
       >
         <v-list
           dense
@@ -73,18 +80,13 @@
           { title: 'Настройки', icon: 'mdi-view-dashboard' },
           { title: 'Интеграции', icon: 'mdi-view-dashboard' }
         ],
-        color: 'blue',
-        right: false,
+        color: "#E1F5FE",
         permanent: true,
         miniVariant: false,
-        expandOnHover: false
+        expandOnHover: true
       }
     },
     computed: {
-      bg () {
- //       return 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg'
-       return ""
-      }
     }
   }
 </script>
