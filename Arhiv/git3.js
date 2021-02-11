@@ -141,7 +141,11 @@ git branch -r - список веток удаленных
  origin/admin-panel, которая связанна с удаленной
  admin-panel
  
+
+
  Другой человек хочет загрузить эту ветку
+ (созданна на другом компьютере уже после того как этот 
+    второй человек загрузил респозиторий)
 
  git pull origin admin-panel 
 
@@ -154,6 +158,92 @@ git branch -r - список веток удаленных
   Не git push а 
    git push origin admin-panel
 )
+
+git-branch
+Есть только master-ветка
+
+git branch -r
+Есть удаленная ветка 
+origin/admin-panel
+
+Перемещаемся на нее
+git checkout admin-panel
+для интеграции удаленной ветки в локальный респозиторий
+
+Создали admin-panel локально этой командой, 
+связались с admin-panel уоторая пришла с origin 
+и перешли на нее.
+
+git remote show origin 
+
+Показывает- находятся ли локальный ветки в соответствии с ветками на сервере
+
+(up to date- нуждается в обновлении)
+
+
+
+Получается- при копировании проекта с сервера нужно:
+
+
+git clone https://gitlab.com/bashin1/admin-panel.git  admin-panel
+
+Клонируется весь проект с удаленного сервера в папку admin-panel
+
+
+Инициализируем git
+git init // создает git/config
+git config --local user.name "Alexandr"         - имя пользователя для проекта
+git config --local user.email sasha-is-permi@mail.ru         - e-mail
+
+git remote add origin https://gitlab.com/bashin1/admin-panel.git
+
+
+Создаем новую ветку
+git branch admin-panel
+
+Перехолдим на нее
+git checkout admin-panel
+
+Проверяем
+git branch 
+
+Изменяем файлы
+
+Добавляем файлы в локальный проект
+git add -A
+git commit -m'5'
+
+
+Отправляем ветку на удаленный сервер origin
+git push origin admin-panel
+
+
+В случае изменении ветки master:
+Скачиваем эту ветку с удаленного респозитория
+
+git pull origin admin-panel
+
+git branch- проверяем
+Если нет:
+
+git checkout master
+git checkout admin-panel
+git branch
+
+Находясь на ветке admin-panel
+git merge master
+
+git add -A
+git commit -m'7'
+
+git push origin admin-panel
+
+
+
+
+
+
+
 
 
 
