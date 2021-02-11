@@ -47,17 +47,5 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ],
-  "description": "```\r npm install\r ```",
-  "main": "babel.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sasha-is-permi/admin-panel.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sasha-is-permi/admin-panel/issues"
-  },
-  "homepage": "https://github.com/sasha-is-permi/admin-panel#readme"
+  ]
 }
