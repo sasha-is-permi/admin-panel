@@ -239,8 +239,25 @@ git commit -m'7'
 git push origin admin-panel
 
 
+Этот вариант склонирует ПОЛНОСТЬЮ весь репозиторий и просто переключится на ветку branch-name:
+
+git clone http://whatever.git -b branch-name
+
+Иногда нужно склонировать ТОЛЬКО конкретную ветку, тогда:
+
+git clone --branch=branch-name http://whatever.git
 
 
+Ошибка: 
+error: invalid path 'worker/git/src/main/resources/db/changelog/
+sql/2020-02-08_11:14_init.sql'
+fatal: unable to checkout working tree
+
+В названии файла есть знак ":", а в системе windows 
+не могут существовать такие файлы. 
+
+Выход - можно на виртуальной машине установить ubuntu linux 
+и оттуда работать. 
 
 
 
