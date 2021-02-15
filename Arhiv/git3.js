@@ -199,10 +199,10 @@ git remote add origin https://gitlab.com/bashin1/admin-panel.git
 
 
 Создаем новую ветку
-git branch admin-panel
+git branch devbro-18
 
-Перехолдим на нее
-git checkout admin-panel
+Переходим на нее
+git checkout devbro-18
 
 Проверяем
 git branch 
@@ -215,13 +215,13 @@ git commit -m'5'
 
 
 Отправляем ветку на удаленный сервер origin
-git push origin admin-panel
+git push origin devbro-18
 
 
 В случае изменении ветки master:
 Скачиваем эту ветку с удаленного респозитория
 
-git pull origin admin-panel
+git pull origin devbro-18
 
 git branch- проверяем
 Если нет:

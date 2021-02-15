@@ -46,19 +46,30 @@
           <v-list-item
             v-for="item in items"
             :key="item.title"
-            link
+             :to='item.url'
           >
             <v-list-item-icon>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
             <v-list-item-content>
-              <v-list-item-title class="list-item-title">{{ item.title }}</v-list-item-title>
+
+                 <v-list-item-title class="list-item-title" @click="onItemClick">
+                  
+                   
+                  {{ item.title }}
+                      
+
+
+                </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
     </v-card>
+
+ 
+
   </v-container>
 </template>
 
@@ -69,22 +80,31 @@
       return {
         drawer: true,
         items: [
-          { title: 'Рабочие пространства', icon: 'mdi-view-dashboard' },
-          { title: 'Разработчики', icon: 'mdi-view-dashboard' },
-          { title: 'Команды', icon: 'mdi-view-dashboard' },
-          { title: 'Проекты', icon: 'mdi-view-dashboard' },
-          { title: 'Группы проектов', icon: 'mdi-view-dashboard' },        
-          { title: 'Процессы', icon: 'mdi-view-dashboard' },
-          { title: 'Метрики', icon: 'mdi-view-dashboard' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard' },
-          { title: 'Настройки', icon: 'mdi-view-dashboard' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard' }
+          { title: 'Рабочие пространства', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/workspaces'},
+          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/workspaces' },        
+          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Интеграции', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/workspaces' }
         ],
         color: "#E1F5FE",
         permanent: true,
         miniVariant: false,
         expandOnHover: true
       }
+    },
+    methods: {
+        onItemClick() {
+     // переходим на главную страницу раз разлогинились
+   <view-router></view-router>
+   //  this.$router.push('workspaces')
+
+    }
+
     },
     computed: {
     }
