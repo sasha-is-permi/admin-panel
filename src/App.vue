@@ -5,9 +5,9 @@
              <h1 class="h1"> Административная панель </h1>     
       </v-col>
     </v-row>
-
-    <!-- Панель слева а рабочая область справа-
-    для экранов с разрешением >= 600 px -->  
+   
+    <!-- **************************************************** -->
+    <!-- Панель для desctop экранов с разрешением >= 600 px   -->  
     <v-row class="container1">  
 
     <v-col sm="4" > 
@@ -82,13 +82,13 @@
  
    </v-row>
 
-  
+  <!-- Панель для мобильной версии  -->
   <!-- ************************************************** -->
   
    <v-row class="container2">
        <v-card
     class="mx-auto "
-    height="80"
+    height="70"
     width="100%"
   >
     <v-system-bar color="deep-purple "></v-system-bar>
@@ -108,8 +108,8 @@
     <v-navigation-drawer
       height="750"
       v-model="drawer2"
-      absolute
-      bottom
+      absolute      
+      center
       temporary
       :color="color"
     >
