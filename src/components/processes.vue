@@ -25,10 +25,11 @@ export default {
     color:green;
   }
   .div1{
-    height:600px;
+    height:480px;
     display:flex;
     justify-content:center;
-    align-items:center;
+    margin-top:50px;
+   /* align-items:center; */
   }
 
 </style>

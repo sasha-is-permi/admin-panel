@@ -1,18 +1,21 @@
 <template>
-  <v-container>
+  <v-container >
     <v-row >
       <v-col cols="12">
              <h1 class="h1"> Административная панель </h1>     
       </v-col>
     </v-row>
-      
-    <v-row>  
 
-    <v-col cols="4" > 
+    <!-- Панель слева а рабочая область справа-
+    для экранов с разрешением >= 600 px -->  
+    <v-row class="container1">  
+
+    <v-col sm="4" > 
     <!-- Общий размер раздела-карточки-->  
-    <v-card
+    <v-card 
+      class ="card1"
       style="margin-top:20px;" 
-      height="600"
+      height="480"
       width="250"
     >
     <!-- навигационное меню (выдвижное- возможность) 
@@ -55,13 +58,8 @@
 
             <v-list-item-content>
 
-                 <v-list-item-title class="list-item-title" @click="onItemClick($event)">
-                  
-                   
-                  {{ item.title }}
-                      
-
-
+                 <v-list-item-title class="list-item-title">                                     
+                  {{ item.title }}                      
                 </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
@@ -70,10 +68,11 @@
     </v-card>
     </v-col>
 
-    <v-col cols="8">
+    <v-col sm="8">
    <v-card
+      class="card2"
       style="margin-top:20px;" 
-      height="600"
+      height="480"
       width="750"
     >
           <router-view> </router-view>      
@@ -82,6 +81,103 @@
     </v-col>
  
    </v-row>
+
+  
+  <!-- ************************************************** -->
+  
+   <v-row class="container2">
+       <v-card
+    class="mx-auto "
+    height="80"
+    width="100%"
+  >
+    <v-system-bar color="deep-purple "></v-system-bar>
+
+    <v-app-bar
+      color="deep-purple accent-4"
+      prominent
+    >
+      <v-app-bar-nav-icon @click.stop="drawer2 = !drawer2"></v-app-bar-nav-icon>
+
+       <v-spacer></v-spacer>
+
+    </v-app-bar>
+
+  </v-card>
+
+    <v-navigation-drawer
+      height="750"
+      v-model="drawer2"
+      absolute
+      bottom
+      temporary
+      :color="color"
+    >
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          v-model="group"
+          active-class="deep-purple--text text--accent-4"
+        >
+          
+           <v-list-item >
+
+            <v-list-item-content>
+              <v-list-item-title>User</v-list-item-title>
+              <v-list-item-subtitle>Иванов А.В.</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-divider></v-divider>
+
+          <v-list-item
+            v-for="item in items"
+            :key="item.title"
+             :to='item.url'
+          >
+            <v-list-item-icon>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+
+                 <v-list-item-title class="list-item-title">                                     
+                  {{ item.title }}                      
+                </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+
+
+
+
+
+
+          </v-list-item-group>
+        </v-list>
+    </v-navigation-drawer>
+
+
+
+
+
+  <v-card
+      class="card2"
+      style="margin-top:20px;" 
+      height="480"
+      width="100%"
+    >
+          <router-view> </router-view>      
+  
+    </v-card>
+   
+   
+   
+   
+   
+   </v-row> 
+
 
   </v-container>
 </template>
@@ -92,6 +188,8 @@
     data () {
       return {
         drawer: true,
+        drawer2:false,
+        group:null,
         items: [
           { title: 'Рабочие пространства', icon: 'mdi-view-dashboard', url:'/workspaces' },
           { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/developers' },
@@ -108,12 +206,9 @@
         miniVariant: false
       }
     },
+    
+    
     methods: {
-        onItemClick($event) {
-     // переходим на главную страницу раз разлогинились
-   //  this.$router.push('workspaces')
-       console.log($event)   
-    }
 
     },
     computed: {
@@ -133,6 +228,35 @@
    .text-center{
      text-align:center;
    }
+
+   @media (min-width: 700px) and (max-width: 800px) {
+
+    .list-item-title {
+      font-size:16px!important;
+      padding-left:2px;
+   }
+   }
+   
+   @media (min-width: 600px) and (max-width: 699px) {
+
+    .list-item-title {
+      font-size:12px!important;
+      padding-left:0px;
+   }
+     }
+
+      @media (min-width: 0px) and (max-width: 599px) {
+
+    .container1 {
+     display:none!important;
+   }
+     }
+       @media (min-width: 600px) {
+
+    .container2 {
+     display:none!important;
+   }
+     }
 
 </style>
  

@@ -28,7 +28,8 @@ export default {
     height:600px;
     display:flex;
     justify-content:center;
-    align-items:center;
+    margin-top:50px;
+   /* align-items:center; */
   }
 
 </style>
