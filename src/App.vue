@@ -6,6 +6,9 @@
       </v-col>
     </v-row>
       
+    <v-row>  
+
+    <v-col cols="4" > 
     <!-- Общий размер раздела-карточки-->  
     <v-card
       style="margin-top:20px;" 
@@ -16,15 +19,13 @@
     permanent - Панель остаётся видимой независимо от размера экрана
               Панель остаётся видимой независимо от размера экрана
     mini-variant - сжимать панель -только картинки показываются
-    expandOnHover - при включенном mini-variant при наведении на меню оно
-     раскрывается
+
     
 
     -->
       <v-navigation-drawer
         v-model="drawer"
         :color="color"
-        :expand-on-hover="xpandOnHover"
         :mini-variant="miniVariant"
         :permanent="permanent"
       >
@@ -54,7 +55,7 @@
 
             <v-list-item-content>
 
-                 <v-list-item-title class="list-item-title" @click="onItemClick">
+                 <v-list-item-title class="list-item-title" @click="onItemClick($event)">
                   
                    
                   {{ item.title }}
@@ -67,8 +68,20 @@
         </v-list>
       </v-navigation-drawer>
     </v-card>
+    </v-col>
 
+    <v-col cols="8">
+   <v-card
+      style="margin-top:20px;" 
+      height="600"
+      width="750"
+    >
+          <router-view> </router-view>      
+  
+    </v-card>
+    </v-col>
  
+   </v-row>
 
   </v-container>
 </template>
@@ -87,22 +100,19 @@
           { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/workspaces' },        
           { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/workspaces' },
           { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard', url:'/workspaces' },
           { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/workspaces' },
           { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/workspaces' }
         ],
         color: "#E1F5FE",
         permanent: true,
-        miniVariant: false,
-        expandOnHover: true
+        miniVariant: false
       }
     },
     methods: {
-        onItemClick() {
+        onItemClick($event) {
      // переходим на главную страницу раз разлогинились
-   <view-router></view-router>
    //  this.$router.push('workspaces')
-
+       console.log($event)   
     }
 
     },
@@ -119,6 +129,9 @@
    .list-item-title {
       font-size:18px!important;
       padding-left:10px;
+   }
+   .text-center{
+     text-align:center;
    }
 
 </style>

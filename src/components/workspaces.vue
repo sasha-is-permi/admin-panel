@@ -1,12 +1,13 @@
   <template>
-  
-    <p> Служебная информация  </p>
-
+     <v-content>
+        <div class="div1">     
+           <p class="text-center"> Рабочая область </p>
+        </div>
+     </v-content>
   </template>
 
 <script>
 
-  alert("Переход на страницу");
 
 export default {
 
@@ -16,3 +17,18 @@ export default {
 
 
 </script>
+
+<style scoped>
+  .text-center {
+    font-size:18px;
+    text-align:center;
+    color:green;
+  }
+  .div1{
+    height:600px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+</style>
