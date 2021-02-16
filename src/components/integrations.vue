@@ -1,7 +1,7 @@
   <template>
      <v-content>
         <div class="div1">     
-           <p class="text-center"> Рабочие пространства </p>
+           <p class="text-center"> Интеграции </p>
         </div>
      </v-content>
   </template>

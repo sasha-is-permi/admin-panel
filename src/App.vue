@@ -94,14 +94,14 @@
         drawer: true,
         items: [
           { title: 'Рабочие пространства', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/workspaces'},
-          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/workspaces' },        
-          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/workspaces' }
+          { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/developers' },
+          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/teams'},
+          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/projects' },
+          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/projectgroups' },        
+          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/processes' },
+          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metrics' },
+          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/settings' },
+          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integrations' }
         ],
         color: "#E1F5FE",
         permanent: true,
