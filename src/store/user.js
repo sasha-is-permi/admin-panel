@@ -42,15 +42,14 @@ export default {
 //     commit('setError',error.message)
  //    throw error
 //     }
-       if ((login === user) && (password === userPassword)) {
-		    commit('setUser',new User(user.uid))
-			commit('setLoading',false) 		   
-	   }
-	   else {
-	        commit('setLoading',false)
-            commit('setError',error.message)
-            throw error	   
-	   }
+       if ((login===user)&&(password===userPassword)){
+          commit('setUser',new User(user.uid))
+          commit('setLoading',false)}
+       else {
+          commit('setLoading',false)
+          commit('setError',"Неправильный логин или пароль")
+//            throw error	   
+            }
         
 
  },

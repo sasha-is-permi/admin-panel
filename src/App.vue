@@ -1,4 +1,32 @@
+<!-- 
+Настройка графической библиотеки vutify:
+https://vuetifyjs.com/en/getting-started/installation/
+
+<v-app> 
+    <v-content>
+    //..
+    </v-content>
+</v-app>
+
+Документация гласит :
+
+    Для того чтобы ваше приложение работало должным образом,
+     вы должны завернуть его в v-app компонент. 
+
+Директива app для тегов- свойство, которое говорит vuetify
+  о том как правильно следить за поведением элементов 
+  drawer- всплывающее меню слева 
+  toolbar- верхняя часть приложения
+  content- основная часть приложения
+  footer- подвал
+  container - контейнер как в bootstrap.
+  Данные строки превращаются в обычные div с классами. 
+  Они работают на flexbox. 
+
+-->
+
 <template>
+  <v-app>
   <v-container >
     <v-row >
       <v-col cols="12">
@@ -37,6 +65,16 @@
           nav
           class="py-0"
         >
+
+              <v-list-item >
+
+            <v-list-item-content>
+              <v-list-item-title></v-list-item-title>
+              <v-list-item-subtitle></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+
+          <v-divider></v-divider>
 
           <v-list-item
             v-for="item in items"
@@ -82,10 +120,10 @@
     height="70"
     width="100%"
   >
-    <v-system-bar color="deep-purple "></v-system-bar>
+    <v-system-bar :color="color"></v-system-bar>
 
     <v-app-bar
-      color="deep-purple accent-4"
+      :color="color"
       prominent
     >
       <v-app-bar-nav-icon @click.stop="drawer2 = !drawer2"></v-app-bar-nav-icon>
@@ -116,8 +154,8 @@
            <v-list-item >
 
             <v-list-item-content>
-              <v-list-item-title>User</v-list-item-title>
-              <v-list-item-subtitle>Иванов А.В.</v-list-item-subtitle>
+              <v-list-item-title></v-list-item-title>
+              <v-list-item-subtitle></v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
 
@@ -171,6 +209,30 @@
 
 
   </v-container>
+
+  <!-- Показываем сообщение только если есть ошибка -->
+  <template v-if="error">
+  <v-snackbar
+      :multi-line="true"
+      :timeout="5000"
+      color="error"
+      @input="closeError"
+      :value="true"
+    >
+      {{ error }}
+
+
+        <v-btn
+          dark
+          @click.native="closeError"
+        >
+          Close
+        </v-btn>
+
+    </v-snackbar>
+    </template>
+
+  </v-app>
 </template>
 
 
