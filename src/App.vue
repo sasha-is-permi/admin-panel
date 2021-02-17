@@ -15,7 +15,7 @@
     <v-card 
       class ="card1"
       style="margin-top:20px;" 
-      height="480"
+      height="520"
       width="250"
     >
     <!-- навигационное меню (выдвижное- возможность) 
@@ -37,15 +37,6 @@
           nav
           class="py-0"
         >
-          <v-list-item >
-
-            <v-list-item-content>
-              <v-list-item-title>User</v-list-item-title>
-              <v-list-item-subtitle>Иванов А.В.</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <v-divider></v-divider>
 
           <v-list-item
             v-for="item in items"
@@ -72,7 +63,7 @@
    <v-card
       class="card2"
       style="margin-top:20px;" 
-      height="480"
+      height="520"
       width="750"
     >
           <router-view> </router-view>      
@@ -190,17 +181,6 @@
         drawer: true,
         drawer2:false,
         group:null,
-        items: [
-          { title: 'Рабочие пространства', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/developers' },
-          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/teams'},
-          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/projects' },
-          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/projectgroups' },        
-          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/processes' },
-          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metrics' },
-          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/settings' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integrations' }
-        ],
         color: "#E1F5FE",
         permanent: true,
         miniVariant: false
@@ -209,14 +189,58 @@
     
     
     methods: {
+        closeError () {
+     // Очищаем ошибки при закрытии окна с ошибками
+     this.$store.dispatch('clearError')
+
+    }
 
     },
     computed: {
-    }
+         error() {  
+     // Обращаемся к геттеру с ошибками  
+    return this.$store.getters.error    
+                  },
+     // Обращаемся к геттеру который проверяет- 
+     // залогинен ли пользователь             
+   isUserLoggedIn () {
+    return this.$store.getters.isUserLoggedIn
+   },   
+
+          items() {
+        // Если пользователь авторизирован- показываем ему все меню   
+        if (this.isUserLoggedIn){
+        return [
+
+          { title: 'Рабочие пространства', icon: 'mdi-view-dashboard', url:'/workspaces' },
+          { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/developers' },
+          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/teams'},
+          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/projects' },
+          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/projectgroups' },        
+          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/processes' },
+          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metrics' },
+          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/settings' },
+          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integrations' },
+          { title: 'Выйти из системы', icon: 'mdi-view-dashboard',url:'/logout'  }
+        ]                              }
+      // Если не авторизирован- показываем только меню регистрации    
+      return [
+      {title:'Авторизация',icon:'lock', url:'/login'}
+      ]        
+                 }  
+             }
+
   }
 </script>
 
 <style scoped>
+
+  .pointer {
+    cursor:pointer;
+    }
+
+
+
    .h1{
        text-align:center;
        color:blue;       
