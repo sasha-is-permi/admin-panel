@@ -38,13 +38,13 @@ https://vuetifyjs.com/en/getting-started/installation/
     <!-- Панель для desctop экранов с разрешением >= 600 px   -->  
     <v-row class="container1">  
 
-    <v-col sm="4" > 
+    <v-col sm="5" > 
     <!-- Общий размер раздела-карточки-->  
     <v-card 
       class ="card1"
       style="margin-top:20px;" 
-      height="520"
-      width="250"
+      height="520px"
+      width="400px"
     >
     <!-- навигационное меню (выдвижное- возможность) 
     permanent - Панель остаётся видимой независимо от размера экрана
@@ -55,6 +55,8 @@ https://vuetifyjs.com/en/getting-started/installation/
 
     -->
       <v-navigation-drawer
+        height="520px"
+        width="400px"
         v-model="drawer"
         :color="color"
         :mini-variant="miniVariant"
@@ -97,12 +99,12 @@ https://vuetifyjs.com/en/getting-started/installation/
     </v-card>
     </v-col>
 
-    <v-col sm="8">
+    <v-col sm="7">
    <v-card
       class="card2"
       style="margin-top:20px;" 
-      height="520"
-      width="750"
+      height="520px"
+      width="600px"
     >
           <router-view> </router-view>      
   
@@ -115,6 +117,8 @@ https://vuetifyjs.com/en/getting-started/installation/
   <!-- ************************************************** -->
   
    <v-row class="container2">
+            
+
        <v-card
     class="mx-auto "
     height="70"
@@ -135,6 +139,7 @@ https://vuetifyjs.com/en/getting-started/installation/
   </v-card>
 
     <v-navigation-drawer
+      width="100%"
       height="750"
       v-model="drawer2"
       absolute      

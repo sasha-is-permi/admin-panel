@@ -20,13 +20,13 @@
                   dark
                   flat
                 >
-                  <v-toolbar-title>Login form</v-toolbar-title>
+                  <v-toolbar-title class="text-center">Для входа: admin 111</v-toolbar-title>
                                   
                 </v-toolbar>
                 <v-card-text>
                       <v-form v-model="valid" ref="form" validation>
                     <v-text-field
-                      label="login"
+                      label="Пользователь"
                       name="login"
                       prepend-icon="mdi-account"
                       type="login"
@@ -35,7 +35,7 @@
                     > </v-text-field>
   
                     <v-text-field
-                      label="password"
+                      label="пароль"
                       name="password"
                       prepend-icon="mdi-lock"
                       type="password"
@@ -120,3 +120,10 @@ if (this.$route.query['loginError']){
 }
 
 </script>
+
+<style scoped> 
+.text-center {
+  text-align:center;
+}
+
+</style>
