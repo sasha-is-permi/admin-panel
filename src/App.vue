@@ -38,7 +38,7 @@ https://vuetifyjs.com/en/getting-started/installation/
     <!-- Панель для desctop экранов с разрешением >= 600 px   -->  
     <v-row class="container1">  
 
-    <v-col sm="5" > 
+    <v-col sm="4" > 
     <!-- Общий размер раздела-карточки-->  
     <v-card 
       class ="card1"
@@ -83,11 +83,11 @@ https://vuetifyjs.com/en/getting-started/installation/
             :key="item.title"
              :to='item.url'
           >
-            <v-list-item-icon>
+            <v-list-item-icon class="list-item-icon">
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
-            <v-list-item-content>
+            <v-list-item-content class="list-item-content">
 
                  <v-list-item-title class="list-item-title">                                     
                   {{ item.title }}                      
@@ -99,7 +99,7 @@ https://vuetifyjs.com/en/getting-started/installation/
     </v-card>
     </v-col>
 
-    <v-col sm="7">
+    <v-col sm="8">
    <v-card
       class="card2"
       style="margin-top:20px;" 
@@ -171,11 +171,11 @@ https://vuetifyjs.com/en/getting-started/installation/
             :key="item.title"
              :to='item.url'
           >
-            <v-list-item-icon>
+            <v-list-item-icon class="list-item-icon">
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-icon>
 
-            <v-list-item-content>
+            <v-list-item-content class="list-item-content">
 
                  <v-list-item-title class="list-item-title">                                     
                   {{ item.title }}                      
@@ -301,6 +301,26 @@ https://vuetifyjs.com/en/getting-started/installation/
 </script>
 
 <style scoped>
+    .list-item-title {
+      margin-left:10px!important;
+      padding-left:0px!important;
+   }
+
+    .list-item-icon {
+      margin-right:0px!important;
+      padding-right:0px!important;
+   }
+
+       .list-item-content {
+      margin-right:0px!important;
+      padding-right:0px!important;
+   }
+
+  @media (min-width: 850px) and (max-width: 899px) {
+     .list-item-title {  font-size:16px!important; }
+  }  
+
+
 
   .pointer {
     cursor:pointer;
@@ -320,20 +340,12 @@ https://vuetifyjs.com/en/getting-started/installation/
      text-align:center;
    }
 
-   @media (min-width: 700px) and (max-width: 800px) {
 
-    .list-item-title {
-      font-size:16px!important;
-      padding-left:2px;
-   }
-   }
    
-   @media (min-width: 600px) and (max-width: 699px) {
+   @media (min-width: 600px) and (max-width: 849px) {
 
     .list-item-title {
-      font-size:12px!important;
-      padding-left:0px;
-   }
+      font-size:12px!important;   }
      }
 
       @media (min-width: 0px) and (max-width: 599px) {

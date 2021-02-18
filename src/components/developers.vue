@@ -1,9 +1,9 @@
   <template>
-     <v-content>
+     <v-main>
         <div class="div1">     
            <p class="text-center"> Разработчики </p>
         </div>
-     </v-content>
+     </v-main>
   </template>
 
 <script>

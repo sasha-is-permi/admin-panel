@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AuthGuard from './auth-guard'
 
 import home       from '@/components/home'
 import workspaces from '@/components/workspaces'
@@ -26,37 +27,44 @@ export default new Router ({
       component:login},
       { path:'/logout',
       name:'logout',
-      component:logout},
+      component:logout,
+      beforeEnter:AuthGuard},
       { path:'/workspaces',
       name:'workspaces',
-      component:workspaces},
+      component:workspaces,
+      beforeEnter:AuthGuard},
       { path:'/developers',
       name:'developers',
-      component:developers},
+      component:developers,
+      beforeEnter:AuthGuard},
       { path:'/teams',
       name:'teams',
-      component:teams},  
+      component:teams,
+      beforeEnter:AuthGuard},  
       { path:'/projects',
       name:'projects',
-      component:projects},  
+      component:projects,
+      beforeEnter:AuthGuard},  
       { path:'/projectgroups',
       name:'projectgroups',
-      component:projectgroups},  
+      component:projectgroups,
+      beforeEnter:AuthGuard},  
       { path:'/processes',
       name:'processes',
-      component:processes},  
+      component:processes,
+      beforeEnter:AuthGuard},  
       { path:'/metrics',
       name:'metrics',
-      component:metrics},  
+      component:metrics,
+      beforeEnter:AuthGuard},  
       { path:'/settings',
       name:'settings',
-      component:settings},  
+      component:settings,
+      beforeEnter:AuthGuard},  
       { path:'/integrations',
       name:'integrations',
-      component:integrations}
-    
-      
-
+      component:integrations,
+      beforeEnter:AuthGuard}
    ]
 })
 
