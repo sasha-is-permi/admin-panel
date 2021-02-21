@@ -44,10 +44,7 @@
                     ></v-text-field>
                   </v-form>
                 </v-card-text>
-                <!-- Под формой- для отправки формы. 
-                v-spacer кнопочку Login перемещает вправо.
-                При клике на кнопочку "Login"- 
-                вызываем метод onSubmit  -->
+         
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn
@@ -70,10 +67,10 @@ export default {
 
 data () {
 return {
-   email:'',
+  login:'',
    password:'',
    valid:false,
-       emailRules: [
+       loginRules: [
         v => !!v || 'Логин не может быть пустым'
       ],
        passwordRules: [
@@ -90,7 +87,7 @@ return {
 
 methods: {
 onSubmit() {
-// login
+
 if (this.$refs.form.validate()) {
     const user= {
         login:this.login,
