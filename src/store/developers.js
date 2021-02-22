@@ -26,8 +26,8 @@ export default {
                 connections: {jira:'http://jira/ivanov',
                  telegram:'http://telegram/ivanov',
                  git:'http://git/ivanov',
-                 confluence:'http://confluence/ivanov',
-                 bitixportal:'htt[://bitixportal/ivanov'
+                 confluence:'',
+                 bitrixportal:''
                 },
                 login:'ivanovAA',
                 email:'ivanovaa@mail.ru'
@@ -39,9 +39,9 @@ export default {
                 project:'трудовик',
                 connections: {jira:'http://jira/petrov',
                  telegram:'http://telegram/petrov',
-                 git:'http://git/petrov',
-                 confluence:'http://confluence/petrov',
-                 bitixportal:'htt[://bitixportal/petrov'
+                 git:'',
+                 confluence:'',
+                 bitrixportal:'http://bitrixportal/petrov'
                 },
                 login:'petrovAI',
                 email:'petrovAI@mail.ru'
@@ -52,21 +52,91 @@ export default {
                 team:'бухгалтера',
                 project:'трудовик',
                 connections: {jira:'http://jira/savelev',
-                 telegram:'http://telegram/savelev',
+                 telegram:'',
                  git:'http://git/savelev',
-                 confluence:'http://confluence/savelev',
-                 bitixportal:'http://bitixportal/savelev'
+                 confluence:'',
+                 bitrixportal:'http://bitrixportal/savelev'
                 },
                 login:'saveljevAG',
                 email:'saveljevAG@mail.ru'
             },
+            {
+                uuid:'4',
+                fio:'Лоза Антон Георгиевич ',
+                team:'инженер',
+                project:'отчетность',
+                connections: {jira:'http://jira/losa',
+                 telegram:'',
+                 git:'http://git/losa',
+                 confluence:'http://confluence/losa',
+                 bitrixportal:''
+                },
+                login:'losaAG',
+                email:'losaAG@mail.ru'
+            },
+            {
+                uuid:'5',
+                fio:'Соснин Денис Анатольевич ',
+                team:'инженер',
+                project:'отчетность',
+                connections: {jira:'http://jira/sosnin',
+                 telegram:'http://telegram/sosnin',
+                 git:'http://git/sosnin',
+                 confluence:'',
+                 bitrixportal:''
+                },
+                login:'sosninDA',
+                email:'sosninDA@mail.ru'
+            },
+            {
+                uuid:'6',
+                fio:'Артемьев Иван Дмитриевич',
+                team:'электрик',
+                project:'электричество',
+                connections: {jira:'http://jira/artemjev',
+                 telegram:'http://telegram/artemjev',
+                 git:'',
+                 confluence:'',
+                 bitrixportal:''
+                },
+                login:'artemjevID',
+                email:'artemjevID@mail.ru'
+            },
+            {
+                uuid:'7',
+                fio:'Леденцов Павел Петрович ',
+                team:'начальник',
+                project:'электричество',
+                connections: {jira:'',
+                 telegram:'',
+                 git:'http://git/ledencov',
+                 confluence:'http://confluence/ledencov',
+                 bitrixportal:''
+                },
+                login:'ledencovPP',
+                email:'ledencovPP@mail.ru'
+            }
             ]   
 
            // ads: [],
            // id:"" 
     },
-    mutations: {    },
-    actions: {      },       
+    mutations: { 
+     //   developers (state, payload) {
+    //        state.developers = payload
+     //    }
+
+       },
+    actions: {  
+      //  setLoading ({commit}, payload) {
+            // Вызываем commit с mutation setLoading
+      //      commit('developers', payload)
+      //    },
+        //  developers ({commit}, payload) {
+          //  commit('developers', payload)
+        //  },
+
+        },       
         
     getters: {
          developers(state) {

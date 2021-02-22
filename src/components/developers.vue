@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="root">
         <v-card text>
-                     <v-toolbar text card prominent class="no-padding-toolbar">
+                     <v-toolbar text prominent class="no-padding-toolbar">
                 <v-toolbar-items>
                     <v-tooltip bottom>
                        <template v-slot:activator="{ on }" @click="dialog = true" ><v-btn v-on="on">
@@ -28,40 +28,73 @@
                 <v-text-field
                         v-model="search"
                         append-icon="search"
-                        :label="Поиск"
+                        :label="search"
                         single-line
                         hide-details>
                 </v-text-field>
             </v-toolbar>
             <v-divider>
             </v-divider>
+           
+           <!--  :tran1=""-->
+           <!--
+           
+           Настройки таблицы
+
+            https://vuetifyjs.com/en/components/data-tables/             
+
+
+            multi-sort- возможность сортировки по нескольким 
+                 столбцам сразу-
+
+            show-select- возможность выбирать несколько 
+                   ячеек сразу или все (без него- толькол одна
+                   ячейка выбирается )
+
+            v-model="search"   label="Search" создание фильтрации
+            :headers="commonHeaders" - загрузка заголовков из массива commonHeaders
+
+            :items="developers" - загрузка данных из массива developers
+
+            class="fixed-headers" - тип таблицы
+
+            :items-per-page="5" - сколько на страничке строчек таблицы будет
+           -->   
 
             <v-data-table
                     :headers="commonHeaders"
-                    :items="employees"
+                    :items="developers"
                     :search="search"
                     v-model="selected"
-                    item-key="employeeName"
-                    :tran1="Должность"
+                    item-key="uuid"
+                    multi-sort
                     :no-data-text="'Нет данных'"
                     :no-results-text="'Не найдены значения'"
-                    hide-actions show-select
-                    class="fixed-headers">
-                <template slot="items" slot-scope="props">
+                    show-select
+                    class="fixed-headers"
+                    :items-per-page="5"
+                    >
+              <template v-slot="{ items }">
                     <td style="width: 48px; max-width: 48px;">
-                        <v-checkbox v-model="props.selected" primary hide-details></v-checkbox>
+                        <v-checkbox v-model="items.selected" primary hide-details></v-checkbox>
                     </td>
 
-                    <td>{{ props.item.uuid }}</td>
-                    <td>{{ props.item.fio}}</td>
-                    <td>{{ props.item.team}}</td>
-                    <td>{{ props.item.project}}</td>
+                    <td>{{ items.item.fio}}</td>
+                    <td>{{ items.item.team}}</td>
+                    <td>{{ items.item.project}}</td>
+                    <td>{{ items.item.login}}</td>
+                    <td>{{ items.item.email}}</td>
+                    <td>{{ items.item.connections.jira }}</td>
+                    <td>{{ items.item.connections.telegram }}</td>
+                    <td>{{ items.item.connections.git }}</td>
+                    <td>{{ items.item.connections.confluence }}</td>
+                    <td>{{ items.item.connections.bitrixportal }}</td>                          
 
                     <v-layout align-center justify-space-around row fill-height>
-                        <v-icon medium @click="editItem(props.item)">
+                        <v-icon medium @click="editItem(items.item)">
                             edit
                         </v-icon>
-                        <v-icon medium @click="deleteItem(props.item)">
+                        <v-icon medium @click="deleteItem(items.item)">
                             delete
                         </v-icon>
                     </v-layout>
@@ -74,22 +107,49 @@
                     <v-card-text>
                         <v-container grid-list-md>
                             <v-layout wrap>
-                                <v-flex xs12>
-                                    <v-text-field :label="Должность" required
-                                                  v-model="employeeName"></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'ФИО сотрудника на русском'" v-model="ruName"
+                               <v-flex xs12>
+                                    <v-text-field :label="'ФИО'" v-model="fio"
                                                   required></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
-                                    <v-text-field :label="'ФИО сотрудника на казахском'" v-model="kzName"
+                                    <v-text-field :label="'Команда'" v-model="team"
                                                   required></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
-                                    <v-text-field :label="'ФИО сотрудника на английском'" required
-                                                  v-model="enName"></v-text-field>
+                                    <v-text-field :label="'Проект'" required
+                                                  v-model="project"></v-text-field>
                                 </v-flex>
+                             <v-flex xs12>
+                                    <v-text-field :label="'Логин'" v-model="login"
+                                                  required></v-text-field>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field :label="'e-mail'" v-model="email"
+                                                  required></v-text-field>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field :label="'jira'" v-model="jira"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'telegram'" v-model="telegram"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'git'" v-model="git"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'confluence'" v-model="confluence"
+                                                  required></v-text-field>
+                                </v-flex>
+                            <v-flex xs12>
+                                    <v-text-field :label="'bitrixportal'" v-model="bitrixportal"
+                                                  required></v-text-field>
+                                </v-flex>
+
+
+
                             </v-layout>
                         </v-container>
                     </v-card-text>
@@ -106,45 +166,40 @@
 
 <script>
 
-
-    export default {
-        name: 'EmployeesPanel',
-        data() {
-            return {
-
+export default {
+      
+    data() {
+        return {
+                name: 'EmployeesPanel',
                 isEdit: false,
                 id: '',
-                employeeName: '',
-                ruName: '',
-                kzName: '',
-                enName: '',
-                dialog: false,
+                uuid:'',
+                fio:'',
+                team:'',
+                project:'', 
+                login:'',
+                email:'',  
+                jira:'',
+                telegram:'',
+                git:'',
+                confluence:'',
+                bitrixportal:'',        
+                 dialog: false,
                 selected: [],
                 search: '',
                 commonHeaders: [
-                    {text: 'Должность', align: 'left', value: 'employeeName'},
-                    {text: 'ФИО на русском языке', align: 'left', value: 'ruName'},
-                    {text: 'ФИО на казахском языке', align: 'left', value: 'kzName'},
-                    {text: 'ФИО на английском языке', align: 'left', value: 'enName'}
-                ],
-                headersKk: [
-                    {text: 'Лауазым', align: 'left', value: 'employeeName'},
-                    {text: 'Аты мен тегі қызметкер орысша', align: 'left', value: 'ruName'},
-                    {text: 'Аты мен тегі қызметкер казакша', align: 'left', value: 'kzName'},
-                    {text: 'Аты мен тегi қызметкер ағылшын', align: 'left', value: 'enName'}
-                ],
-                headersDefault: [
-                    {text: 'Должность', align: 'left', value: 'employeeName'},
-                    {text: 'ФИО на русском языке', align: 'left', value: 'ruName'},
-                    {text: 'ФИО на казахском языке', align: 'left', value: 'kzName'},
-                    {text: 'ФИО на английском языке', align: 'left', value: 'enName'}
-                ],
-                headersEn: [
-                    {text: 'Position', align: 'left', value: 'employeeName'},
-                    {text: 'Name of the employee in Russian', align: 'left', value: 'ruName'},
-                    {text: 'Name of the employee in Kazakh', align: 'left', value: 'kzName'},
-                    {text: 'Name of the employee in English', align: 'left', value: 'enName'}
-                ],
+                    {text: 'ФИО', align: 'left', value: 'fio'},
+                    {text: 'Команда', align: 'left', value: 'team'},
+                    {text: 'Проект', align: 'left', value: 'project'},
+                    {text: 'Логин', align: 'left', value: 'login'},
+                    {text: 'e-mail', align: 'left', value: 'email'},
+                    {text: 'jira', align: 'left',value: 'connections.jira'},
+                    {text: 'telegram', align: 'left',value: 'connections.telegram'},
+                    {text: 'git', align: 'left',value: 'connections.git'},
+                    {text: 'confluence', align: 'left',value: 'connections.confluence'},
+                    {text: 'bitrixportal', align: 'left',value: 'connections.bitrixportal'},  
+                    
+                ]
             }
         },
         methods: {
@@ -205,7 +260,7 @@
                 this.isEdit = false;
             },
             setData() {
-                this.$store.dispatch('employees/loadEmployees')
+           //     this.$store.dispatch('developers')
             }
         },
 
@@ -214,36 +269,25 @@
         },
 
         watch: {
-            locale(val) {
-                console.log(val)
-                if (val === 'kk') {
-                    this.commonHeaders = this.headersKk
-                } else if (val === 'ru') {
-                    this.commonHeaders = this.headersDefault
-                } else if (val === 'en') {
-                    this.commonHeaders = this.headersEn
-                }
-            }
+       
         },
 
         computed: {
 
-            languages() {
-                return this.$store.state.langList
-            },
+           
 
-            employees() {
+            developers() {
                     return this.$store.getters.developers
-            },
-
-            locale: {
-                get() {
-                    return this.$i18n.locale
-                },
-                set(val) {
-                    this.$i18n.locale = val
-                }
-            },
-
+            }
+            
         }
     }
+
+</script>
+
+<style scoped>
+   .root{
+        font-size:13px!important;
+   }
+
+</style>

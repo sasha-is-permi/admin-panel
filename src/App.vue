@@ -27,7 +27,7 @@ https://vuetifyjs.com/en/getting-started/installation/
 
 <template>
   <v-app>
-  <v-container >
+  <v-container class="container" >
     <v-row >
       <v-col cols="12">
              <h1 class="h1"> Административная панель </h1>     
@@ -38,7 +38,7 @@ https://vuetifyjs.com/en/getting-started/installation/
     <!-- Панель для desctop экранов с разрешением >= 600 px   -->  
     <v-row class="container1">  
 
-    <v-col sm="4" > 
+    <v-col sm="3" > 
     <!-- Общий размер раздела-карточки-->  
     <v-card 
       class ="card1"
@@ -99,7 +99,7 @@ https://vuetifyjs.com/en/getting-started/installation/
     </v-card>
     </v-col>
 
-    <v-col sm="8">
+    <v-col sm="9">
    <v-card
       class="card2"
       style="margin-top:20px;" 
@@ -301,8 +301,14 @@ https://vuetifyjs.com/en/getting-started/installation/
 </script>
 
 <style scoped>
+   
+    .container {
+    width:1200px!important;
+    }
+
+
     .list-item-title {
-      margin-left:10px!important;
+      margin-left:3px!important;
       padding-left:0px!important;
    }
 
@@ -333,8 +339,8 @@ https://vuetifyjs.com/en/getting-started/installation/
        color:blue;       
    }
    .list-item-title {
-      font-size:18px!important;
-      padding-left:10px;
+      font-size:13px!important;
+      padding-left:3px;
    }
    .text-center{
      text-align:center;
