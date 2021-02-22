@@ -47,9 +47,11 @@
             multi-sort- возможность сортировки по нескольким 
                  столбцам сразу-
 
-            show-select- возможность выбирать несколько 
-                   ячеек сразу или все (без него- толькол одна
-                   ячейка выбирается )
+            show-select- возможность выбирать ячейки
+            :single-select="singleSelect" - только одная 
+            ячейка выбирается
+            в data:  
+            singleSelect:true,
 
             v-model="search"   label="Search" создание фильтрации
             :headers="commonHeaders" - загрузка заголовков из массива commonHeaders
@@ -67,10 +69,10 @@
                     :search="search"
                     v-model="selected"
                     item-key="uuid"
-                    multi-sort
                     :no-data-text="'Нет данных'"
                     :no-results-text="'Не найдены значения'"
                     show-select
+                    :single-select="singleSelect"
                     class="fixed-headers"
                     :items-per-page="5"
                     >
@@ -187,6 +189,7 @@ export default {
                  dialog: false,
                 selected: [],
                 search: '',
+                singleSelect:true,
                 commonHeaders: [
                     {text: 'ФИО', align: 'left', value: 'fio'},
                     {text: 'Команда', align: 'left', value: 'team'},
