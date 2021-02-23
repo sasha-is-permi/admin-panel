@@ -71,7 +71,7 @@
                     :items="developers"
                     :search="search"
                     v-model="selected"
-                    item-key="uuid"
+                    item-key="id"
                     :no-data-text="'Нет данных'"
                     :no-results-text="'Не найдены значения'"
                     show-select
@@ -79,31 +79,7 @@
                     class="fixed-headers"
                     :items-per-page="5"
                     >
-              <template v-slot="{ items }">
-                    <td style="width: 48px; max-width: 48px;">
-                        <v-checkbox v-model="items.selected" primary hide-details></v-checkbox>
-                    </td>
-                    <td>{{ items.item.uuid}}</td>
-                    <td>{{ items.item.fio}}</td>
-                    <td>{{ items.item.team}}</td>
-                    <td>{{ items.item.project}}</td>
-                    <td>{{ items.item.login}}</td>
-                    <td>{{ items.item.email}}</td>
-                    <td>{{ items.item.connections.jira }}</td>
-                    <td>{{ items.item.connections.telegram }}</td>
-                    <td>{{ items.item.connections.git }}</td>
-                    <td>{{ items.item.connections.confluence }}</td>
-                    <td>{{ items.item.connections.bitrixportal }}</td>                          
 
-                    <v-layout align-center justify-space-around row fill-height>
-                        <v-icon medium @click="editItem(items.item)">
-                            edit
-                        </v-icon>
-                        <v-icon medium @click="deleteItem(items.item)">
-                            delete
-                        </v-icon>
-                    </v-layout>
-                </template>
             </v-data-table>
         </v-card>
         <!-- Вызывается при нажатии на кнопочку "добавить новый элемент"
@@ -115,7 +91,7 @@
                         <v-container grid-list-md>
                             <v-layout wrap>
                               <v-flex xs12>
-                                    <v-text-field :label="'id'" v-model="uuid"
+                                    <v-text-field :label="'id'" v-model="id"
                                                   required></v-text-field>
                                 </v-flex>                            
                                <v-flex xs12>
@@ -180,11 +156,8 @@
 export default {
       
     data() {
-        return {
-                name: 'EmployeesPanel',
-                isEdit: false,
-                id: '',
-                uuid:'',
+        return {                
+                id:'',
                 fio:'',
                 team:'',
                 project:'', 
@@ -195,12 +168,13 @@ export default {
                 git:'',
                 confluence:'',
                 bitrixportal:'',        
-                 dialog: false,
+                dialog: false,
+                edit:false,
                 selected: [],
                 search: '',
                 singleSelect:true,
                 commonHeaders: [
-                    {text: 'id', align: 'left', value: 'uuid'},
+                    {text: 'id', align: 'left', value: 'id'},
                     {text: 'ФИО', align: 'left', value: 'fio'},
                     {text: 'Команда', align: 'left', value: 'team'},
                     {text: 'Проект', align: 'left', value: 'project'},
@@ -216,16 +190,12 @@ export default {
             }
         },
         methods: {
-       
-            deleteItem(item) {
-                confirm('Вы действительно хотите удалить?' + item.employeeName) && this.$store.dispatch('employees/deleteEmployee', item.employeeName)
-            },
-            editItem() {
+               editItem() {
                   if (this.selected.length === 0) {
                     alert('Для редактирования нужно выбрать cотрудника')
                 } else {
                 console.log(this.selected[0]);
-                 this.uuid=this.selected[0].uuid;
+                 this.id=this.selected[0].id;
                  this.fio=this.selected[0].fio;
                  this.team=this.selected[0].team;
                  this.project=this.selected[0].project;
@@ -246,7 +216,7 @@ export default {
 
                 if (this.edit === false) {
                 let form = {
-                    uuid: this.uuid,
+                    id: this.id,
                     fio: this.fio,
                     team: this.ruName,
                     project: this.project,
@@ -265,7 +235,7 @@ export default {
 
 
                 let form = {
-                    uuid: this.uuid,
+                    id: this.id,
                     fio: this.fio,
                     team: this.ruName,
                     project: this.project,
