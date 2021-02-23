@@ -23,98 +23,98 @@ export default {
                 fio:'Иванов Артем Аркадьевич',
                 team:'экономисты',
                 project:'отчетность',
+                login:'ivanovAA',
+                email:'ivanovaa@mail.ru',              
                 connections: {jira:'http://jira/ivanov',
                  telegram:'http://telegram/ivanov',
                  git:'http://git/ivanov',
                  confluence:'',
                  bitrixportal:''
-                },
-                login:'ivanovAA',
-                email:'ivanovaa@mail.ru'
+                }
             },
             {
                 uuid:'2',
                 fio:'Петров Алексей Игнатьевич ',
                 team:'экономисты',
                 project:'трудовик',
+                login:'petrovAI',
+                email:'petrovAI@mail.ru',
                 connections: {jira:'http://jira/petrov',
                  telegram:'http://telegram/petrov',
                  git:'',
                  confluence:'',
                  bitrixportal:'http://bitrixportal/petrov'
-                },
-                login:'petrovAI',
-                email:'petrovAI@mail.ru'
+                }
             },
             {
                 uuid:'3',
                 fio:'Савельев Антон Григорьевич ',
                 team:'бухгалтера',
                 project:'трудовик',
+                login:'saveljevAG',
+                email:'saveljevAG@mail.ru',               
                 connections: {jira:'http://jira/savelev',
                  telegram:'',
                  git:'http://git/savelev',
                  confluence:'',
                  bitrixportal:'http://bitrixportal/savelev'
-                },
-                login:'saveljevAG',
-                email:'saveljevAG@mail.ru'
+                }
             },
             {
                 uuid:'4',
                 fio:'Лоза Антон Георгиевич ',
                 team:'инженер',
                 project:'отчетность',
+                login:'losaAG',
+                email:'losaAG@mail.ru',               
                 connections: {jira:'http://jira/losa',
                  telegram:'',
                  git:'http://git/losa',
                  confluence:'http://confluence/losa',
                  bitrixportal:''
-                },
-                login:'losaAG',
-                email:'losaAG@mail.ru'
+                }
             },
             {
                 uuid:'5',
                 fio:'Соснин Денис Анатольевич ',
                 team:'инженер',
                 project:'отчетность',
+                login:'sosninDA',
+                email:'sosninDA@mail.ru',               
                 connections: {jira:'http://jira/sosnin',
                  telegram:'http://telegram/sosnin',
                  git:'http://git/sosnin',
                  confluence:'',
                  bitrixportal:''
-                },
-                login:'sosninDA',
-                email:'sosninDA@mail.ru'
+                }
             },
             {
                 uuid:'6',
                 fio:'Артемьев Иван Дмитриевич',
                 team:'электрик',
                 project:'электричество',
+                login:'artemjevID',
+                email:'artemjevID@mail.ru',               
                 connections: {jira:'http://jira/artemjev',
                  telegram:'http://telegram/artemjev',
                  git:'',
                  confluence:'',
                  bitrixportal:''
-                },
-                login:'artemjevID',
-                email:'artemjevID@mail.ru'
+                }
             },
             {
                 uuid:'7',
                 fio:'Леденцов Павел Петрович ',
                 team:'начальник',
                 project:'электричество',
+                login:'ledencovPP',
+                email:'ledencovPP@mail.ru',               
                 connections: {jira:'',
                  telegram:'',
                  git:'http://git/ledencov',
                  confluence:'http://confluence/ledencov',
                  bitrixportal:''
-                },
-                login:'ledencovPP',
-                email:'ledencovPP@mail.ru'
+                }
             }
             ]   
 
@@ -135,6 +135,18 @@ export default {
         //  developers ({commit}, payload) {
           //  commit('developers', payload)
         //  },
+
+          deleteItem(){
+              alert('Сотрудник удален');
+          },
+
+          addItem(){
+            alert('Элемент добавлен');
+        },
+
+        editItem(){
+            alert('Элемент отредактирован');
+        }
 
         },       
         

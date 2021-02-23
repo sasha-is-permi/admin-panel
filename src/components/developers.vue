@@ -4,21 +4,24 @@
                      <v-toolbar text prominent class="no-padding-toolbar">
                 <v-toolbar-items>
                     <v-tooltip bottom>
-                       <template v-slot:activator="{ on }" @click="dialog = true" ><v-btn v-on="on">
+                       <template v-slot:activator="{ on }"  >
+                       <v-btn v-on="on" @click="dialog = true,edit=false">
                             <v-icon medium>add</v-icon>
                         </v-btn>
                         </template>
                         <span> Добавить сотрудника </span>
                     </v-tooltip>
                       <v-tooltip bottom>
-                        <template v-slot:activator="{ on }" @click="edit" ><v-btn v-on="on">
+                        <template v-slot:activator="{ on }"  >
+                          <v-btn v-on="on" @click="editItem">
                             <v-icon medium>edit</v-icon>
-                        </v-btn>
+                          </v-btn>
                         </template>
                         <span>Редактировать</span>
                     </v-tooltip>
                     <v-tooltip bottom>
-                       <template v-slot:activator="{ on }" @click="delEmployees" ><v-btn v-on="on">
+                       <template v-slot:activator="{ on }"> 
+                        <v-btn v-on="on"  @click="delItem" >
                            <v-icon medium>delete</v-icon>
                         </v-btn>
                         </template>
@@ -80,7 +83,7 @@
                     <td style="width: 48px; max-width: 48px;">
                         <v-checkbox v-model="items.selected" primary hide-details></v-checkbox>
                     </td>
-
+                    <td>{{ items.item.uuid}}</td>
                     <td>{{ items.item.fio}}</td>
                     <td>{{ items.item.team}}</td>
                     <td>{{ items.item.project}}</td>
@@ -103,12 +106,18 @@
                 </template>
             </v-data-table>
         </v-card>
+        <!-- Вызывается при нажатии на кнопочку "добавить новый элемент"
+        или "Редактировать элемент" -->
         <v-dialog v-model="dialog" persistent max-width="600px">
             <v-card>
                 <v-form ref="form">
                     <v-card-text>
                         <v-container grid-list-md>
                             <v-layout wrap>
+                              <v-flex xs12>
+                                    <v-text-field :label="'id'" v-model="uuid"
+                                                  required></v-text-field>
+                                </v-flex>                            
                                <v-flex xs12>
                                     <v-text-field :label="'ФИО'" v-model="fio"
                                                   required></v-text-field>
@@ -157,8 +166,8 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="blue darken-1" text @click="closeMeth" closeMethod>{{'Закрыть'}}</v-btn>
-                        <v-btn color="blue darken-1" text @click="addEmployee">{{'Сохранить'}}</v-btn>
+                        <v-btn color="blue darken-1" text @click="close" closeMethod>{{'Закрыть'}}</v-btn>
+                        <v-btn color="blue darken-1" text @click="addEditItem">{{'Сохранить'}}</v-btn>
                     </v-card-actions>
                 </v-form>
             </v-card>
@@ -191,6 +200,7 @@ export default {
                 search: '',
                 singleSelect:true,
                 commonHeaders: [
+                    {text: 'id', align: 'left', value: 'uuid'},
                     {text: 'ФИО', align: 'left', value: 'fio'},
                     {text: 'Команда', align: 'left', value: 'team'},
                     {text: 'Проект', align: 'left', value: 'project'},
@@ -206,49 +216,89 @@ export default {
             }
         },
         methods: {
-           edit() {
-           
-           },
+       
             deleteItem(item) {
                 confirm('Вы действительно хотите удалить?' + item.employeeName) && this.$store.dispatch('employees/deleteEmployee', item.employeeName)
             },
-            editItem(item) {
-                this.dialog = true
-                this.isEdit = true
-                this.employeeName = item.employeeName
-                this.ruName = item.ruName
-                this.kzName = item.kzName
-                this.enName = item.enName
-                this.id = item.id
-            },
+            editItem() {
+                  if (this.selected.length === 0) {
+                    alert('Для редактирования нужно выбрать cотрудника')
+                } else {
+                console.log(this.selected[0]);
+                 this.uuid=this.selected[0].uuid;
+                 this.fio=this.selected[0].fio;
+                 this.team=this.selected[0].team;
+                 this.project=this.selected[0].project;
+                 this.login=this.selected[0].login;
+                 this.email=this.selected[0].email;
+                 this.jira=this.selected[0].connections.jira;  
+                 this.telegram=this.selected[0].connections.telegram;   
+                 this.git=this.selected[0].connections.git;  
+                 this.confluence=this.selected[0].connections.confluence;     
+                 this.bitrixportal=this.selected[0].connections.bitrixportal;     
+                 this.edit=true
+                 this.dialog = true                 
+                }
+            },   
 
-            addEmployee() {
+            addEditItem() {
                 this.dialog = false;
-                let outer = this;
+
+                if (this.edit === false) {
                 let form = {
-                    employeeName: outer.employeeName,
-                    ruName: outer.ruName,
-                    kzName: outer.kzName,
-                    enName: outer.enName,
-                    id: outer.id
+                    uuid: this.uuid,
+                    fio: this.fio,
+                    team: this.ruName,
+                    project: this.project,
+                    login: this.login,
+                    email: this.email,
+                    connections: {jira: this.jira,telegram: this.telegram,
+                    git: this.git,confluence: this.confluence,
+                    bitrixportal: this.bitrixportal}
                 };
 
-                if (this.isEdit === false) {
-                    this.$store.dispatch('employees/addingEmployee', form);
+                    this.$store.dispatch('addItem', form);
                     this.$refs.form.reset()
-                } else {
-                    this.$store.dispatch('employees/editEmployee', form);
-                    this.isEdit = false;
+                                      }
+                
+                 if (this.edit === true) {
+
+
+                let form = {
+                    uuid: this.uuid,
+                    fio: this.fio,
+                    team: this.ruName,
+                    project: this.project,
+                    login: this.login,
+                    email: this.email,
+                    connections: {jira: this.jira,telegram: this.telegram,
+                    git: this.git,confluence: this.confluence,
+                    bitrixportal: this.bitrixportal}
+                };
+
+                    const msg = 'Сохранить изменения для сотрудника?';
+                    let boo = confirm(msg) && this.$store.dispatch('editItem', form);
+                    if (boo === true) {
+                        this.selected = [];
+                    } else {
+                        this.selected = [];
+                    }
+
+                    
                     this.$refs.form.reset()
-                }
+                                      }
+
+
+
+
             },
 
-            delEmployees() {
+            delItem() {
                 if (this.selected.length === 0) {
                     alert('Для удаления нужно выбрать cотрудника')
                 } else {
-                    const msg = 'Удалить сотрудников?' + '(' + this.selected.length + ')';
-                    let boo = confirm(msg) && this.$store.dispatch('employees/deleteEmployees', this.selected)
+                    const msg = 'Удалить сотрудника?';
+                    let boo = confirm(msg) && this.$store.dispatch('deleteItem', this.selected[0])
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -256,8 +306,8 @@ export default {
                     }
                 }
             },
-
-            closeMeth() {
+            // При отмене добавления нового элемента
+            close() {
                 this.dialog = !this.dialog;
                 this.$refs.form.reset();
                 this.isEdit = false;
@@ -268,7 +318,7 @@ export default {
         },
 
         created() {
-            this.setData();
+           //  this.setData();
         },
 
         watch: {
