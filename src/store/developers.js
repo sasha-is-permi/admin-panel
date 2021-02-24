@@ -6,10 +6,146 @@
 2.	ФИО
 3.	Команда 
 5.  Проект
-4.	Массив: JIRA, Telegram, Git, Confluence, BitrixPortal
-5.	Login
-6.	Email
+6.	Login
+7.	Email
+8.	Массив: JIRA, Telegram, Git, Confluence, BitrixPortal
 
+{               "id":"1",
+                "lastName":"Иванов",
+                "firstName":"Артем",
+                "middleName:"Аркадьевич",
+                "gender":"м",
+                "birthDate":"15.07.25",              
+                 "email":"ivanov@mail.ru",
+                 "login":"ivanov",
+                 "portals":"",
+                 "projects":"",
+                 "team":""
+                
+}
+
+Типы данных:
+https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/EmployeeDto.java
+
+Команда team. Может быть только одна у сотрудника
+"team": {"id":"25","name":"comand1","bitrixportal":"25"}
+
+
+это массив объектов
+ "portals": [{
+    "param1" : "",
+    "param2" : ""
+},
+{
+    "param1" : "",
+    "param2" : ""
+}
+
+portals- это массив объектов-интеграций.
+
+portals, тип портала IntegrationTypeDto- IntegrationTypeDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("code")
+    private String code;
+}
+
+portals- это массив объектов-интеграций.
+"portals":[
+    {"id":"37",
+     "name":"jira",
+     "code":"http://jira/ivanov" },
+    {"id":"28",
+     "name":"vkontakte",
+     "code":"http://vkontakte/ivanov" },
+  {"id":"34",
+     "name":"git",
+     "code":"http://github/ivanov" },    
+]
+
+Проекты: projectDTO
+
+public class ProjectDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("teams")
+    private List<TeamDto> teams;
+}
+
+public class TeamDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("bitrixPortalId")
+    private String bitrixPortalId;
+}
+
+
+{               "id":"1",
+                "lastName":"Иванов",
+                "firstName":"Артем",
+                "middleName:"Аркадьевич",
+                "gender":"м",
+                "birthDate":"15.07.25",              
+                 "email":"ivanov@mail.ru",
+                 "login":"ivanov",
+                 "portals":"",
+                 "projects":"",
+                 "team":""
+                
+}
+
+где поля:
+
+"team": {"id":"27","name":"HardWorkers","bitrixportal":"35"}
+
+(входит та же команда в проект)
+"projects": {"id":"25","name":"project1","team":{"id":"27","name":"HardWorkers","bitrixPortalId":"35"}}
+
+portals- это массив объектов-интеграций.
+"portals":[
+    {"id":"37",
+     "name":"jira",
+     "code":"http://jira/ivanov" },
+    {"id":"28",
+     "name":"vkontakte",
+     "code":"http://vkontakte/ivanov" },
+  {"id":"34",
+     "name":"git",
+     "code":"http://github/ivanov" }    
+]
+
+
+будет либо team либо projects. 
+Там смысл в том, что сотрудник может быть или частью команды 
+или у него просто какие-то проекты будут без команды
+
+
+Получается- если нет команды, а есть только проект:    "team": null
+
+"projects": {"id":"25","name":"project1","team":null}
+
+
+Я не так выразился, они не обязательные. Они могут и вместе быть, и один из них и оба. В случае если параметр будет отсутствовать, я верну null
+
+Получается- если нет команды, а есть только проект: 
+
+"team": null
+
+"projects": {"id":"25","name":"project1","team":null}
+
+В проекте не обязательно team будет null
 
 
 */
