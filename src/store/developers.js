@@ -1,5 +1,7 @@
 
 /*
+
+Employees (сотрудники)
 Данные:
 
 1.	id
@@ -9,6 +11,9 @@
 6.	Login
 7.	Email
 8.	Массив: JIRA, Telegram, Git, Confluence, BitrixPortal
+
+Типы данных:
+https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/EmployeeDto.java
 
 {               "id":"1",
                 "lastName":"Иванов",
@@ -24,8 +29,7 @@
                 
 }
 
-Типы данных:
-https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/EmployeeDto.java
+
 
 Команда team. Может быть только одна у сотрудника
 "team": {"id":"25","name":"comand1","bitrixportal":"25"}
