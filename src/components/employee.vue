@@ -315,7 +315,7 @@ export default {
 
            
 
-            developers() {
+            employees() {
                     return this.$store.getters.employees
             }
             

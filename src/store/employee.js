@@ -77,7 +77,7 @@ portals- это массив объектов-интеграций.
 
 Получается- если нет команды, а есть только проект:    "team": null
 
-"projects": {"id":"25","name":"project1","team":null}
+"projects": {"id":"25","name":"project1",...}
 
 
  Они могут и вместе быть, и один из них и оба. 
@@ -87,9 +87,8 @@ portals- это массив объектов-интеграций.
 
 "team": null
 
-"projects": {"id":"25","name":"project1","team":null}
+"projects": {"id":"25","name":"project1",...}
 
-В проекте не обязательно team будет null
 
 
 */
