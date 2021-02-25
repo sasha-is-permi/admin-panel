@@ -279,8 +279,7 @@ https://vuetifyjs.com/en/getting-started/installation/
      // Обращаемся к геттеру с ошибками  
     return this.$store.getters.error    
                   },
-     // Обращаемся к геттеру который проверяет- 
-     // залогинен ли пользователь             
+     // Обращаемся к геттеру который проверяет- залогинен ли пользователь             
    isUserLoggedIn () {
     return this.$store.getters.isUserLoggedIn
    },   
@@ -290,15 +289,16 @@ https://vuetifyjs.com/en/getting-started/installation/
         if (this.isUserLoggedIn){
         return [
 
-          { title: 'Рабочие пространства', icon: 'mdi-view-dashboard', url:'/workspaces' },
-          { title: 'Разработчики', icon: 'mdi-view-dashboard', url:'/developers' },
-          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/teams'},
-          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/projects' },
-          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/projectgroups' },        
-          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/processes' },
-          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metrics' },
-          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/settings' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integrations' },
+
+          { title: 'Сотрудники', icon: 'mdi-view-dashboard', url:'/employee' },         
+          { title: 'Проекты', icon: 'mdi-view-dashboard', url:'/project' },
+          { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/projectgroup' }, 
+          { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/team'},             
+          { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/process' },
+          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metric' },         
+          { title: 'Рабочие области', icon: 'mdi-view-dashboard', url:'/workspace' },
+          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integration' },
+          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/setting' },
           { title: 'Выйти из системы', icon: 'mdi-view-dashboard',url:'/logout'  }
         ]                              }
       // Если не авторизирован- показываем только меню регистрации    

@@ -24,7 +24,7 @@ import logout     from  '@/components/logout'
 // integration    интеграции
 // setting        настройки
 
-import employee from '@/components/emloyee'
+import employee from '@/components/employee'
 import project   from '@/components/project'
 import projectgroup from '@/components/projectgroup'
 import team      from '@/components/team'
