@@ -1,3 +1,8 @@
+// В данном файле:
+// данные и методы для компонентов vue:
+// loading- индикатор загрузки
+// error - ошибки
+
 export default {
   state: {
     loading: false,

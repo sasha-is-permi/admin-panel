@@ -1,7 +1,8 @@
-// Подключаем firebase
-//import fb from 'firebase/app';
-//require('firebase/auth');
-//require('firebase/database');
+// В данном файле:
+// данные и методы для компонентов vue:
+// loginUser- для авторизации
+// logoutUser - для выхода из авторизации
+
 
 let user= "admin";
 let userPassword="111";

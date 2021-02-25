@@ -1,8 +1,8 @@
 
 /*
 
-teams
-команды
+team
+команда
 
 https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/TeamDto.java
 
