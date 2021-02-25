@@ -35,67 +35,6 @@ https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/c
 "team": {"id":"25","name":"comand1","bitrixportal":"25"}
 
 
-это массив объектов
- "portals": [{
-    "param1" : "",
-    "param2" : ""
-},
-{
-    "param1" : "",
-    "param2" : ""
-}
-
-portals- это массив объектов-интеграций.
-
-portals, тип портала IntegrationTypeDto- IntegrationTypeDto {
-    @JsonProperty("id")
-    private String id;
-
-    @JsonProperty("name")
-    private String name;
-
-    @JsonProperty("code")
-    private String code;
-}
-
-portals- это массив объектов-интеграций.
-"portals":[
-    {"id":"37",
-     "name":"jira",
-     "code":"http://jira/ivanov" },
-    {"id":"28",
-     "name":"vkontakte",
-     "code":"http://vkontakte/ivanov" },
-  {"id":"34",
-     "name":"git",
-     "code":"http://github/ivanov" },    
-]
-
-Проекты: projectDTO
-
-public class ProjectDto {
-    @JsonProperty("id")
-    private String id;
-
-    @JsonProperty("name")
-    private String name;
-
-    @JsonProperty("teams")
-    private List<TeamDto> teams;
-}
-
-public class TeamDto {
-    @JsonProperty("id")
-    private String id;
-
-    @JsonProperty("name")
-    private String name;
-
-    @JsonProperty("bitrixPortalId")
-    private String bitrixPortalId;
-}
-
-
 {               "id":"1",
                 "lastName":"Иванов",
                 "firstName":"Артем",
@@ -158,7 +97,7 @@ portals- это массив объектов-интеграций.
 export default {
     state: {  
         
-        developers: [
+        employees: [
             {
                 id:'1',
                 fio:'Иванов Артем Аркадьевич',
@@ -263,28 +202,30 @@ export default {
            // id:"" 
     },
     mutations: { 
-     //   developers (state, payload) {
-    //        state.developers = payload
+     //   employees(state, payload) {
+    //        state.employees = payload
      //    }
 
        },
     actions: {  
       //  setLoading ({commit}, payload) {
             // Вызываем commit с mutation setLoading
-      //      commit('developers', payload)
+      //      commit('employees', payload)
       //    },
-        //  developers ({commit}, payload) {
-          //  commit('developers', payload)
+        //  employees ({commit}, payload) {
+          //  commit('employees', payload)
         //  },
-
+         
+        // Удаление сотрудника из базы
           deleteItem(){
               alert('Сотрудник удален');
           },
-
+        // Добавление нового сотрудника в базу     
           addItem(){
             alert('Элемент добавлен');
         },
-
+        // Редактирование существующего сотрудника 
+        // в базе
         editItem(){
             alert('Элемент отредактирован');
         }
@@ -292,9 +233,10 @@ export default {
         },       
         
     getters: {
-         developers(state) {
-             // Возвращаем все объявления
-             return state.developers
+         employees(state) {
+             // Возвращаем всех сотрудников по запросу 
+             // из файла vue
+             return state.employees
          }   
          }
 

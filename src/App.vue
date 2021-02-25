@@ -37,18 +37,22 @@ https://vuetifyjs.com/en/getting-started/installation/
 -->
 
 <template>
+<!-- Для использования библиотеки vutify -->
   <v-app>
   <v-container class="container" >
-    <v-row >
+<!-- Заголовок  -->  
+     <v-row >
       <v-col cols="12">
              <h1 class="h1"> Административная панель </h1>     
       </v-col>
     </v-row>
    
     <!-- **************************************************** -->
-    <!-- Панель для desctop экранов с разрешением >= 600 px   -->  
+ 
     <v-row class="container1">  
 
+<!-- Панель для desktop экранов и планшетов с разрешением >= 600 px  
+Занимает 3 столбца из 12 -->  
     <v-col sm="3" > 
     <!-- Общий размер раздела-карточки-->  
     <v-card 
@@ -61,10 +65,8 @@ https://vuetifyjs.com/en/getting-started/installation/
     permanent - Панель остаётся видимой независимо от размера экрана
               Панель остаётся видимой независимо от размера экрана
     mini-variant - сжимать панель -только картинки показываются
-
-    
-
     -->
+
       <v-navigation-drawer
         height="520px"
         width="400px"
@@ -110,6 +112,9 @@ https://vuetifyjs.com/en/getting-started/installation/
     </v-card>
     </v-col>
 
+
+   <!-- Рабочая область- где выводятся данные 
+   Занимает 9 столбцов из 12-->
     <v-col sm="9">
    <v-card
       class="card2"
@@ -117,6 +122,9 @@ https://vuetifyjs.com/en/getting-started/installation/
       height="520px"
       width="600px"
     >
+
+    <!-- При выборе страничке в меню в данном месте отображается
+    эта страничка -->
           <router-view> </router-view>      
   
     </v-card>
@@ -126,10 +134,13 @@ https://vuetifyjs.com/en/getting-started/installation/
 
   <!-- Панель для мобильной версии  -->
   <!-- ************************************************** -->
+ 
+ 
   
    <v-row class="container2">
             
-
+   <!-- Меню (drawer) - выпадающее. 
+   Исчезает после выбора пункта меню -->
        <v-card
     class="mx-auto "
     height="70"
@@ -146,6 +157,8 @@ https://vuetifyjs.com/en/getting-started/installation/
        <v-spacer></v-spacer>
 
     </v-app-bar>
+
+
 
   </v-card>
 
@@ -206,14 +219,19 @@ https://vuetifyjs.com/en/getting-started/installation/
 
 
 
-
+   <!-- Рабочая область- где выводятся данные -->
   <v-card
       class="card2"
       style="margin-top:20px;" 
       height="480"
       width="100%"
     >
-          <router-view> </router-view>      
+
+
+
+   <!-- При выборе страничке в меню в данном месте отображается
+    эта страничка -->  
+    <router-view> </router-view>      
   
     </v-card>
    

@@ -2,6 +2,8 @@
     <div class="root">
         <v-card text>
                      <v-toolbar text prominent class="no-padding-toolbar">
+                <!-- Панель кнопочек "Добавить", "Редактировать",
+                "Удалить" -->         
                 <v-toolbar-items>
                     <v-tooltip bottom>
                        <template v-slot:activator="{ on }"  >
@@ -28,6 +30,7 @@
                         <span>Удалить сотрудника</span>
                     </v-tooltip>
                 </v-toolbar-items>
+                <!-- Окно фильтрации -->
                 <v-text-field
                         v-model="search"
                         append-icon="search"
@@ -65,10 +68,12 @@
 
             :items-per-page="5" - сколько на страничке строчек таблицы будет
            -->   
-
+            
+            <!-- Вывод заголовка таблицы  (commonHeaders)
+            и самой таблицы (из объекта employees  )-->
             <v-data-table
                     :headers="commonHeaders"
-                    :items="developers"
+                    :items="employees"
                     :search="search"
                     v-model="selected"
                     item-key="id"
@@ -82,7 +87,11 @@
 
             </v-data-table>
         </v-card>
-        <!-- Вызывается при нажатии на кнопочку "добавить новый элемент"
+
+
+        <!--
+                             Окно Dilog    
+        Вызывается при нажатии на кнопочку "добавить новый элемент"
         или "Редактировать элемент" -->
         <v-dialog v-model="dialog" persistent max-width="600px">
             <v-card>
@@ -148,6 +157,7 @@
                 </v-form>
             </v-card>
         </v-dialog>
+        <!-- ********************************************************  -->
     </div>
 </template>
 
@@ -190,6 +200,9 @@ export default {
             }
         },
         methods: {
+            // Вызывается при нажатии на кнопку "редактировать элемент"
+            // Затем вызывается диалоговое окно Dilog
+            // (описанно выше)
                editItem() {
                   if (this.selected.length === 0) {
                     alert('Для редактирования нужно выбрать cотрудника')
@@ -210,10 +223,13 @@ export default {
                  this.dialog = true                 
                 }
             },   
-
+            // Вызывается при нажатии кнопки "Сохранить"
+            // в диалоговом окне "Dilog"
             addEditItem() {
+                // отключаем диалоговое окно
                 this.dialog = false;
-
+                // если была нажата кнопка создания нового элемента
+                // создаем новый элемент с новыйм id    
                 if (this.edit === false) {
                 let form = {
                     id: this.id,
@@ -230,7 +246,8 @@ export default {
                     this.$store.dispatch('addItem', form);
                     this.$refs.form.reset()
                                       }
-                
+                // Если была нажата кнопка редактирования элемента
+                // редактируем текщий выбранный элемент
                  if (this.edit === true) {
 
 
@@ -257,12 +274,16 @@ export default {
                     
                     this.$refs.form.reset()
                                       }
-
-
-
-
+            },
+          // При отмене добавления или редактирования элемента
+          // в окне Dilog
+            close() {
+                this.dialog = !this.dialog;
+                this.$refs.form.reset();
+                this.isEdit = false;
             },
 
+             // Удаляем выбранный элемент
             delItem() {
                 if (this.selected.length === 0) {
                     alert('Для удаления нужно выбрать cотрудника')
@@ -276,14 +297,9 @@ export default {
                     }
                 }
             },
-            // При отмене добавления нового элемента
-            close() {
-                this.dialog = !this.dialog;
-                this.$refs.form.reset();
-                this.isEdit = false;
-            },
+    
             setData() {
-           //     this.$store.dispatch('developers')
+           //     this.$store.dispatch('employees')
             }
         },
 
@@ -300,7 +316,7 @@ export default {
            
 
             developers() {
-                    return this.$store.getters.developers
+                    return this.$store.getters.employees
             }
             
         }
