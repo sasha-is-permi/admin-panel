@@ -316,7 +316,6 @@ https://vuetifyjs.com/en/getting-started/installation/
           { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metric' },         
           { title: 'Рабочие области', icon: 'mdi-view-dashboard', url:'/workspace' },
           { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integration' },
-          { title: 'Настройки', icon: 'mdi-view-dashboard', url:'/setting' },
           { title: 'Выйти из системы', icon: 'mdi-view-dashboard',url:'/logout'  }
         ]                              }
       // Если не авторизирован- показываем только меню регистрации    

@@ -32,14 +32,17 @@ public class TeamDto {
 
 {"id":"27","name":"HardWorkers",
 "bitrixportal":"http://bitrix/hardworker",
-{"id":35,name:"Project1",...}}
+ project: [{id:"1",name:"Проект 1"},
+            {id:"2",name:"Проект 2"}]  
+  }
+
 
 */
 
 export default {
     state: {  
      // Пробные данные- массив объектов             
-        employees: [
+     teams: [
             {id:"1",name:"Команда № 1",
             bitrixPortalId:"http://bitrix/hardworker",
             project:[{id:"1",name:"Проект 1"}] },
@@ -51,9 +54,7 @@ export default {
 
             {id:"3",name:"Команда № 3",
             bitrixPortalId:"http://bitrix/command3",
-            project: [{id:"1",name:"Проект 1"},
-            {id:"2",name:"Проект 2"}]},
-            
+            project:null}           
             
             ]  
         },

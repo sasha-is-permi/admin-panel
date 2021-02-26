@@ -22,7 +22,7 @@ import logout     from  '@/components/logout'
 // metric         метрики
 // workspace      рабочие области
 // integration    интеграции
-// setting        настройки
+
 
 import employee from '@/components/employee'
 import project   from '@/components/project'
@@ -32,7 +32,7 @@ import process  from '@/components/process'
 import metric    from '@/components/metric'
 import workspace from '@/components/workspace'
 import integration from '@/components/integration'
-import setting   from '@/components/setting'
+
 
 Vue.use(Router)
 

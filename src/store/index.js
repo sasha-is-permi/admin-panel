@@ -20,7 +20,7 @@ import process from './process'
 import metric from './metric'
 import workspace from './workspace'
 import integration from './integration'
-import setting from './setting'
+
 
 
 
@@ -32,6 +32,6 @@ export default new Vuex.Store({
   modules: {
     user, shared,
     employee, project, projectgroup, team, process,
-    metric, workspace, integration, setting
+    metric, workspace, integration
   }
 })

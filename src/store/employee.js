@@ -15,6 +15,42 @@ employee (сотрудник)
 Типы данных:
 https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/EmployeeDto.java
 
+public class EmployeeDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("lastName")
+    private String lastName;
+
+    @JsonProperty("firstName")
+    private String firstName;
+
+    @JsonProperty("middleName")
+    private String middleName;
+
+    @JsonProperty("gender")
+    private String gender;
+
+    @JsonProperty("birthDate")
+    private LocalDate birthDate;
+
+    @JsonProperty("email")
+    private String email;
+
+    @JsonProperty("login")
+    private String login;
+
+    @JsonProperty("portals")
+    private List<PortalDto> portals;
+
+    @JsonProperty("projects")
+    private List<ProjectDto> projects;
+
+    @JsonProperty("team")
+    private TeamDto team;
+}
+
+
 {               "id":"1",
                 "lastName":"Иванов",
                 "firstName":"Артем",
@@ -89,112 +125,52 @@ portals- это массив объектов-интеграций.
 
 "projects": {"id":"25","name":"project1",...}
 
+JSON
+employees 
 
+                   {"id":"1",
+                     "lastName":"Иванов",
+                     "firstName":"Артем",
+                     "middleName:"Аркадьевич",
+                     "gender":"м",
+                     "birthDate":"15.07.25",              
+                     "email":"ivanov@mail.ru",
+                     "login":"ivanov",
+                     "portals":[
+                        {"id":"37","name":"jira" },
+                        {"id":"28","name":"vkontakte" }   
+                    ],
+                    "projects": [
+                        {"id":"25","name":"project1"},
+                        {"id":"26","name":"project2"}
+                                ],
+                      "team": {id:"1",name:"Команда № 1"}
+        }
 
 */
 
 export default {
     state: {  
         
-        employees: [
-            {
-                id:'1',
-                fio:'Иванов Артем Аркадьевич',
-                team:'экономисты',
-                project:'отчетность',
-                login:'ivanovAA',
-                email:'ivanovaa@mail.ru',              
-                connections: {jira:'http://jira/ivanov',
-                 telegram:'http://telegram/ivanov',
-                 git:'http://git/ivanov',
-                 confluence:'',
-                 bitrixportal:''
-                }
-            },
-            {
-                id:'2',
-                fio:'Петров Алексей Игнатьевич ',
-                team:'экономисты',
-                project:'трудовик',
-                login:'petrovAI',
-                email:'petrovAI@mail.ru',
-                connections: {jira:'http://jira/petrov',
-                 telegram:'http://telegram/petrov',
-                 git:'',
-                 confluence:'',
-                 bitrixportal:'http://bitrixportal/petrov'
-                }
-            },
-            {
-                id:'3',
-                fio:'Савельев Антон Григорьевич ',
-                team:'бухгалтера',
-                project:'трудовик',
-                login:'saveljevAG',
-                email:'saveljevAG@mail.ru',               
-                connections: {jira:'http://jira/savelev',
-                 telegram:'',
-                 git:'http://git/savelev',
-                 confluence:'',
-                 bitrixportal:'http://bitrixportal/savelev'
-                }
-            },
-            {
-                id:'4',
-                fio:'Лоза Антон Георгиевич ',
-                team:'инженер',
-                project:'отчетность',
-                login:'losaAG',
-                email:'losaAG@mail.ru',               
-                connections: {jira:'http://jira/losa',
-                 telegram:'',
-                 git:'http://git/losa',
-                 confluence:'http://confluence/losa',
-                 bitrixportal:''
-                }
-            },
-            {
-                id:'5',
-                fio:'Соснин Денис Анатольевич ',
-                team:'инженер',
-                project:'отчетность',
-                login:'sosninDA',
-                email:'sosninDA@mail.ru',               
-                connections: {jira:'http://jira/sosnin',
-                 telegram:'http://telegram/sosnin',
-                 git:'http://git/sosnin',
-                 confluence:'',
-                 bitrixportal:''
-                }
-            },
-            {
-                id:'6',
-                fio:'Артемьев Иван Дмитриевич',
-                team:'электрик',
-                project:'электричество',
-                login:'artemjevID',
-                email:'artemjevID@mail.ru',               
-                connections: {jira:'http://jira/artemjev',
-                 telegram:'http://telegram/artemjev',
-                 git:'',
-                 confluence:'',
-                 bitrixportal:''
-                }
-            },
-            {
-                id:'7',
-                fio:'Леденцов Павел Петрович ',
-                team:'начальник',
-                project:'электричество',
-                login:'ledencovPP',
-                email:'ledencovPP@mail.ru',               
-                connections: {jira:'',
-                 telegram:'',
-                 git:'http://git/ledencov',
-                 confluence:'http://confluence/ledencov',
-                 bitrixportal:''
-                }
-            }
+        employees: [           
+                    {id:"1",
+                     lastName:"Иванов",
+                     firstName:"Артем",
+                     middleName:"Аркадьевич",
+                     gender:"м",
+                     birthDate:"15.07.25",              
+                     email:"ivanov@mail.ru",
+                     login:"ivanov",
+                     portals:[
+                        {id:"37",name:"jira" },
+                        {id:"28",name:"vkontakte" }   
+                    ],
+                    projects: [
+                        {id:"25",name:"project1"},
+                        {id:"26",name:"project2"}
+                                ],
+                    team: {id:"1",name:"Команда № 1"}
+        }
             ]   
 
            // ads: [],
