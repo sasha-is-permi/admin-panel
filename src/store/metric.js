@@ -82,7 +82,20 @@ export default {
                 // добавляем новый объект метрики в массив объектов из state
                 // с помощью класса AddMetric                
                  state.metrics.push(new AddMetric(id,name,description));
-                }   
+                },
+              // редактирование элемента
+              editMetric (state, {id, name, description}) {         
+                 // обновляем элемент в массиве state.metrics
+                 // find находит элементы по условию. Берет первый попавшийся.
+                 // Поскольку id уникален- можно так.
+                   const element = state.metrics.find(a => {
+                   return a.id === id
+               })
+                // Присваиваем найденному элементу
+                // новые значения, полученные из формы
+                element["name"] = name
+                element["description"] = description
+               }  
               },
            actions: {  
                
@@ -96,19 +109,19 @@ export default {
 
 
 
-            // добавление метрики в массив из sate
-            // payload- полученный удаляемый элемент (деструктурируем до id)
+            // добавление метрики в массив из state
             addMetric({commit},{id,name,description}){
               // вызываем mutation addMetric 
-              // Передаем ему полученный из формы id элемента для удаления
+              // Передаем ему полученные из формы данные для добавления
                commit('addMetric',{id,name,description})
             },
-               // Редактирование существующей метрики 
-               // в базе
-               editMetric(){
-                   alert('Метрика отредактирована');
-               }
-       
+
+            // редактироваание метрики в массиве из state
+            editMetric({commit},{id,name,description}){
+              // вызываем mutation editMetric 
+              // Передаем ему полученные из формы данные для редактирования
+                commit('editMetric',{id,name,description})
+            },
                },      
         
     getters: {
