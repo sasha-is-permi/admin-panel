@@ -34,6 +34,16 @@ public class MetricDto {
 
 */
 
+class AddMetric {
+  constructor (id, name, description) {
+    this.id = id
+    this.name = name
+    this.description = description 
+  }
+}
+
+
+
 export default {
     state: {  
           // Пробные данные для проверки работы программы 
@@ -58,18 +68,41 @@ export default {
         
         },
         mutations: { 
-       
+            // удаление элемента
+            deleteMetric (state, {id}) {                          
+              // находим - какой индекс у удаляемого элемента в массиве  из state
+              const index = state.metrics.findIndex(a => a.id === id);
+              console.log(index);
+              // в массиве из state metrics начиная с позиции 1 удалить 1 эжлемент
+              state.metrics.splice(index, 1);
+              },
+
+             // добавление элемента
+              addMetric (state, {id,name,description}) {         
+                // добавляем новый объект метрики в массив объектов из state
+                // с помощью класса AddMetric                
+                 state.metrics.push(new AddMetric(id,name,description));
+                }   
               },
            actions: {  
                
-            // Удаление метрики из базы
-                 deleteMetric(){
-                     alert('Метрика удалена');
+            // Удаление метрики из массива в state
+            // payload- полученный удаляемый элемент (деструктурируем до id)
+                 deleteMetric({commit},{id}){
+                   // вызываем mutation deleteId
+                   // Передаем ему полученный из формы id элемента для удаления
+                    commit('deleteMetric',{id})
                  },
-               // Добавление новой метрики в базу     
-                 addMetric(){
-                   alert('Метрика добавлена');
-               },
+
+
+
+            // добавление метрики в массив из sate
+            // payload- полученный удаляемый элемент (деструктурируем до id)
+            addMetric({commit},{id,name,description}){
+              // вызываем mutation addMetric 
+              // Передаем ему полученный из формы id элемента для удаления
+               commit('addMetric',{id,name,description})
+            },
                // Редактирование существующей метрики 
                // в базе
                editMetric(){
@@ -88,3 +121,8 @@ export default {
 
 
 }
+
+
+
+
+
