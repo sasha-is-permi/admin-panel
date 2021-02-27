@@ -63,16 +63,16 @@ export default {
            actions: {  
                
             // Удаление метрики из базы
-                 deleteItem(){
+                 deleteMetric(){
                      alert('Сотрудник удален');
                  },
                // Добавление новой метрики в базу     
-                 addItem(){
+                 addMetric(){
                    alert('Элемент добавлен');
                },
                // Редактирование существующей метрики 
                // в базе
-               editItem(){
+               editMetric(){
                    alert('Элемент отредактирован');
                }
        

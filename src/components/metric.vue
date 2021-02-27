@@ -179,7 +179,7 @@ export default {
                 ]
             }
         },
-        methods: {
+ methods: {
             // Вызывается при нажатии на кнопку "редактировать элемент"
             // Затем вызывается диалоговое окно Dilog
             // (описанно выше)
@@ -188,7 +188,6 @@ export default {
                     alert('Для редактирования нужно выбрать метрику')
                 } else {
                 console.log(this.selected[0]);
-
                  this.id=this.selected[0].id;
                  this.name=this.selected[0].name;
                  this.description=this.selected[0].description;
@@ -203,15 +202,15 @@ export default {
                 // отключаем диалоговое окно
                 this.dialog = false;
                 // если была нажата кнопка создания нового элемента
-                // создаем новый элемент с новыйм id    
+                // создаем новый элемент с новым id    
                 if (this.edit === false) {
                 let form = {
                     id: this.id,
                     name: this.name,
-                    description: this.description                    
+                    description: this.description
                 };
 
-                    this.$store.dispatch('addItem', form);
+                    this.$store.dispatch('addMetric', form);
                     this.$refs.form.reset()
                                       }
                 // Если была нажата кнопка редактирования элемента
@@ -222,11 +221,11 @@ export default {
                 let form = {
                     id: this.id,
                     name: this.name,
-                    description: this.description}
+                    description: this.description
                 };
 
                     const msg = 'Сохранить изменения для метрики?';
-                    let boo = confirm(msg) && this.$store.dispatch('editItem', form);
+                    let boo = confirm(msg) && this.$store.dispatch('editMetric', form);
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -251,7 +250,7 @@ export default {
                     alert('Для удаления нужно выбрать метрику')
                 } else {
                     const msg = 'Удалить метрику?';
-                    let boo = confirm(msg) && this.$store.dispatch('deleteItem', this.selected[0])
+                    let boo = confirm(msg) && this.$store.dispatch('deleteMetric', this.selected[0])
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -264,6 +263,7 @@ export default {
            //     this.$store.dispatch('metrics')
             }
         },
+
 
         created() {
            //  this.setData();
