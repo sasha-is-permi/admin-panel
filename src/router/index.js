@@ -20,8 +20,8 @@ import logout     from  '@/components/logout'
 // team           команды
 // process        процессы
 // metric         метрики
-// workspace      рабочие области
 // integration    интеграции
+// workspace      рабочие области
 
 
 import employee from '@/components/employee'
@@ -30,9 +30,8 @@ import projectgroup from '@/components/projectgroup'
 import team      from '@/components/team'
 import process  from '@/components/process'
 import metric    from '@/components/metric'
-import workspace from '@/components/workspace'
 import integration from '@/components/integration'
-
+import workspace from '@/components/workspace'
 
 Vue.use(Router)
 
@@ -74,19 +73,15 @@ export default new Router ({
       { path:'/metric',
       name:'metric',
       component:metric,
-      beforeEnter:AuthGuard},
-      { path:'/workspace',
-      name:'workspace',
-      component:workspace,
       beforeEnter:AuthGuard},       
       { path:'/integration',
       name:'integration',
       component:integration,
       beforeEnter:AuthGuard},
-      { path:'/setting',
-      name:'setting',
-      component:setting,
-      beforeEnter:AuthGuard},
+      { path:'/workspace',
+      name:'workspace',
+      component:workspace,
+      beforeEnter:AuthGuard}
    ]
 })
 

@@ -313,9 +313,9 @@ https://vuetifyjs.com/en/getting-started/installation/
           { title: 'Группы проектов', icon: 'mdi-view-dashboard', url:'/projectgroup' }, 
           { title: 'Команды', icon: 'mdi-view-dashboard' , url:'/team'},             
           { title: 'Процессы', icon: 'mdi-view-dashboard', url:'/process' },
-          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metric' },         
-          { title: 'Рабочие области', icon: 'mdi-view-dashboard', url:'/workspace' },
-          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integration' },
+          { title: 'Метрики', icon: 'mdi-view-dashboard', url:'/metric' },
+          { title: 'Интеграции', icon: 'mdi-view-dashboard',url:'/integration' },                
+          { title: 'Рабочие области', icon: 'mdi-view-dashboard', url:'/workspace' },   
           { title: 'Выйти из системы', icon: 'mdi-view-dashboard',url:'/logout'  }
         ]                              }
       // Если не авторизирован- показываем только меню регистрации    
@@ -330,10 +330,6 @@ https://vuetifyjs.com/en/getting-started/installation/
 
 <style scoped>
    
-    .container {
-    width:1200px!important;
-    }
-
 
     .list-item-title {
       margin-left:3px!important;
