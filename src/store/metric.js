@@ -57,12 +57,26 @@ export default {
 
         
         },
-    mutations: { 
-    
-       },
-    actions: {  
-   
-        },       
+        mutations: { 
+       
+              },
+           actions: {  
+               
+            // Удаление метрики из базы
+                 deleteItem(){
+                     alert('Сотрудник удален');
+                 },
+               // Добавление новой метрики в базу     
+                 addItem(){
+                   alert('Элемент добавлен');
+               },
+               // Редактирование существующей метрики 
+               // в базе
+               editItem(){
+                   alert('Элемент отредактирован');
+               }
+       
+               },      
         
     getters: {
         metrics(state) {
