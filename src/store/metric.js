@@ -36,6 +36,7 @@ public class MetricDto {
 
 export default {
     state: {  
+          // Пробные данные для проверки работы программы 
         metrics: [
             {
                 "id":"1",
@@ -64,6 +65,10 @@ export default {
         },       
         
     getters: {
+        metrics(state) {
+            // Возвращаем все метрики по запросу из файла vue
+            return state.metrics
+        }   
         
          }
 

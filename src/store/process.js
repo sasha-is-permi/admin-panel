@@ -46,7 +46,8 @@ process
 
 export default {
     state: {  
-       metrics: [
+        // Пробные данные для проверки работы программы 
+       process: [
         {
             id:"1",
             name:"process1",
@@ -77,6 +78,10 @@ export default {
         },       
         
     getters: {
+      process(state) {
+        // Возвращаем все процессы по запросу из файла vue
+        return state.process
+    }   
         
          }
 

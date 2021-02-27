@@ -41,7 +41,7 @@ public class TeamDto {
 
 export default {
     state: {  
-     // Пробные данные- массив объектов             
+     // Пробные данные для проверки работы программы          
      teams: [
             {id:"1",name:"Команда № 1",
             bitrixPortalId:"http://bitrix/hardworker",
@@ -66,6 +66,10 @@ export default {
         },       
         
     getters: {
+        teams(state) {
+            // Возвращаем все комманды по запросу из файла vue
+            return state.teams
+        }   
         
          }
 

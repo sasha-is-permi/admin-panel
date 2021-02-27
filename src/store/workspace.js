@@ -40,6 +40,7 @@ workspaces
 
 export default {
     state: {  
+          // Пробные данные для проверки работы программы 
         workspaces: [
         {
             "id":"1",
@@ -73,6 +74,10 @@ export default {
         },       
         
     getters: {
+        workspaces(state) {
+            // Возвращаем все рабочие пространства по запросу из файла vue
+            return state.workspaces
+        }   
         
          }
 

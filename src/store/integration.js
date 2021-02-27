@@ -46,7 +46,8 @@ JSON:
 
 export default {
     state: {  
-        integrations:
+        // Пробные данные для проверки работы программы 
+      integrations:
         [
         {
             id: "1",
@@ -74,6 +75,10 @@ export default {
         },       
         
     getters: {
+      integrations(state) {
+        // Возвращаем все интеграции по запросу из файла vue
+        return state.integrations
+    }   
         
          }
 

@@ -35,6 +35,7 @@ project
 
 export default {
     state: {  
+          // Пробные данные для проверки работы программы 
         projects:[
             {id:"1",
             name : {id:"1",name:"projectgroup1"},
@@ -79,6 +80,10 @@ export default {
         },       
         
     getters: {
+        projects(state) {
+            // Возвращаем все проекты по запросу из файла vue
+            return state.integrations
+        }   
         
          }
 

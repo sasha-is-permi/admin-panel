@@ -32,6 +32,7 @@ progectgroup
 
 export default {
     state: {  
+          // Пробные данные для проверки работы программы 
         progectGroup: [
             {id:"1",name:"projectGroup1",workspace:"workspace1"}, 
             {id:"2",name:"projectGroup2",workspace:"workspace2"},
@@ -47,6 +48,10 @@ export default {
         },       
         
     getters: {
+        projectGroups(state) {
+            // Возвращаем все группы проектов по запросу из файла vue
+            return state.projectGroups
+        }   
         
          }
 

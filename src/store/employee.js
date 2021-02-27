@@ -51,21 +51,6 @@ public class EmployeeDto {
 }
 
 
-{               "id":"1",
-                "lastName":"Иванов",
-                "firstName":"Артем",
-                "middleName:"Аркадьевич",
-                "gender":"м",
-                "birthDate":"15.07.25",              
-                 "email":"ivanov@mail.ru",
-                 "login":"ivanov",
-                 "portals":"",
-                 "projects":"",
-                 "team":""
-                
-}
-
-
 
 Команда team. Может быть только одна у сотрудника
 "team": {"id":"25","name":"comand1","bitrixportal":"25"}
@@ -76,7 +61,7 @@ public class EmployeeDto {
                 "firstName":"Артем",
                 "middleName:"Аркадьевич",
                 "gender":"м",
-                "birthDate":"15.07.25",              
+                "birthDate":"15.07.75",              
                  "email":"ivanov@mail.ru",
                  "login":"ivanov",
                  "portals":"",
@@ -94,15 +79,22 @@ public class EmployeeDto {
 
 portals- это массив объектов-интеграций.
 "portals":[
-    {"id":"37",
-     "name":"jira",
-     "code":"http://jira/ivanov" },
-    {"id":"28",
-     "name":"vkontakte",
-     "code":"http://vkontakte/ivanov" },
-  {"id":"34",
-     "name":"git",
-     "code":"http://github/ivanov" }    
+    {"id":"1",
+     "name":"http://jira/ivanov",
+     "integrationType":{
+      "id":"1",
+      "name":"jira1.0",
+      "code":"jira"   
+     },
+     "portalId":"jira25" },
+         {id":"2",
+     "name":"http://git/ivanov",
+     "integrationType":{
+      "id":"2",
+      "name":"git1.0",
+      "code":"git"   
+     },
+     "portalId":"git2" }
 ]
 
 
@@ -123,7 +115,7 @@ portals- это массив объектов-интеграций.
 
 "team": null
 
-"projects": {"id":"25","name":"project1",...}
+"projects":[ {"id":"25","name":"project1",...}]
 
 JSON
 employees 
@@ -133,13 +125,27 @@ employees
                      "firstName":"Артем",
                      "middleName:"Аркадьевич",
                      "gender":"м",
-                     "birthDate":"15.07.25",              
+                     "birthDate":"15.07.75",              
                      "email":"ivanov@mail.ru",
                      "login":"ivanov",
-                     "portals":[
-                        {"id":"37","name":"jira" },
-                        {"id":"28","name":"vkontakte" }   
-                    ],
+"portals":[
+    {"id":"1",
+     "name":"http://jira/ivanov",
+     "integrationType":{
+      "id":"1",
+      "name":"jira1.0",
+      "code":"jira"   
+     },
+     "portalId":"jira25" },
+         {id":"2",
+     "name":"http://git/ivanov",
+     "integrationType":{
+      "id":"2",
+      "name":"git1.0",
+      "code":"git"   
+     },
+     "portalId":"git2" }
+],
                     "projects": [
                         {"id":"25","name":"project1"},
                         {"id":"26","name":"project2"}
@@ -151,26 +157,104 @@ employees
 
 export default {
     state: {  
-        
+       // Пробные данные для проверки работы программы 
         employees: [           
                     {id:"1",
                      lastName:"Иванов",
                      firstName:"Артем",
                      middleName:"Аркадьевич",
                      gender:"м",
-                     birthDate:"15.07.25",              
+                     birthDate:"15.07.75",              
                      email:"ivanov@mail.ru",
                      login:"ivanov",
-                     portals:[
-                        {id:"37",name:"jira" },
-                        {id:"28",name:"vkontakte" }   
+                     "portals":[
+                      {id:"1",
+                       name:"http://jira/ivanov",
+                       integrationType:{
+                        id:"1",
+                        name:"jira1.0",
+                        "code":"jira"   
+                       },
+                       portalId:"jira25" },
+                           {id:"2",
+                       name:"http://git/ivanov",
+                       integrationType:{
+                        id:"2",
+                        name:"git1.0",
+                        code:"git"   
+                       },
+                       portalId:"git2" }
                     ],
                     projects: [
                         {id:"25",name:"project1"},
                         {id:"26",name:"project2"}
                                 ],
                     team: {id:"1",name:"Команда № 1"}
-        }
+        },          
+          {id:"2",
+           lastName:"Петров",
+           firstName:"Денис",
+           middleName:"Артемьевич",
+           gender:"м",
+           birthDate:"28.05.56",              
+           email:"petrov@mail.ru",
+           login:"petrov",
+           "portals":[
+            {id:"1",
+             name:"http://jira/petrov",
+             integrationType:{
+              id:"1",
+              name:"jira1.0",
+              "code":"jira"   
+             },
+             portalId:"jira25" },
+                 {id:"2",
+             name:"http://git/petrov",
+             integrationType:{
+              id:"2",
+              name:"git1.0",
+              code:"git"   
+             },
+             portalId:"git2" }
+          ],
+          projects: [
+              {id:"25",name:"project1"},
+              {id:"26",name:"project2"}
+                      ],
+          team: {id:"2",name:"Команда № 2"}
+          },                 
+            {id:"1",
+             lastName:"Савельева",
+             firstName:"Елена",
+             middleName:"Геннадьевна",
+             gender:"ж",
+             birthDate:"15.04.85",              
+             email:"saveljeva@mail.ru",
+             login:"saveljeva",
+             "portals":[
+              {id:"1",
+               name:"http://jira/saveljeva",
+               integrationType:{
+                id:"1",
+                name:"jira1.0",
+                "code":"jira"   
+               },
+               portalId:"jira25" },
+                   {id:"2",
+               name:"http://git/saveljeva",
+               integrationType:{
+                id:"2",
+                name:"git1.0",
+                code:"git"   
+               },
+               portalId:"git2" }
+            ],
+            projects: [
+                {id:"25",name:"project1"},
+                {id:"26",name:"project4"}
+                        ],
+            team: {id:"2",name:"Команда № 2"}
+             }
             ]   
 
            // ads: [],
