@@ -1,10 +1,25 @@
 <!-- 
-Приходящие данные: 
+
+metrics
+Метрики
+
+https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/MetricDto.java
+
+public class MetricDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("description")
+    private String description;
+}
 
 
     1. id
-    2. Название метрики
-    3. Описание
+    2. Название метрики  name
+    3. Описание  description
     4. Обработчик (пока не используем)
 
           // Данные приходят в этот модуль в виде : 
@@ -93,7 +108,7 @@
             v-model="search"   label="Search" создание фильтрации
             :headers="commonHeaders" - загрузка заголовков из массива commonHeaders
 
-            :items="developers" - загрузка данных из массива developers
+            :items="metrics" - загрузка данных из массива metrics
 
             class="fixed-headers" - тип таблицы
 

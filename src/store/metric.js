@@ -1,7 +1,7 @@
 
 /*
 
-metric
+metrics
 Метрики
 
 https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/MetricDto.java
@@ -18,19 +18,31 @@ public class MetricDto {
 }
 
     1. id
-    2. Название метрики
-    3. Описание
+    2. Название метрики  name
+    3. Описание  description
     4. Обработчик (пока не используем)
 
     JSON: 
      
-    {
-      "id":"1",
-      "name":"metric1",
-      "description":"первая метрика"
-        }
-   
 
+          // Данные приходят в этот модуль в виде : 
+        metrics: [
+            {
+                "id":"1",
+                "name":"metric1",
+                "description":"первая метрика"
+                  },
+            {
+                "id":"2",
+                "name":"metric2",
+                "description":"вторая метрика"
+                  },
+            {
+                "id":"3",
+                "name":"metric3",
+                "description":"третья метрика"
+             }                      
+                ]
 
 */
 
@@ -73,7 +85,7 @@ export default {
               // находим - какой индекс у удаляемого элемента в массиве  из state
               const index = state.metrics.findIndex(a => a.id === id);
               console.log(index);
-              // в массиве из state metrics начиная с позиции 1 удалить 1 эжлемент
+              // в массиве из state metrics начиная с позиции 1 удалить 1 элемент
               state.metrics.splice(index, 1);
               },
 
