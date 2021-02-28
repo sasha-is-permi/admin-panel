@@ -20,12 +20,20 @@ public class ProjectGroupDto {
     2. Название группы  name
     3. Рабочая область  workspace
 
-          // Данные приходят в этот модуль в виде : 
-        projectgroups: [
-
-{"id":"1","name":"Проект 1","workspace":{"id":"1","name":"Область 1"}},
-{"id":"2","name":"Проект 2","workspace":{"id":"2","name":"Область 2"}}          
-                ]
+           projectGroups: [
+            {id:"1",name:"Проект 1",            
+            workspace: {id:"1",name:"workspace1",active: false,
+            logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
+            }, 
+            {id:"2",name:"Проект 2",
+            workspace: {id:"2",name:"workspace2",active: false,
+            logo: "https://img2.fonwall.ru/o/dt/roza-rozy-purpurnye-rozy-pdbl.jpg"}
+            },
+            {id:"3",name:"Проект 3",
+            workspace: {id:"3",name:"workspace3",active: false,
+            logo: "https://img2.fonwall.ru/o/rk/roza-rozy-cvetok-ktyi.jpg"}         
+          }
+        ] 
 
 
 
@@ -36,24 +44,34 @@ public class ProjectGroupDto {
 */
 
 
+/*
 
 class AddProjectGroup {
-    constructor (id, name, workspaсe) {
+    constructor (id, name, workspace) {
       this.id = id
       this.name = name
-      this.workspaсe = workspaсe 
+      this.workspace = workspace
     }
   }
-  
-  
+
+  */
   
   export default {
       state: {  
            // Пробные данные для проверки работы программы 
            projectGroups: [
-            {id:"1",name:"Проект 1",workspaсe:"Рабочая область 1"}, 
-            {id:"2",name:"Проект 2",workspaсe:"Рабочая область 2"},
-            {id:"3",name:"Проект 3",workspaсe:"Рабочая область 3"}
+            {id:"1",name:"Проект 1",            
+            workspace: {id:"1",name:"workspace1",active: false,
+            logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
+            }, 
+            {id:"2",name:"Проект 2",
+            workspace: {id:"2",name:"workspace2",active: false,
+            logo: "https://img2.fonwall.ru/o/dt/roza-rozy-purpurnye-rozy-pdbl.jpg"}
+            },
+            {id:"3",name:"Проект 3",
+            workspace: {id:"3",name:"workspace3",active: false,
+            logo: "https://img2.fonwall.ru/o/rk/roza-rozy-cvetok-ktyi.jpg"}         
+          }
         ] 
   
           
@@ -63,19 +81,24 @@ class AddProjectGroup {
               deleteProjectGroup (state, {id}) {                          
                 // находим - какой индекс у удаляемого элемента в массиве  из state
                 const index = state.projectGroups.findIndex(a => a.id === id);
-                console.log(index);
+                //console.log(index);
                 // в массиве из state projectGroups начиная с позиции 1 удалить 1 элемент
                 state.projectGroups.splice(index, 1);
                 },
   
                // добавление элемента
-                addProjectGroup (state, {id,name,workspaсe}) {         
+                addProjectGroup (state, payload) {         
                   // добавляем новый объект группы проектов в массив объектов из state
                   // с помощью класса AddProjectGroup                
-                   state.projectGroups.push(new AddProjectGroup(id,name,workspaсe));
+                 state.projectGroups.push(payload);
+                // state.projectGroups.push(new AddProjectGroup(
+                //   payload.id,payload.name,payload.workspace));
+
+                   console.log(state.projectGroups)
+              
                   },
                 // редактирование элемента
-                editProjectGroup (state, {id, name, workspaсe}) {         
+                editProjectGroup (state, {id, name, workspace}) {         
                    // обновляем элемент в массиве state.workspace
                    // find находит элементы по условию. Берет первый попавшийся.
                    // Поскольку id уникален- можно так.
@@ -85,7 +108,7 @@ class AddProjectGroup {
                   // Присваиваем найденному элементу
                   // новые значения, полученные из формы
                   element["name"] = name
-                  element["workspaсe"] = workspaсe
+                  element["workspace"] = workspace
                  }  
                 },
              actions: {  
@@ -101,19 +124,21 @@ class AddProjectGroup {
   
   
               // добавление группы проектов в массив из state
-              addProjectGroup({commit},{name,workspaсe}){
+              addProjectGroup({commit},payload){
+                console.log('payload',payload)
                 // Формируем случайным образом id для нового элемента
                 const id = Math.round(Math.random()*1000000000).toString();
+                payload.id = id;
                 // вызываем mutation addProjectGroup 
                 // Передаем ему полученные из формы данные для добавления
-                 commit('addProjectGroup',{id,name,workspaсe})
+                 commit('addProjectGroup',payload)
               },
   
               // редактироваание группы проектов в массиве из state
-              editProjectGroup({commit},{id,name,workspaсe}){
+              editProjectGroup({commit},{id,name,workspace}){
                 // вызываем mutation editProjectGroup 
                 // Передаем ему полученные из формы данные для редактирования
-                  commit('editProjectGroup',{id,name,workspaсe})
+                  commit('editProjectGroup',{id,name,workspace})
               },
                  },      
           

@@ -20,9 +20,7 @@ public class ProjectGroupDto {
 
           // Данные приходят в этот модуль в виде : 
         projectgroups: [
-
-{"id":"1","name":"projectGroup1","workspaсe":{"id":"1","name":"workspace1"}},
-{"id":"2","name":"projectGroup2","workspaсe":{"id":"2","name":"workspace2"}}          
+        
                 ]
 
 
@@ -136,11 +134,22 @@ public class ProjectGroupDto {
                                     <v-text-field :label="'Название'" v-model="name"
                                                   required></v-text-field>
                                 </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'Рабочая область'" v-model="workspaсe"
-                                                  required></v-text-field>
+                                <v-flex xs12>                                               
+                             
+                             <v-combobox
+                                   v-model="selectedWorkspace"
+                                   :items="workspaces"
+                                   item-text="name"
+                                   item-value="name"
+                                   label="Рабочая область"
+                                   dense
+                                   filled
+                                   outlined
+                                   solo
+                                ></v-combobox> 
+          
                                 </v-flex>
-                                
+
                             </v-layout>
                         </v-container>
                     </v-card-text>
@@ -173,8 +182,12 @@ export default {
                 commonHeaders: [
                     {text: 'id', align: 'left', value: 'id'},
                     {text: 'Название', align: 'left', value: 'name'},
-                    {text: 'Рабочая область', align: 'left', value: 'workspaсe'}                    
-                ]
+                    {text: 'Рабочая область', align: 'left', value: 'workspace.name'}                    
+                ],
+                selectedWorkspace: {name:"Рабочая область"} 
+
+
+
             }
         },
  methods: {
@@ -205,7 +218,7 @@ export default {
                 let form = {
                     id: this.id,
                     name: this.name,
-                    workspaсe: this.workspaсe
+                    workspaсe: this.selectedWorkspace
                 };
 
                     this.$store.dispatch('addProjectGroup', form);
@@ -275,8 +288,11 @@ export default {
         // получаем весь массив объектов projectGroups из store/projectGroups
             projectGroups() {
                     return this.$store.getters.projectGroups
+            },
+        // Получаем весь массив рабочих областей workspaces
+            workspaces() {
+              return this.$store.getters.workspaces
             }
-            
         }
     }
 
