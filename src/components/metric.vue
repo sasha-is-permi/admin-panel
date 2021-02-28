@@ -144,11 +144,7 @@ public class MetricDto {
                 <v-form ref="form">
                     <v-card-text>
                         <v-container grid-list-md>
-                            <v-layout wrap>
-                              <v-flex xs12>
-                                    <v-text-field :label="'id'" v-model="id"
-                                                  required></v-text-field>
-                                </v-flex>                            
+                            <v-layout wrap>            
                                <v-flex xs12>
                                     <v-text-field :label="'Название'" v-model="name"
                                                   required></v-text-field>

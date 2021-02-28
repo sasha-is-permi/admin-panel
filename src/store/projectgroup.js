@@ -101,7 +101,9 @@ class AddProjectGroup {
   
   
               // добавление группы проектов в массив из state
-              addProjectGroup({commit},{id,name,workspaсe}){
+              addProjectGroup({commit},{name,workspaсe}){
+                // Формируем случайным образом id для нового элемента
+                const id = Math.round(Math.random()*1000000000).toString();
                 // вызываем mutation addProjectGroup 
                 // Передаем ему полученные из формы данные для добавления
                  commit('addProjectGroup',{id,name,workspaсe})

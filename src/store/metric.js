@@ -122,7 +122,10 @@ export default {
 
 
             // добавление метрики в массив из state
-            addMetric({commit},{id,name,description}){
+            addMetric({commit},{name,description}){
+             // Формируем случайным образом id для нового элемента
+             const id = Math.round(Math.random()*1000000000).toString();
+
               // вызываем mutation addMetric 
               // Передаем ему полученные из формы данные для добавления
                commit('addMetric',{id,name,description})
