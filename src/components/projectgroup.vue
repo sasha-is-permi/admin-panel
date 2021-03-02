@@ -173,7 +173,7 @@ export default {
         return {                
                 id:'',
                 name:'',
-                workspaсe:'',                   
+                workspaсe:{id:"",name:"",active:false,logo:""},                   
                 dialog: false,
                 edit:false,
                 selected: [],
@@ -184,8 +184,9 @@ export default {
                     {text: 'Название', align: 'left', value: 'name'},
                     {text: 'Рабочая область', align: 'left', value: 'workspace.name'}                    
                 ],
-                selectedWorkspace: {name:"Рабочая область"} 
-
+                selectedWorkspace: {id:"",
+                name:"Рабочая область", 
+                active:"",logo:""}
 
 
             }
@@ -199,10 +200,35 @@ export default {
                     alert('Для редактирования нужно выбрать группу проектов')
                 } else {
                 console.log(this.selected[0]);
+                // Запоминаем выбранный галочкой элемент
                  this.id=this.selected[0].id;
-                 this.name=this.selected[0].name;
-                 this.workspaсe=this.selected[0].workspaсe;
-                     
+                 this.name=this.selected[0].name;                 
+                 // Нужно сделать:             
+                 // this.workspace = this.selected[0].workspace
+                 // Но напрямую нельзя, нужно поэтапно:
+                 let a =   this.selected[0] 
+                 let b={}
+                 b.id =      a.workspace.id
+                 b.name =    a.workspace.name 
+                 b.active =  a.workspace.active
+                 b.logo =    a.workspace.logo           
+                 
+                this.workspace = b
+
+                 console.log('a.workspace.id',a.workspace.id)  
+                 console.log('b.id',b.id) 
+                 console.log('this.workspace ',this.workspace ) 
+                 
+                // Передаем поле- рабочая область выбранного элемента
+                // в список выброра рабочей области 
+                // (чтобы по умолчанию у элемента была та область,
+                // которая раньше была )
+                // Нужно сделать:
+                // this.selectedWorkspace =  this.selected[0].workspaсe
+                // Но напрямую нельзя, нужно поэтапно
+                this.selectedWorkspace = b;
+                console.log('this.selectedWorkspace ',this.selectedWorkspace ) 
+
                  this.edit=true
                  this.dialog = true                 
                 }

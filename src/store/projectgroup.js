@@ -88,12 +88,15 @@ class AddProjectGroup {
   
                 // добавление элемента
                 addProjectGroup (state, payload) {         
-     
-                  let a = {};
-                  console.log('payload1',payload)
-                  console.log( payload.id,payload.name,)
-
-
+           
+                // используем объект a для получения и
+                // потом записи данных из объекта workspace
+                // Чтобы включилась реактивность для workspace
+                // нужно создать на основе его новый объект 
+                // и затем его использовать
+                let a = {};
+                console.log('payload1',payload)
+                console.log( payload.id,payload.name,)           
                 a.name = payload["workspaсe"]["name"];
                 a.id=payload["workspaсe"]["id"];
                 a.active=payload["workspaсe"]["active"];
@@ -123,6 +126,13 @@ state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
                console.log('payload1',payload)
                console.log( payload.id,payload.name)
 
+
+                // используем объект a для получения и
+                // потом записи данных из объекта workspace
+                // Чтобы включилась реактивность для workspace
+                // нужно не напрямую его менять,
+                // а создать на основе его новый массив и
+                // менять его              
                a.name = payload["workspaсe"]["name"];
                a.id=payload["workspaсe"]["id"];
                a.active=payload["workspaсe"]["active"];
