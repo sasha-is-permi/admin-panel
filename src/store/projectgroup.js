@@ -86,15 +86,25 @@ class AddProjectGroup {
                 state.projectGroups.splice(index, 1);
                 },
   
-               // добавление элемента
+                // добавление элемента
                 addProjectGroup (state, payload) {         
-                  // добавляем новый объект группы проектов в массив объектов из state
-                  // с помощью класса AddProjectGroup                
-                 state.projectGroups.push(payload);
-                // state.projectGroups.push(new AddProjectGroup(
-                //   payload.id,payload.name,payload.workspace));
+     
+                  let a = {};
+                  console.log('payload1',payload)
+                  console.log( payload.id,payload.name,)
+
+
+                a.name = payload["workspaсe"]["name"];
+                a.id=payload["workspaсe"]["id"];
+                a.active=payload["workspaсe"]["active"];
+                a.logo=payload["workspaсe"]["logo"]
+                console.log("111")
+
+state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
 
                    console.log(state.projectGroups)
+
+                   this.renderComponent = true
               
                   },
                 // редактирование элемента
