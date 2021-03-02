@@ -131,7 +131,7 @@ export default {
                commit('addMetric',{id,name,description})
             },
 
-            // редактироваание метрики в массиве из state
+            // редактирование метрики в массиве из state
             editMetric({commit},{id,name,description}){
               // вызываем mutation editMetric 
               // Передаем ему полученные из формы данные для редактирования

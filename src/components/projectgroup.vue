@@ -232,7 +232,7 @@ export default {
                 let form = {
                     id: this.id,
                     name: this.name,
-                    workspaсe: this.workspaсe
+                    workspaсe: this.selectedWorkspace
                 };
 
                     const msg = 'Сохранить изменения для группы проектов?';

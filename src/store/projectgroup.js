@@ -108,18 +108,29 @@ state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
               
                   },
                 // редактирование элемента
-                editProjectGroup (state, {id, name, workspace}) {         
+                editProjectGroup (state, payload) {         
                    // обновляем элемент в массиве state.workspace
-                   // find находит элементы по условию. Берет первый попавшийся.
-                   // Поскольку id уникален- можно так.
-                     const element = state.projectGroups.find(a => {
-                     return a.id === id
-                 })
-                  // Присваиваем найденному элементу
-                  // новые значения, полученные из формы
-                  element["name"] = name
-                  element["workspace"] = workspace
-                 }  
+                // find находит элементы по условию. Берет первый попавшийся.
+                // Поскольку id уникален- можно так.
+                const element = state.projectGroups.find(a => {
+                  return a.id === payload.id
+              })
+               // Присваиваем найденному элементу
+               // новые значения, полученные из формы
+               element["name"] = payload["name"]
+
+               let a = {};
+               console.log('payload1',payload)
+               console.log( payload.id,payload.name)
+
+               a.name = payload["workspaсe"]["name"];
+               a.id=payload["workspaсe"]["id"];
+               a.active=payload["workspaсe"]["active"];
+               a.logo=payload["workspaсe"]["logo"]
+               
+               element["workspace"] = a
+
+              console.log("element",element)                 }  
                 },
              actions: {  
                  
@@ -144,11 +155,10 @@ state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
                  commit('addProjectGroup',payload)
               },
   
-              // редактироваание группы проектов в массиве из state
-              editProjectGroup({commit},{id,name,workspace}){
+              editProjectGroup({commit},payload){
                 // вызываем mutation editProjectGroup 
                 // Передаем ему полученные из формы данные для редактирования
-                  commit('editProjectGroup',{id,name,workspace})
+                  commit('editProjectGroup',payload)
               },
                  },      
           
