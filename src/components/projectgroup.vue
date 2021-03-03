@@ -207,7 +207,7 @@ export default {
                  // this.workspace = this.selected[0].workspace
                  // Но напрямую нельзя, нужно поэтапно:
                  let a =   this.selected[0] 
-                 let b={}
+                 let b={}                  
                  b.id =      a.workspace.id
                  b.name =    a.workspace.name 
                  b.active =  a.workspace.active
