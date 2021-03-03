@@ -213,7 +213,7 @@ export default {
                  b.active =  a.workspace.active
                  b.logo =    a.workspace.logo           
                  
-                this.workspace = b
+                this.workspace = b 
 
                  console.log('a.workspace.id',a.workspace.id)  
                  console.log('b.id',b.id) 
