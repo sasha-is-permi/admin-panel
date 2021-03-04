@@ -218,9 +218,9 @@ export default {
                  
                 this.workspace = b 
 
-                 console.log('a.workspace.id',a.workspace.id)  
-                 console.log('b.id',b.id) 
-                 console.log('this.workspace ',this.workspace ) 
+                // console.log('a.workspace.id',a.workspace.id)  
+                // console.log('b.id',b.id) 
+                // console.log('this.workspace ',this.workspace ) 
                  
                 // Передаем поле- рабочая область выбранного элемента
                 // в список выброра рабочей области 
