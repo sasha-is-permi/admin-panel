@@ -135,7 +135,10 @@ public class ProjectGroupDto {
                                                   required></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>                                               
-                             
+                               <template>
+                                 <p> Рабочая область: </p>                               
+                               </template>
+                               
                              <v-combobox
                                    v-model="selectedWorkspace"
                                    :items="workspaces"
