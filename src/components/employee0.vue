@@ -1,55 +1,3 @@
-
-<!--
-
-workspace
-
-Рабочая область
-        1. id
-        2. Название области
-        3. Индикатор активности
-        4. Логотип
-
-public class WorkspaceDto {
-    @JsonProperty("id")
-    private String id;
-
-    @JsonProperty("name")
-    private String name;
-
-    @JsonProperty("active")
-    private boolean active;
-
-    @JsonProperty("logo")
-    private byte[] logo;
-}
-
-JSON 
-        workspaces: 
-        
-        {
-            {
-            "id":"1",
-            "name":"workspace1",
-            "active": false,
-            "logo": "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"
-        },
-        {
-            "id":"2",
-            'name":"workspace2",
-            "active": true,
-            "logo": "https://img2.fonwall.ru/o/dt/roza-rozy-purpurnye-rozy-pdbl.jpg"
-        },
-        {
-            "id":"3",
-            "name":"workspace3",
-            "active": true,
-            "logo": "https://img2.fonwall.ru/o/rk/roza-rozy-cvetok-ktyi.jpg"
-        }     
-    }
-
--->
-
-
 <template>
     <div class="root">
         <v-card text>
@@ -63,7 +11,7 @@ JSON
                             <v-icon medium>add</v-icon>
                         </v-btn>
                         </template>
-                        <span> Добавить рабочую область </span>
+                        <span> Добавить сотрудника </span>
                     </v-tooltip>
                       <v-tooltip bottom>
                         <template v-slot:activator="{ on }"  >
@@ -79,7 +27,7 @@ JSON
                            <v-icon medium>delete</v-icon>
                         </v-btn>
                         </template>
-                        <span>Удалить рабочую область</span>
+                        <span>Удалить сотрудника</span>
                     </v-tooltip>
                 </v-toolbar-items>
                 <!-- Окно фильтрации -->
@@ -114,7 +62,7 @@ JSON
             v-model="search"   label="Search" создание фильтрации
             :headers="commonHeaders" - загрузка заголовков из массива commonHeaders
 
-            :items="workspaces" - загрузка данных из массива workspaces
+            :items="developers" - загрузка данных из массива developers
 
             class="fixed-headers" - тип таблицы
 
@@ -122,10 +70,10 @@ JSON
            -->   
             
             <!-- Вывод заголовка таблицы  (commonHeaders)
-            и самой таблицы (из объекта workspaces  )-->
-   <v-data-table
+            и самой таблицы (из объекта employees  )-->
+            <v-data-table
                     :headers="commonHeaders"
-                    :items="workspaces"
+                    :items="employees"
                     :search="search"
                     v-model="selected"
                     item-key="id"
@@ -133,24 +81,10 @@ JSON
                     :no-results-text="'Не найдены значения'"
                     show-select
                     :single-select="singleSelect"
+                    class="fixed-headers"
                     :items-per-page="5"
                     >
 
-        <template v-slot:[`item.logo`]="{ item }">
-            <v-chip>
-            <span> <a :href="item.logo"> 
-            <img width="30" height="30" :src="item.logo"> 
-            </a></span>
-           </v-chip>
-        </template>
-    
-         <template v-slot:[`item.active`]="{ item }">
-         <v-checkbox
-            v-model="item.active"
-            disabled
-         ></v-checkbox>
-        </template>
- 
             </v-data-table>
         </v-card>
 
@@ -164,23 +98,54 @@ JSON
                 <v-form ref="form">
                     <v-card-text>
                         <v-container grid-list-md>
-                            <v-layout wrap>            
+                            <v-layout wrap>
+                              <v-flex xs12>
+                                    <v-text-field :label="'id'" v-model="id"
+                                                  required></v-text-field>
+                                </v-flex>                            
                                <v-flex xs12>
-                                    <v-text-field :label="'Название'" v-model="name"
+                                    <v-text-field :label="'ФИО'" v-model="fio"
                                                   required></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
-                            <v-checkbox
-                             v-model="active"
-                             label="активность">
-                            
-                            </v-checkbox>
-                      
+                                    <v-text-field :label="'Команда'" v-model="team"
+                                                  required></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
-                                    <v-text-field :label="'Логотип'" v-model="logo"
+                                    <v-text-field :label="'Проект'" required
+                                                  v-model="project"></v-text-field>
+                                </v-flex>
+                             <v-flex xs12>
+                                    <v-text-field :label="'Логин'" v-model="login"
                                                   required></v-text-field>
-                                </v-flex>                                
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field :label="'e-mail'" v-model="email"
+                                                  required></v-text-field>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field :label="'jira'" v-model="jira"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'telegram'" v-model="telegram"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'git'" v-model="git"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'confluence'" v-model="confluence"
+                                                  required></v-text-field>
+                                </v-flex>
+                            <v-flex xs12>
+                                    <v-text-field :label="'bitrixportal'" v-model="bitrixportal"
+                                                  required></v-text-field>
+                                </v-flex>
+
+
+
                             </v-layout>
                         </v-container>
                     </v-card-text>
@@ -203,9 +168,16 @@ export default {
     data() {
         return {                
                 id:'',
-                name:'',
-                active:false, 
-                logo:"",                         
+                fio:'',
+                team:'',
+                project:'', 
+                login:'',
+                email:'',  
+                jira:'',
+                telegram:'',
+                git:'',
+                confluence:'',
+                bitrixportal:'',        
                 dialog: false,
                 edit:false,
                 selected: [],
@@ -213,27 +185,40 @@ export default {
                 singleSelect:true,
                 commonHeaders: [
                     {text: 'id', align: 'left', value: 'id'},
-                    {text: 'Название', align: 'left', value: 'name'},
-                    {text: 'Активна', align: 'left', value: 'active'},                    
-                    {text: 'Логотип', align: 'left', value: 'logo'}
+                    {text: 'ФИО', align: 'left', value: 'fio'},
+                    {text: 'Команда', align: 'left', value: 'team'},
+                    {text: 'Проект', align: 'left', value: 'project'},
+                    {text: 'Логин', align: 'left', value: 'login'},
+                    {text: 'e-mail', align: 'left', value: 'email'},
+                    {text: 'jira', align: 'left',value: 'connections.jira'},
+                    {text: 'telegram', align: 'left',value: 'connections.telegram'},
+                    {text: 'git', align: 'left',value: 'connections.git'},
+                    {text: 'confluence', align: 'left',value: 'connections.confluence'},
+                    {text: 'bitrixportal', align: 'left',value: 'connections.bitrixportal'},  
+                    
                 ]
             }
         },
- methods: {
-
+        methods: {
             // Вызывается при нажатии на кнопку "редактировать элемент"
             // Затем вызывается диалоговое окно Dilog
             // (описанно выше)
                editItem() {
                   if (this.selected.length === 0) {
-                    alert('Для редактирования нужно выбрать рабочую область')
+                    alert('Для редактирования нужно выбрать cотрудника')
                 } else {
                 console.log(this.selected[0]);
                  this.id=this.selected[0].id;
-                 this.name=this.selected[0].name;
-                 this.active=this.selected[0].active;
-                 this.logo=this.selected[0].logo;
-                     
+                 this.fio=this.selected[0].fio;
+                 this.team=this.selected[0].team;
+                 this.project=this.selected[0].project;
+                 this.login=this.selected[0].login;
+                 this.email=this.selected[0].email;
+                 this.jira=this.selected[0].connections.jira;  
+                 this.telegram=this.selected[0].connections.telegram;   
+                 this.git=this.selected[0].connections.git;  
+                 this.confluence=this.selected[0].connections.confluence;     
+                 this.bitrixportal=this.selected[0].connections.bitrixportal;     
                  this.edit=true
                  this.dialog = true                 
                 }
@@ -248,12 +233,17 @@ export default {
                 if (this.edit === false) {
                 let form = {
                     id: this.id,
-                    name: this.name,
-                    active: this.active,
-                    logo: this.logo
+                    fio: this.fio,
+                    team: this.ruName,
+                    project: this.project,
+                    login: this.login,
+                    email: this.email,
+                    connections: {jira: this.jira,telegram: this.telegram,
+                    git: this.git,confluence: this.confluence,
+                    bitrixportal: this.bitrixportal}
                 };
 
-                    this.$store.dispatch('addWorkspace', form);
+                    this.$store.dispatch('addItem', form);
                     this.$refs.form.reset()
                                       }
                 // Если была нажата кнопка редактирования элемента
@@ -263,13 +253,18 @@ export default {
 
                 let form = {
                     id: this.id,
-                    name: this.name,
-                    active: this.active,
-                    logo: this.logo
+                    fio: this.fio,
+                    team: this.ruName,
+                    project: this.project,
+                    login: this.login,
+                    email: this.email,
+                    connections: {jira: this.jira,telegram: this.telegram,
+                    git: this.git,confluence: this.confluence,
+                    bitrixportal: this.bitrixportal}
                 };
 
-                    const msg = 'Сохранить изменения для рабочей области?';
-                    let boo = confirm(msg) && this.$store.dispatch('editWorkspace', form);
+                    const msg = 'Сохранить изменения для сотрудника?';
+                    let boo = confirm(msg) && this.$store.dispatch('editItem', form);
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -291,10 +286,10 @@ export default {
              // Удаляем выбранный элемент
             delItem() {
                 if (this.selected.length === 0) {
-                    alert('Для удаления нужно выбрать рабочую область')
+                    alert('Для удаления нужно выбрать cотрудника')
                 } else {
-                    const msg = 'Удалить рабочую область?';
-                    let boo = confirm(msg) && this.$store.dispatch('deleteWorkspace', this.selected[0])
+                    const msg = 'Удалить сотрудника?';
+                    let boo = confirm(msg) && this.$store.dispatch('deleteItem', this.selected[0])
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -304,10 +299,9 @@ export default {
             },
     
             setData() {
-           //     this.$store.dispatch('workspaces')
+           //     this.$store.dispatch('employees')
             }
         },
-
 
         created() {
            //  this.setData();
@@ -317,10 +311,12 @@ export default {
        
         },
 
-        computed: {           
-        // получаем весь массив объектов workspaces из store/workspaces
-            workspaces() {
-                    return this.$store.getters.workspaces
+        computed: {
+
+           
+
+            employees() {
+                    return this.$store.getters.employees
             }
             
         }

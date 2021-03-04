@@ -96,19 +96,22 @@ export default {
             deleteWorkspace (state, {id}) {                          
               // находим - какой индекс у удаляемого элемента в массиве  из state
               const index = state.workspaces.findIndex(a => a.id === id);
-              console.log(index);
+              console.log("delete element index",index);
               // в массиве из state workspaces начиная с позиции 1 удалить 1 элемент
               state.workspaces.splice(index, 1);
               },
 
              // добавление элемента
-              addWorkspace (state, {id,name,active,logo}) {         
+              addWorkspace (state, {id,name,active,logo}) {  
+
+                console.log("add",id,name,active,logo)   
                 // добавляем новый объект рабочей области в массив объектов из state
-                // с помощью класса AddWorkspace                
+                // с помощью класса AddWorkspace                        
                  state.workspaces.push(new AddWorkspace(id,name,active,logo));
                 },
               // редактирование элемента
-              editWorkspace (state, {id, name, active, logo}) {         
+              editWorkspace (state, {id, name, active, logo}) { 
+
                  // обновляем элемент в массиве state.workspaces
                  // find находит элементы по условию. Берет первый попавшийся.
                  // Поскольку id уникален- можно так.
@@ -120,6 +123,9 @@ export default {
                 element["name"] = name
                 element["active"] = active
                 element["logo"] = logo
+
+                console.log("edit",element["id"],
+                element["name"],element["active"],element["logo"])   
                }  
               },
            actions: {  

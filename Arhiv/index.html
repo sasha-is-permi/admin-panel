@@ -121,8 +121,31 @@ FETCH- это  AJAX по-современному, с автоматикой :)
   };
 </script>
 
+Окрашивание ячейки в зеленый цвет:
+В v-data-table:
+   <template v-slot:[`item.logo`]="{ item }">
+      <v-chip
+        :color="getColor()"
+        dark
+      >
+        {{item.logo}}
+      </v-chip>
+   </template>
+  В methods:
+            getColor () {
+               return 'green'
+             },    
 
 
+Делаем в ячейке таблицы ссылку             
+
+   <template v-slot:[`item.logo`]="{ item }">
+      <v-chip color="white">
+     <span> <a :href="item.logo"> {{  item.logo }}</a></span>
+      </v-chip>
+   </template>
+
+v-chip- это кнопочка на самом деле   
 
 -->
 

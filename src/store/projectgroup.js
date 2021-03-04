@@ -81,7 +81,8 @@ class AddProjectGroup {
               deleteProjectGroup (state, {id}) {                          
                 // находим - какой индекс у удаляемого элемента в массиве  из state
                 const index = state.projectGroups.findIndex(a => a.id === id);
-                //console.log(index);
+                
+                console.log("delete element index",index);
                 // в массиве из state projectGroups начиная с позиции 1 удалить 1 элемент
                 state.projectGroups.splice(index, 1);
                 },
@@ -95,19 +96,20 @@ class AddProjectGroup {
                 // нужно создать на основе его новый объект 
                 // и затем его использовать
                 let a = {};
-                console.log('payload1',payload)
-                console.log( payload.id,payload.name,)           
+               // console.log('payload1',payload)
+               // console.log( payload.id,payload.name,)           
                 a.name = payload["workspaсe"]["name"];
                 a.id=payload["workspaсe"]["id"];
                 a.active=payload["workspaсe"]["active"];
                 a.logo=payload["workspaсe"]["logo"]
-                console.log("111")
+              
+                console.log("add",payload.id,payload.name,a) 
 
 state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
 
-                   console.log(state.projectGroups)
+                  // console.log(state.projectGroups)
 
-                   this.renderComponent = true
+                  // this.renderComponent = true
               
                   },
                 // редактирование элемента
@@ -123,8 +125,8 @@ state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
                element["name"] = payload["name"]
 
                let a = {};
-               console.log('payload1',payload)
-               console.log( payload.id,payload.name)
+               //console.log('payload1',payload)
+              // console.log( payload.id,payload.name)
 
 
                 // используем объект a для получения и
@@ -140,7 +142,9 @@ state.projectGroups.push({id:payload.id,name:payload.name,workspace:a})
                
                element["workspace"] = a
 
-              console.log("element",element)                 }  
+              console.log("edit",element["id"],element["name"],
+              element["workspace"])         
+                    }  
                 },
              actions: {  
                  

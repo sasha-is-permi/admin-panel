@@ -84,19 +84,24 @@ export default {
             deleteMetric (state, {id}) {                          
               // находим - какой индекс у удаляемого элемента в массиве  из state
               const index = state.metrics.findIndex(a => a.id === id);
-              console.log(index);
+
+              console.log("delete element index",index);
               // в массиве из state metrics начиная с позиции 1 удалить 1 элемент
               state.metrics.splice(index, 1);
               },
 
              // добавление элемента
-              addMetric (state, {id,name,description}) {         
+              addMetric (state, {id,name,description}) {   
+                
+                console.log("add",id,name,description) 
                 // добавляем новый объект метрики в массив объектов из state
                 // с помощью класса AddMetric                
                  state.metrics.push(new AddMetric(id,name,description));
                 },
               // редактирование элемента
-              editMetric (state, {id, name, description}) {         
+              editMetric (state, {id, name, description}) {    
+                
+                console.log("edit",id,name,description) 
                  // обновляем элемент в массиве state.metrics
                  // find находит элементы по условию. Берет первый попавшийся.
                  // Поскольку id уникален- можно так.
