@@ -251,9 +251,9 @@ username:payload.username,password:payload.password,type:a})
       return state.integrations
       
        },
-       IntegrationTypes(state) {
+       integrationTypes(state) {
         // Возвращаем все типы интеграций по запросу из файла vue
-        return state.IntegrationTypes
+        return state.integrationTypes
         
          }
       }
