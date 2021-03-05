@@ -214,7 +214,7 @@ export default {
             // (описанно выше)
                editItem() {
                   if (this.selected.length === 0) {
-                    alert('Для редактирования нужно выбрать группу проектов')
+                    alert('Для редактирования нужно выбрать процесс')
                 } else {
                 console.log(this.selected[0]);
                 // Запоминаем выбранный галочкой элемент
@@ -278,7 +278,7 @@ export default {
                     metrics: this.selectedMetrics
                 };
 
-                    const msg = 'Сохранить изменения для группы проектов?';
+                    const msg = 'Сохранить изменения для процесса?';
                     let boo = confirm(msg) && this.$store.dispatch('editProcess', form);
                     if (boo === true) {
                         this.selected = [];
