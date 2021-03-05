@@ -137,9 +137,29 @@ class AddIntegration {
         name:"integration2",
         username:"user2",
         password:"234",
-        type:{id:"2",name:"git",code:"git"}
+        type:{id:"2",name:"Git",code:"Git"}
+      },
+      {
+        id: "3",
+        name:"integration3",
+        username:"user3",
+        password:"234",
+        type:{id:"3",name:"Gitlab",code:"Gitlab"}
+      },
+      {
+        id: "4",
+        name:"integration4",
+        username:"user4",
+        password:"234",
+        type:{id:"4",name:"Confluence",code:"Confluence"}
+      },
+      {
+        id: "5",
+        name:"integration5",
+        username:"user5",
+        password:"234",
+        type:{id:"5",name:"BitrixPortal",code:"BitrixPortal"}
       }
-
     ] 
     
     },
