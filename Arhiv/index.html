@@ -6570,6 +6570,7 @@ list:
         
         //***************************
         Рабочий вариант
+        Горизонтальный список
 
                     <v-data-table
                     :headers="commonHeaders"
@@ -6610,6 +6611,27 @@ list:
                     {text: 'Метрики', align: 'left', value: 'metrics' }                    
                 ],
 
+
+    list
+    ************************
+    Рабочий вариант
+    Вертикальный список
+     
+            <template v-slot:[`item.metrics`]="{ item }">
+           <v-list dense>
+           <v-list-item-group>
+            <v-list-item
+            v-for="(item0, i) in item.metrics"
+            :key="i">
+            <span> <a :href="item0.name"> 
+             {{item0.name}}
+            </a></span>
+            </v-list-item>
+           </v-list-item-group> 
+           </v-list>
+        </template>
+
+//************************************
 -->
 
 

@@ -130,18 +130,16 @@ process
                     :items-per-page="5"
                     >
 
-       
-      
-
-  
             <template v-slot:[`item.metrics`]="{ item }">
-            <v-chip
+           <v-list dense>
+           <v-list-item-group>
+            <v-list-item
             v-for="(item0, i) in item.metrics"
-            :key="i">
-            <span> <a :href="item0.name"> 
-             {{item0.name}}
-            </a></span>
-           </v-chip>
+            :key="i">      
+             {{item0.name}}       
+            </v-list-item>
+           </v-list-item-group> 
+           </v-list>
         </template>
 
 
