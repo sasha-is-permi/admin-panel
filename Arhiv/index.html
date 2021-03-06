@@ -6433,6 +6433,182 @@ This can also be done within your main App.vue file.
 
 30. Заключение.
 
+Дополнительные настроёки для полей item.logo 
+и item.active
+   
+   <v-data-table
+                    :headers="commonHeaders"
+                    :items="workspaces"
+                    :search="search"
+                    v-model="selected"
+                    item-key="id"
+                    :no-data-text="'Нет данных'"
+                    :no-results-text="'Не найдены значения'"
+                    show-select
+                    :single-select="singleSelect"
+                    :items-per-page="5"
+                    >
+
+        <v-data-table
+                    :headers="commonHeaders"
+                    :items="workspaces"
+                    :search="search"
+                    v-model="selected"
+                    item-key="id"
+                    :no-data-text="'Нет данных'"
+                    :no-results-text="'Не найдены значения'"
+                    show-select
+                    :single-select="singleSelect"
+                    :items-per-page="5"
+                    >
+
+        <template v-slot:[`item.logo`]="{ item }">
+            <v-chip>
+            <span> <a :href="item.logo"> 
+            <img width="30" height="30" :src="item.logo"> 
+            </a></span>
+           </v-chip>
+        </template>
+    
+         <template v-slot:[`item.active`]="{ item }">
+         <v-checkbox
+            v-model="item.active"
+            disabled
+         ></v-checkbox>
+        </template>
+ 
+            </v-data-table>
+         <template v-slot:[`item.active`]="{ item }">
+         <v-checkbox
+            v-model="item.active"
+            disabled
+         ></v-checkbox>
+        </template>
+ 
+            </v-data-table>
+
+list: 
+***********************
+
+            <v-data-table
+                    :headers="commonHeaders"
+                    :items="process"
+                    :search="search"
+                    v-model="selected"
+                    item-key="id"
+                    :no-data-text="'Нет данных'"
+                    :no-results-text="'Не найдены значения'"
+                    show-select
+                    :single-select="singleSelect"
+                    class="fixed-headers"
+                    :items-per-page="5"
+                    >
+
+         <template v-slot:[`item.name`]="{ item }">
+      <v-list dense>
+      <v-list-item-group
+        v-model="selectedItem"
+        color="primary"
+      >
+        <v-list-item
+          v-for="(item0, i) in item"
+          :key="i"
+        >
+
+          <v-list-item-content>
+            <v-list-item-title v-text="item.name"></v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list-item-group>
+    </v-list>
+    </template>
+</v-data-table>
+
+
+
+***********************
+Доступ к items
+
+
+            <template v-slot:[`item.metrics[0].name`]="{ item }">
+            <v-chip>
+            <span> <a :href="item.metrics[0].name"> 
+             {{item.metrics[0].name}}
+            </a></span>
+           </v-chip>
+        </template>
+
+
+***********************************
+
+          <template v-slot:[`item.metrics`]="{ items }">
+            <v-chip 
+            v-for="(item0, i) in items"
+            :key="i">
+            <span> 
+             {{item0.name}}
+           </span>
+
+
+           </v-chip>
+        </template>
+
+
+        *****************************
+
+        
+            <template v-slot:[`item.metrics[0].name`]="{ item }">
+            <v-chip
+            v-for="(item0, i) in item"
+            :key="i">
+            <span> <a :href="item.metrics[0].name"> 
+             {{item.metrics[0].name}}
+            </a></span>
+           </v-chip>
+        </template>
+
+        
+        //***************************
+        Рабочий вариант
+
+                    <v-data-table
+                    :headers="commonHeaders"
+                    :items="process"
+                    :search="search"
+                    v-model="selected"
+                    item-key="id"
+                    :no-data-text="'Нет данных'"
+                    :no-results-text="'Не найдены значения'"
+                    show-select
+                    :single-select="singleSelect"
+                    class="fixed-headers"
+                    :items-per-page="5"
+                    >
+
+ 
+            <template v-slot:[`item.metrics`]="{ item }">
+            <v-chip
+            v-for="(item0, i) in item.metrics"
+            :key="i">
+            <span> <a :href="item0.name"> 
+             {{item0.name}}
+            </a></span>
+           </v-chip>
+        </template>
+
+
+
+
+            </v-data-table>
+
+            
+
+
+                commonHeaders: [
+                    {text: 'id', align: 'left', value: 'id'},
+                    {text: 'Название', align: 'left', value: 'name'},
+                    {text: 'Метрики', align: 'left', value: 'metrics' }                    
+                ],
 
 -->
 

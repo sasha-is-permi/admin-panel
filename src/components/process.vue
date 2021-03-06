@@ -130,6 +130,23 @@ process
                     :items-per-page="5"
                     >
 
+       
+      
+
+  
+            <template v-slot:[`item.metrics`]="{ item }">
+            <v-chip
+            v-for="(item0, i) in item.metrics"
+            :key="i">
+            <span> <a :href="item0.name"> 
+             {{item0.name}}
+            </a></span>
+           </v-chip>
+        </template>
+
+
+
+
             </v-data-table>
         </v-card>
 
@@ -190,7 +207,8 @@ export default {
         return {                
                 id:'',
                 name:'',
-                metrics:{id:"",name:"",description:false},                   
+                metrics:{id:"",name:"",description:false},
+                itemMetrics:[],           
                 dialog: false,
                 edit:false,
                 selected: [],
@@ -199,7 +217,7 @@ export default {
                 commonHeaders: [
                     {text: 'id', align: 'left', value: 'id'},
                     {text: 'Название', align: 'left', value: 'name'},
-                    {text: 'Метрики', align: 'left', value: 'metrics.name'}                    
+                    {text: 'Метрики', align: 'left', value: 'metrics' }                    
                 ],
                 selectedMetrics: {id:"",
                 name:"Метрики", 
@@ -335,7 +353,7 @@ export default {
         // Получаем весь массив метрик
             AllMetrics() {
               return this.$store.getters.metrics
-                         }   
+                         }  
            
                   }
     }

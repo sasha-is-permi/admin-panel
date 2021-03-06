@@ -65,23 +65,38 @@ class AddProcess {
       {
           id:"1",
           name:"process1",
-         metrics: { "id":"1",
+         metrics: [
+           { "id":"1",
           "name":"metric1",
-          "description":"первая метрика"}
+          "description":"первая метрика"},
+          { "id":"2",
+          "name":"metric2",
+          "description":"вторая метрика"}
+         ]
        },
       {
           id:"2",
           name:"process2",
-          metrics: { "id":"2",
-          "name":"metric2",
-          "description":"вторая метрика"}
+          metrics: [
+            { "id":"1",
+           "name":"metric1",
+           "description":"первая метрика"},
+           { "id":"3",
+           "name":"metric3",
+           "description":"третья метрика"}
+          ]
        },
        {
         id:"3",
         name:"process3",
-        metrics: { "id":"3",
-        "name":"metric3",
-        "description":"третья метрика"}
+        metrics: [
+          { "id":"2",
+         "name":"metric2",
+         "description":"вторая метрика"},
+         { "id":"3",
+         "name":"metric3",
+         "description":"третья метрика"}
+        ]
      }
      ]
      
