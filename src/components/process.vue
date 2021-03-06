@@ -137,7 +137,7 @@ process
             v-for="(item0, i) in item.metrics"
             :key="i">      
              {{item0.name}}       
-            </v-list-item>
+            </v-list-item> 
            </v-list-item-group> 
            </v-list>
         </template>
