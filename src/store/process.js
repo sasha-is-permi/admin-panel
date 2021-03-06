@@ -115,11 +115,6 @@ class AddProcess {
               // добавление элемента
               addProcess (state, payload) {         
          
-              // используем объект a для получения и
-              // потом записи данных из объекта metrics
-              // Чтобы включилась реактивность для metrics
-              // нужно создать на основе его новый объект 
-              // и затем его использовать
               //let a = {};
              // console.log('payload1',payload)
              // console.log( payload.id,payload.name,)           
@@ -154,13 +149,6 @@ state.process.push({id:payload.id,name:payload.name,metrics:payload.metrics})
              //console.log('payload1',payload)
             // console.log( payload.id,payload.name)
 
-
-              // используем объект a для получения и
-              // потом записи данных из объекта metrics
-              // Чтобы включилась реактивность для metrics
-              // нужно не напрямую его менять,
-              // а создать на основе его новый массив и
-              // менять его
              // a.id=payload["metrics"]["id"];
              // a.name = payload["metrics"]["name"];       
              // a.description=payload["metrics"]["description"];

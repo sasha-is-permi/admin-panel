@@ -255,10 +255,8 @@ export default {
                 // в список выбора метрики 
                 // (чтобы по умолчанию у элемента была та область,
                 // которая раньше была )
-                // Нужно сделать:
-                // this.selectedMetrics =  this.selected[0].metrics
-      
-               this.selectedMetrics = this.selected[0].metrics;
+    
+                this.selectedMetrics = this.selected[0].metrics;
                 console.log('this.selectedMetrics ',this.selectedMetrics ) 
 
                  this.edit=true
