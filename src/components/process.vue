@@ -178,6 +178,7 @@ process
                                    filled
                                    outlined
                                    solo
+                                   multiple
                                 ></v-combobox> 
           
                                 </v-flex>
@@ -217,9 +218,7 @@ export default {
                     {text: 'Название', align: 'left', value: 'name'},
                     {text: 'Метрики', align: 'left', value: 'metrics' }                    
                 ],
-                selectedMetrics: {id:"",
-                name:"Метрики", 
-                description:""}
+                selectedMetrics: []
 
 
             }
@@ -237,16 +236,16 @@ export default {
                  this.id=this.selected[0].id;
                  this.name=this.selected[0].name;                 
                  // Нужно сделать:             
-                 // this.metrics = this.selected[0].metrics
-                 // Но напрямую нельзя, нужно поэтапно:
-                 let a =   this.selected[0] 
-                 let b={}                  
-                 b.id =      a.metrics.id
-                 b.name =    a.metrics.name 
-                 b.description =  a.metrics.description
+                  this.metrics = this.selected[0].metrics
+           
+                // let a =   this.selected[0] 
+                // let b={}                  
+               //  b.id =      a.metrics.id
+               //  b.name =    a.metrics.name 
+               //  b.description =  a.metrics.description
         
                  
-                this.metrics = b 
+               // this.metrics = b 
 
                 // console.log('a.metrics.id',a.metrics.id)  
                 // console.log('b.id',b.id) 
@@ -258,8 +257,8 @@ export default {
                 // которая раньше была )
                 // Нужно сделать:
                 // this.selectedMetrics =  this.selected[0].metrics
-                // Но напрямую нельзя, нужно поэтапно
-                this.selectedMetrics = b;
+      
+               this.selectedMetrics = this.selected[0].metrics;
                 console.log('this.selectedMetrics ',this.selectedMetrics ) 
 
                  this.edit=true
@@ -277,8 +276,12 @@ export default {
                 let form = {
                     id: this.id,
                     name: this.name,
-                    metrics: this.selectedMetrics
+                    metrics: this.selectedMetrics                   
                 };
+
+                console.log("this.selectedMetrics",this.selectedMetrics)
+
+                console.log("form",form)
 
                     this.$store.dispatch('addProcess', form);
                     this.$refs.form.reset()

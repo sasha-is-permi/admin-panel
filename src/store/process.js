@@ -120,17 +120,18 @@ class AddProcess {
               // Чтобы включилась реактивность для metrics
               // нужно создать на основе его новый объект 
               // и затем его использовать
-              let a = {};
+              //let a = {};
              // console.log('payload1',payload)
              // console.log( payload.id,payload.name,)           
-              a.id=payload["metrics"]["id"];
-              a.name = payload["metrics"]["name"];             
-              a.active=payload["metrics"]["description"];
+             // a.id=payload["metrics"]["id"];
+            //  a.name = payload["metrics"]["name"];             
+            //  a.description=payload["metrics"]["description"];
 
             
-              console.log("add",payload.id,payload.name,a) 
+           //   console.log("add",payload.id,payload.name,a) 
+           console.log("id,name,metrics", payload.id,payload.name,payload.metrics)
 
-state.process.push({id:payload.id,name:payload.name,metrics:a})
+state.process.push({id:payload.id,name:payload.name,metrics:payload.metrics})
 
                 // console.log(state.process)
 
@@ -149,7 +150,7 @@ state.process.push({id:payload.id,name:payload.name,metrics:a})
              // новые значения, полученные из формы
              element["name"] = payload["name"]
 
-             let a = {};
+             // let a = {};
              //console.log('payload1',payload)
             // console.log( payload.id,payload.name)
 
@@ -160,12 +161,14 @@ state.process.push({id:payload.id,name:payload.name,metrics:a})
               // нужно не напрямую его менять,
               // а создать на основе его новый массив и
               // менять его
-             a.id=payload["metrics"]["id"];
-             a.name = payload["metrics"]["name"];       
-             a.description=payload["metrics"]["description"];
+             // a.id=payload["metrics"]["id"];
+             // a.name = payload["metrics"]["name"];       
+             // a.description=payload["metrics"]["description"];
 
              
-             element["metrics"] = a
+             // element["metrics"] = a
+
+            element["metrics"] = payload["metrics"]
 
             console.log("edit",element["id"],element["name"],
             element["metrics"])         
