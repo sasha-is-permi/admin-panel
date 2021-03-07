@@ -80,16 +80,51 @@ class AddTeam {
         teams: [
                {id:"1",name:"Команда № 1",
                bitrixPortalId:"http://bitrix/hardworker",
-               project:[{id:"1",name:"Проект 1"}] },
+               projects: [
+                {name:"Проект 1",
+                 group:{},
+                 processes:[],
+                 portals:[]
+                },
+                {name:"Проект 3",
+                group:{},
+                processes:[],
+                portals:[]
+                }  
+                ]            
+               },
    
                {id:"2",name:"Команда № 2",
                bitrixPortalId:"http://bitrix/soworker",
-               project: [{id:"1",name:"Проект 1"},
-               {id:"2",name:"Проект 2"}]   },
+               projects: [
+                {name:"Проект 2",
+                 group:{},
+                 processes:[],
+                 portals:[]
+                },
+                {name:"Проект 3",
+                group:{},
+                processes:[],
+                portals:[]
+                }  
+                ]      
+                },
    
                {id:"3",name:"Команда № 3",
                bitrixPortalId:"http://bitrix/command3",
-               project:null}           
+               projects: [
+                {name:"Проект 1",
+                 group:{},
+                 processes:[],
+                 portals:[]
+                },
+                {name:"Проект 2",
+                group:{},
+                processes:[],
+                portals:[]
+                }  
+                ]         
+               }    
                
                ]  
            },

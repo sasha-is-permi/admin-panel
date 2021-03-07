@@ -60,15 +60,15 @@ class AddProjectGroup {
       state: {  
            // Пробные данные для проверки работы программы 
            projectGroups: [
-            {id:"1",name:"Проект 1",            
+            {id:"1",name:"Группа проектов 1",            
             workspace: {id:"1",name:"workspace1",active: false,
             logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
             }, 
-            {id:"2",name:"Проект 2",
+            {id:"2",name:"Группа проектов 2",
             workspace: {id:"2",name:"workspace2",active: false,
             logo: "https://img2.fonwall.ru/o/dt/roza-rozy-purpurnye-rozy-pdbl.jpg"}
             },
-            {id:"3",name:"Проект 3",
+            {id:"3",name:"Группа проектов 3",
             workspace: {id:"3",name:"workspace3",active: false,
             logo: "https://img2.fonwall.ru/o/rk/roza-rozy-cvetok-ktyi.jpg"}         
           }
