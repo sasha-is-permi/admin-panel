@@ -12,6 +12,32 @@ project
 
 https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/ProjectDto.java
 
+public class ProjectDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("group")
+    private ProjectGroupDto group;
+
+    @JsonProperty("processes")
+    private List<ProcessDto> processes;
+
+    @JsonProperty("portals")
+    private List<PortalDto> portals;
+}
+
+public class ProjectGroupDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+}
+
+
 Пример данных в JSON: 
 project
 {"id":"1",
@@ -38,37 +64,23 @@ export default {
           // Пробные данные для проверки работы программы 
         projects:[
             {id:"1",
-            name : {id:"1",name:"projectgroup1"},
-            processes : [{id:1, name: "process1"},
-            {id:2, name: "process2"} ],
-            group : [ {id:"1",name:"jira",code:"http://jira/group1" },
-            {id:"2",name:"vkontakte",code:"http://vkontakte/group1" },
-            {id:"3",name:"git",code:"http://github/group1" }   
-                       ]
+             name:"Проект 1",
+             group:{},
+             processes:[],
+             portals:[]
              },
              {id:"2",
-             name : {id:"1",name:"projectgroup1"},
-             processes : [ {id:3, name: "process3"},
-             {id:4, name: "process4"}],
-             group : [ {id:"4",name:"jira",code:"http://jira/group2" },
-             {id:"5",name:"vkontakte",code:"http://vkontakte/group2" },
-             {id:"6",name:"git",code:"http://github/group2" }    
-                        ]
-              },
-
-              {id:"3",
-              name : {id:"2",name:"projectgroup2"},
-              processes : [ {id:5, name: "process5"},
-              {id:6, name: "process6"}],
-              group : [ {id:"7",name:"jira",code:"http://jira/group3" },
-              {id:"8",name:"vkontakte",code:"http://vkontakte/group3" },
-              {id:"9",name:"git",code:"http://github/group3" }    
-                         ]
-               },
- 
-
-
-
+             name:"Проект 2",
+             group:{},
+             processes:[],
+             portals:[]
+             },
+             {id:"3",
+             name:"Проект 3",
+             group:{},
+             processes:[],
+             portals:[]
+             }
         ] 
         
         },
@@ -82,7 +94,7 @@ export default {
     getters: {
         projects(state) {
             // Возвращаем все проекты по запросу из файла vue
-            return state.integrations
+            return state.projects
         }   
         
          }
