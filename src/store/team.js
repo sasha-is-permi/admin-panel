@@ -50,7 +50,7 @@ public class ProjectDto {
 
 {"id":"27","name":"HardWorkers",
 "bitrixportal":"http://bitrix/hardworker",
- project: [{id:"1",name:"Проект 1"},
+ "project": [{id:"1",name:"Проект 1"},
             {id:"2",name:"Проект 2"}]  
   }
 

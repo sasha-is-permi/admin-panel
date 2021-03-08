@@ -1,4 +1,63 @@
 
+<!--
+
+team
+команда
+
+1.	uuid
+2.	Название
+3.	Привязки к BitrixPortal
+4.	Проект
+
+
+https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/TeamDto.java
+
+public class TeamDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("bitrixPortalId")
+    private String bitrixPortalId;
+
+    @JsonProperty("projects")
+    private List<ProjectDto> projects;
+}
+
+public class ProjectDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("group")
+    private ProjectGroupDto group;
+
+    @JsonProperty("processes")
+    private List<ProcessDto> processes;
+
+    @JsonProperty("portals")
+    private List<PortalDto> portals;
+}
+
+
+
+Пример данных в JSON:
+"team"
+
+{"id":"27","name":"HardWorkers",
+"bitrixportal":"http://bitrix/hardworker",
+ "project": [{id:"1",name:"Проект 1"},
+            {id:"2",name:"Проект 2"}]  
+  }
+
+
+-->
+
+
 <template>
     <div class="root">
         <v-card text>
