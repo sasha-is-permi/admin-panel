@@ -206,7 +206,7 @@ export default {
         return {                
                 id:'',
                 name:'',
-                metrics:{id:"",name:"",description:false},
+                metrics:[],
                 itemMetrics:[],           
                 dialog: false,
                 edit:false,
