@@ -222,7 +222,7 @@ public class IntegrationTypeDto {
                               
                               <v-flex xs12>                                               
                                <template>
-                                 <p> Группы проектов: </p>                               
+                                 <p> Группы: </p>                               
                                </template>
                                
                              <v-combobox
@@ -268,7 +268,7 @@ public class IntegrationTypeDto {
                                
                              <v-combobox
                                    v-model="selectedPortals"
-                                   :items="AllPortals"
+                                   :items="selectedPortals"
                                    item-text="portalId"
                                    item-value="portalId"
                                    label="Порталы"
@@ -470,9 +470,9 @@ export default {
             AllProcesses() {
               return this.$store.getters.process
                          },
-            AllPortals() {
-              return this.$store.getters.portals
-                         },
+           // AllPortals() {
+          //   return this.$store.getters.portals
+          //               },
             groups() {
               return this.$store.getters.projectGroups
                          }                
