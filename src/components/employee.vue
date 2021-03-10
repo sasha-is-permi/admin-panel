@@ -341,8 +341,8 @@ employees
                                </template>
                                
                              <v-combobox
-                                   v-model="selectedProcesses"
-                                   :items="AllProcesses"
+                                   v-model="selectedProjects"
+                                   :items="AllProjects"
                                    item-text="name"
                                    item-value="name"
                                    label="Проекты"
@@ -362,8 +362,8 @@ employees
                                </template>
                                
                              <v-combobox
-                                   v-model="selectedGroup"
-                                   :items="groups"
+                                   v-model="selectedTeam"
+                                   :items="teams"
                                    item-text="name"
                                    item-value="name"
                                    label="Команды:"
@@ -413,12 +413,12 @@ export default {
                 birthDate:"",
                 email:"",
                 login:"",
-                group:{id:"",name:"", workspace: {}},
-                processes:[],
-                portals:[],                
-                itemProcesses:[],           
+                portals:[],    
+                projects:[],      
+                team:{id:"", name:"", bitrixPortalId:"", projects: [] },                                      
                 itemPortals:[], 
-                itemGroups:{id:"",name:"", workspace: {}},
+                itemProjects:[],    
+                itemTeams:{id:"", name:"", bitrixPortalId:"", projects: [] }, 
                 dialog: false,
                 edit:false,
                 selected: [],
@@ -437,9 +437,9 @@ export default {
                     {text: 'Проекты', align: 'left', value: 'projects' },
                     {text: 'Команда', align: 'left', value: 'team.name'}
  ],
-                selectedProcesses: [],
+                selectedProjects: [],
                 selectedPortals: [],
-                selectedGroup:  {id:"",name:"", workspace: {}}
+                selectedTeam:  {id:"", name:"", bitrixPortalId:"", projects: [] }
 
             }
         },
@@ -464,32 +464,39 @@ export default {
 
 
                   // Нужно сделать:  
-                 this.group = this.selected[0].group              
-                 this.processes = this.selected[0].processes
-                 this.portals = this.selected[0].portals               
+                 this.portals = this.selected[0].portals 
+                 this.projects = this.selected[0].projects    
+                 this.team = this.selected[0].team              
+   
+            
            
                 // let a =   this.selected[0] 
                 // let b={}                  
-               //  b.id =      a.processes.id
-               //  b.name =    a.processes.name 
-               //  b.description =  a.processes.description
+               //  b.id =      a.projects.id
+               //  b.name =    a.projects.name 
+               //  b.description =  a.projects.description
         
                  
-               // this.processes = b 
+               // this.projects = b 
 
-                // console.log('a.processes.id',a.processes.id)  
+                // console.log('a.projects.id',a.projects.id)  
                 // console.log('b.id',b.id) 
-                // console.log('this.processes ',this.processes ) 
+                // console.log('this.projects ',this.projects ) 
                  
                 // Передаем поле- процесс
                 // в список выбора процесса 
                 // (чтобы по умолчанию у элемента была та область,
                 // которая раньше была )
-                this.selectedGroup = this.selected[0].group;   
-                this.selectedProcesses = this.selected[0].processes;
-                this.selectedPortals = this.selected[0].portals;                
-                console.log('this.selectedProcesses ',this.selectedProcesses ) 
-                console.log('this.selectedPortals ',this.selectedPortals)                
+   
+                this.selectedPortals = this.selected[0].portals;
+                this.selectedProjects = this.selected[0].projects; 
+                this.selectedTeam = this.selected[0].team;  
+
+
+                console.log('this.selectedPortals ',this.selectedPortals)   
+                console.log('this.selectedProjects ',this.selectedProjects ) 
+                console.log('this.selectedTeam ',this.selectedTeam ) 
+                      
 
                  this.edit=true
                  this.dialog = true                 
@@ -513,14 +520,15 @@ export default {
                     email: this.email,
                     login: this.login,     
 
-                    group: this.selectedGroup,    
-                    processes: this.selectedProcesses,    
-                    portals: this.selectedPortals                                      
+                    portals: this.selectedPortals,   
+                    projects: this.selectedProjects,            
+                    team: this.selectedTeam                       
                 };
 
-                console.log("this.selectedGroup",this.selectedGroup)
-                console.log("this.selectedProcesses",this.selectedProcesses)
-                console.log("this.selectedPortals",this.selectedPortals)                
+                console.log("this.selectedPortals",this.selectedPortals)
+                console.log("this.selectedProjects",this.selectedProjects)                
+                console.log("this.selectedTeam",this.selectedTeam)
+                            
 
                 console.log("form",form)
 
@@ -542,9 +550,11 @@ export default {
                     email: this.email,
                     login: this.login,
               
-                    group: this.selectedGroup,                   
-                    processes: this.selectedProcesses,
-                    portals: this.selectedPortals                   
+                    portals: this.selectedPortals,
+                    projects: this.selectedProjects, 
+                    team: this.selectedTeam          
+                  
+                                    
                 };
 
                     const msg = 'Сохранить изменения для сотрудника?';
@@ -602,14 +612,14 @@ export default {
                     return this.$store.getters.employees
             },
         // Получаем весь массив процессов
-            AllProcesses() {
-              return this.$store.getters.process
+            AllProjects() {
+              return this.$store.getters.projects
                          },
            // AllPortals() {
           //   return this.$store.getters.portals
           //               },
-            groups() {
-              return this.$store.getters.projectGroups
+            teams() {
+              return this.$store.getters.teams
                          }                
                          
            
