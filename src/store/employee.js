@@ -209,7 +209,7 @@ birthDate,email,login,portals,projects,team) {
                             ],
                      projects:[
                         {id:"1",
-                         name:"Проект1",
+                         name:"Проект 1",
                          group: {id:"1",name:"Группа проектов 1",            
                          workspace: {id:"1",name:"workspace1",active: false,
                          logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
@@ -220,7 +220,7 @@ birthDate,email,login,portals,projects,team) {
                     
                     
                         {id:"2",
-                        name:"Проект2",
+                        name:"Проект 2",
                         group: {id:"2",name:"Группа проектов 2",            
                         workspace: {id:"2",name:"workspace2",active: true,
                         logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
@@ -234,12 +234,13 @@ birthDate,email,login,portals,projects,team) {
                      team:   {id:"1",name:"Команда № 1",
                         bitrixPortalId:"http://bitrix/hardworker",
                         projects: [
-                         {name:"Проект1",
+                         {id:"1",
+                             name:"Проект 1",
                           group:{},
                           processes:[],
                           portals:[]
                          },
-                         {name:"Проект3",
+                         {id:"3",name:"Проект 3",
                          group:{},
                          processes:[],
                          portals:[]
@@ -275,7 +276,7 @@ birthDate,email,login,portals,projects,team) {
                     ],
              projects:[
                         {id:"1",
-                         name:"Проект1",
+                         name:"Проект 1",
                          group: {id:"1",name:"Группа проектов 1",            
                          workspace: {id:"1",name:"workspace1",active: false,
                          logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
@@ -286,7 +287,7 @@ birthDate,email,login,portals,projects,team) {
                     
                     
                         {id:"2",
-                        name:"Проект2",
+                        name:"Проект 2",
                         group: {id:"2",name:"Группа проектов 2",            
                         workspace: {id:"2",name:"workspace2",active: true,
                         logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
@@ -301,12 +302,12 @@ birthDate,email,login,portals,projects,team) {
            team:  {id:"2",name:"Команда № 2",
            bitrixPortalId:"http://bitrix/soworker",
            projects: [
-            {name:"Проект2",
+            {id:"2",name:"Проект 2",
              group:{},
              processes:[],
              portals:[]
             },
-            {name:"Проект3",
+            {id:"3",name:"Проект 3",
             group:{},
             processes:[],
             portals:[]
@@ -342,7 +343,7 @@ birthDate,email,login,portals,projects,team) {
                     ],
                 projects:[
                         {id:"1",
-                         name:"Проект1",
+                         name:"Проект 1",
                          group: {id:"1",name:"Группа проектов 1",            
                          workspace: {id:"1",name:"workspace1",active: false,
                          logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
@@ -353,7 +354,7 @@ birthDate,email,login,portals,projects,team) {
                     
                     
                         {id:"2",
-                        name:"Проект2",
+                        name:"Проект 2",
                         group: {id:"2",name:"Группа проектов 2",            
                         workspace: {id:"2",name:"workspace2",active: true,
                         logo: "https://img2.fonwall.ru/o/wr/roza-rozy-purpurnye-rozy-dsij.jpg"}
@@ -367,12 +368,12 @@ birthDate,email,login,portals,projects,team) {
              team: {id:"3",name:"Команда № 3",
              bitrixPortalId:"http://bitrix/command3",
              projects: [
-              {name:"Проект1",
+              {id:"1",name:"Проект 1",
                group:{},
                processes:[],
                portals:[]
               },
-              {name:"Проект2",
+              {id:"2",name:"Проект 2",
               group:{},
               processes:[],
               portals:[]
