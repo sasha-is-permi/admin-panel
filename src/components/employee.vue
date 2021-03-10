@@ -286,52 +286,36 @@ employees
                         <v-container grid-list-md>
                             <v-layout wrap>                    
                                <v-flex xs12>
-                                    <v-text-field :label="'имя сотрудника'" v-model="name"
+                                    <v-text-field :label="'Фамилия сотрудника'" v-model="lastName"
                                                   required></v-text-field>
                                 </v-flex>
-                              
-                              <v-flex xs12>                                               
-                               <template>
-                                 <p> Группы: </p>                               
-                               </template>
-                               
-                             <v-combobox
-                                   v-model="selectedGroup"
-                                   :items="groups"
-                                   item-text="name"
-                                   item-value="name"
-                                   label="Группа проектов:"
-                                   dense
-                                   filled
-                                   outlined
-                                   solo
-                                 ></v-combobox> 
-          
+                               <v-flex xs12>
+                                    <v-text-field :label="'Имя сотрудника'" v-model="firstName"
+                                                  required></v-text-field>
+                                </v-flex>
+                              <v-flex xs12>
+                                    <v-text-field :label="'Отчество сотрудника'" v-model="middleName"
+                                                  required></v-text-field>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field :label="'Пол'" v-model="gender"
+                                                  required></v-text-field>
+                                </v-flex>
+                                  <v-flex xs12>
+                                    <v-text-field :label="'День рождения'" v-model="birthDate"
+                                                  required></v-text-field>
+                                </v-flex>
+                                 <v-flex xs12>
+                                    <v-text-field :label="'email'" v-model="email"
+                                                  required></v-text-field>
+                                </v-flex>
+                                <v-flex xs12>
+                                    <v-text-field :label="'login'" v-model="login"
+                                                  required></v-text-field>
                                 </v-flex>
 
 
-
-                                <v-flex xs12>                                               
-                               <template>
-                                 <p> Процессы: </p>                               
-                               </template>
-                               
-                             <v-combobox
-                                   v-model="selectedProcesses"
-                                   :items="AllProcesses"
-                                   item-text="name"
-                                   item-value="name"
-                                   label="Процессы"
-                                   dense
-                                   filled
-                                   outlined
-                                   solo
-                                   multiple
-                                ></v-combobox> 
-          
-                                </v-flex>
-
-                              <v-flex xs12>                                               
+                               <v-flex xs12>                                               
                                <template>
                                  <p> Порталы </p>                               
                                </template>
@@ -350,6 +334,52 @@ employees
                                 ></v-combobox> 
           
                                 </v-flex>
+
+                                                          <v-flex xs12>                                               
+                               <template>
+                                 <p> Проекты: </p>                               
+                               </template>
+                               
+                             <v-combobox
+                                   v-model="selectedProcesses"
+                                   :items="AllProcesses"
+                                   item-text="name"
+                                   item-value="name"
+                                   label="Проекты"
+                                   dense
+                                   filled
+                                   outlined
+                                   solo
+                                   multiple
+                                ></v-combobox> 
+          
+                                </v-flex>
+                               
+                              
+                              <v-flex xs12>                                               
+                               <template>
+                                 <p> Команды: </p>                               
+                               </template>
+                               
+                             <v-combobox
+                                   v-model="selectedGroup"
+                                   :items="groups"
+                                   item-text="name"
+                                   item-value="name"
+                                   label="Команды:"
+                                   dense
+                                   filled
+                                   outlined
+                                   solo
+                                 ></v-combobox> 
+          
+                                </v-flex>
+
+
+
+    
+
+
 
                                 
 
@@ -375,7 +405,14 @@ export default {
     data() {
         return {                
                 id:'',
-                name:'',
+                name:'', 
+                lastName:"",
+                firstName:"",
+                middleName:"",
+                gender:"",
+                birthDate:"",
+                email:"",
+                login:"",
                 group:{id:"",name:"", workspace: {}},
                 processes:[],
                 portals:[],                
@@ -417,7 +454,15 @@ export default {
                 console.log(this.selected[0]);
                 // Запоминаем выбранный галочкой элемент
                  this.id=this.selected[0].id;
-                 this.name=this.selected[0].name;     
+                 this.lastName=this.selected[0].lastName;   
+                 this.firstName=this.selected[0].firstName;
+                 this.middleName=this.selected[0].middleName;   
+                 this.gender=this.selected[0].gender; 
+                 this.birthDate=this.selected[0].birthDate;   
+                 this.email=this.selected[0].email;
+                 this.login=this.selected[0].login;
+
+
                   // Нужно сделать:  
                  this.group = this.selected[0].group              
                  this.processes = this.selected[0].processes
@@ -460,7 +505,14 @@ export default {
                 if (this.edit === false) {
                 let form = {
                     id: this.id,
-                    name: this.name,
+                    lastName: this.lastName,   
+                    firstName: this.firstName,
+                    middleName: this.middleName,   
+                    gender: this.gender, 
+                    birthDate: this.birthDate,   
+                    email: this.email,
+                    login: this.login,     
+
                     group: this.selectedGroup,    
                     processes: this.selectedProcesses,    
                     portals: this.selectedPortals                                      
@@ -482,7 +534,14 @@ export default {
 
                 let form = {
                     id: this.id,
-                    name: this.name,
+                    lastName: this.lastName,   
+                    firstName: this.firstName,
+                    middleName: this.middleName,   
+                    gender: this.gender, 
+                    birthDate: this.birthDate,   
+                    email: this.email,
+                    login: this.login,
+              
                     group: this.selectedGroup,                   
                     processes: this.selectedProcesses,
                     portals: this.selectedPortals                   
