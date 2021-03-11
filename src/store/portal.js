@@ -123,6 +123,12 @@ class AddPortal {
             state.pageName=payload
           },
           selectedPortals(state,payload) {
+            // Копируется по ссылке
+            // все что происходит с state.portals-
+            // массив порталов редактируемый-
+            // происходит и с payload 
+            // (переданный массив selectedPortals )-
+            
             state.portals= payload
           },
          
