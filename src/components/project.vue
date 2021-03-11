@@ -341,6 +341,9 @@ export default {
         },
  methods: {
             editPortals(selectedPortals){
+
+            this.$store.dispatch('pageName', "project");
+
             console.log("portals",selectedPortals)  
             this.$router.push('/portal')        },                          
 

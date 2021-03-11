@@ -65,7 +65,9 @@ class AddPortal {
   */
   
   export default {
-    state: {  
+    state: {
+      // Имя страницы, из которой был вызвана страница порталов
+      pageName:"",
 
       portals:[
         {id:"1",
@@ -106,7 +108,11 @@ class AddPortal {
     
  
 },  
-        mutations: { 
+        mutations: {
+          pageName(state,payload) {
+            state.pageName=payload
+          },
+
             // удаление элемента
             deletePortal (state, {id}) {                          
               // находим - какой индекс у удаляемого элемента в массиве  из state
@@ -180,7 +186,12 @@ class AddPortal {
                   }  
               },
            actions: {  
-               
+
+            pageName({commit},payload) {
+              commit('pageName',payload)
+            },  
+
+
             // Удаление интеграций из массива в state
             // payload- полученный удаляемый элемент (деструктурируем до id)
                  deletePortal({commit},{id}){
@@ -214,7 +225,12 @@ class AddPortal {
         // Возвращаем все интеграции по запросу из файла vue
         return state.portals
         
-         }
+         },
+       pageName(state) {
+         return state.pageName
+       }  
+
+
 
         }
       }      

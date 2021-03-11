@@ -210,7 +210,8 @@ public class IntegrationTypeDto {
 export default {
       
     data() {
-        return {                
+        return {
+                pageName:'',                
                 id:'',
                 portalId:'',
                 integrationType:{id:"",name:"",code:""},        
@@ -234,9 +235,15 @@ export default {
         },
  methods: { 
             returnBack(){
-           // console.log("portals",selectedPortals)  
-            this.$router.push('/employee')        },
+             this.pageName = this.$store.getters.pageName
 
+            if (this.pageName==="employee") {
+            this.$router.push('/employee')        }
+         
+            else if (this.pageName==="project") {
+            this.$router.push('/project')       
+            }
+            },
 
             // Вызывается при нажатии на кнопку "редактировать элемент"
             // Затем вызывается диалоговое окно Dilog
