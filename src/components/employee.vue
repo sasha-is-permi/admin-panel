@@ -297,10 +297,27 @@ employees
                                     <v-text-field :label="'Отчество сотрудника'" v-model="middleName"
                                                   required></v-text-field>
                                 </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'Пол'" v-model="gender"
-                                                  required></v-text-field>
+                             
+                              <v-flex xs12>                                               
+                               <template>
+                                 <p> Пол: </p>                               
+                               </template>       
+
+                              <v-combobox
+                                   v-model="selectedGender" 
+                                   :items="genders"
+                                   item-text="gender"
+                                   item-value="gender"
+                                   label="Пол:"
+                                   dense
+                                   filled
+                                   outlined
+                                   solo
+                                 ></v-combobox> 
+          
                                 </v-flex>
+
+
                                   <v-flex xs12>
                                     <v-text-field :label="'День рождения'" v-model="birthDate"
                                                   required></v-text-field>
@@ -375,7 +392,7 @@ employees
           
                                 </v-flex>
 
-
+                 
 
     
 
@@ -439,7 +456,8 @@ export default {
  ],
                 selectedProjects: [],
                 selectedPortals: [],
-                selectedTeam:  {id:"", name:"", bitrixPortalId:"", projects: [] }
+                selectedTeam:  {id:"", name:"", bitrixPortalId:"", projects: [] },
+                selectedGender:  {gender:""}
 
             }
         },
@@ -491,6 +509,7 @@ export default {
                 this.selectedPortals = this.selected[0].portals;
                 this.selectedProjects = this.selected[0].projects; 
                 this.selectedTeam = this.selected[0].team;  
+                this.selectedGender = this.selected[0].gender;  
 
 
                 console.log('this.selectedPortals ',this.selectedPortals)   
@@ -514,21 +533,21 @@ export default {
                     id: this.id,
                     lastName: this.lastName,   
                     firstName: this.firstName,
-                    middleName: this.middleName,   
-                    gender: this.gender, 
+                    middleName: this.middleName,        
                     birthDate: this.birthDate,   
                     email: this.email,
                     login: this.login,     
 
                     portals: this.selectedPortals,   
                     projects: this.selectedProjects,            
-                    team: this.selectedTeam                       
+                    team: this.selectedTeam,  
+                    gender: this.selectedGender.gender            
                 };
 
                 console.log("this.selectedPortals",this.selectedPortals)
                 console.log("this.selectedProjects",this.selectedProjects)                
                 console.log("this.selectedTeam",this.selectedTeam)
-                            
+                console.log("this.selectedGender",this.selectedGender.gender)                
 
                 console.log("form",form)
 
@@ -544,15 +563,15 @@ export default {
                     id: this.id,
                     lastName: this.lastName,   
                     firstName: this.firstName,
-                    middleName: this.middleName,   
-                    gender: this.gender, 
+                    middleName: this.middleName, 
                     birthDate: this.birthDate,   
                     email: this.email,
                     login: this.login,
               
                     portals: this.selectedPortals,
                     projects: this.selectedProjects, 
-                    team: this.selectedTeam          
+                    team: this.selectedTeam,
+                    gender: this.selectedGender.gender
                   
                                     
                 };
@@ -620,7 +639,11 @@ export default {
           //               },
             teams() {
               return this.$store.getters.teams
-                         }                
+                         },      
+             genders() {
+                 const genders= [{gender:"М"},{gender:"Ж"}]
+                 return genders
+             }                      
                          
            
                   }
