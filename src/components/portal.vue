@@ -50,6 +50,12 @@ public class IntegrationTypeDto {
  <template>
     <div class="root">
         <v-card text>
+       <v-row >
+      <v-col cols="12">
+             <h2 class="h2"> Порталы </h2>     
+      </v-col>
+      </v-row> 
+
                      <v-toolbar text prominent class="no-padding-toolbar">
                 <!-- Панель кнопочек "Добавить", "Редактировать",
                 "Удалить" -->         
@@ -135,14 +141,16 @@ public class IntegrationTypeDto {
                     >
 
             </v-data-table>
- 
+    <v-flex text-sm-center align-center>
                  <v-btn
+                 class="btn1"
                  color= "#E1F5FE"
                  @click="returnBack()"
                   >
                    Вернуться обратно
                   </v-btn>
-   
+      </v-flex>            
+         
 
         </v-card>
 
@@ -365,5 +373,14 @@ export default {
    .root{
         font-size:13px!important;
    }
+   .h2 {
+       text-align:center;
+   color:blue;
+   }
+   .btn1 {
+   margin:0 auto;
+   }
+   
+
 
 </style>
