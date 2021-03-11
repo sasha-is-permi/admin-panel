@@ -43,33 +43,7 @@ portals:[
                }                 
                    ]
 
-
-
-*/
-
-
- 
-
-
-
-/*
-
-class AddPortal {
-    constructor (id, integrationType, portalId) {
-      this.id = id
-      this.integrationType = integrationType      
-      this.portalId= portalId
-    }
-  }
-
-  */
-  
-  export default {
-    state: {
-      // Имя страницы, из которой был вызвана страница порталов
-      pageName:"",
-
-      portals:[
+  portals:[
         {id:"1",
         integrationType:{
          id:"1",
@@ -106,13 +80,52 @@ class AddPortal {
       }               
             ]
     
+
+*/
+
+
+ 
+
+
+
+/*
+
+class AddPortal {
+    constructor (id, integrationType, portalId) {
+      this.id = id
+      this.integrationType = integrationType      
+      this.portalId= portalId
+    }
+  }
+
+  */
+  
+  export default {
+    state: {
+      // Имя страницы, из которой был вызвана страница порталов
+      pageName:"",
+
+      portals:[
+        {id:"",
+        integrationType:{
+         id:"",
+         name:"",
+         code:""                  
+        },
+        portalId:""
+        }         
+            ]
+    
  
 },  
         mutations: {
           pageName(state,payload) {
             state.pageName=payload
           },
-
+          selectedPortals(state,payload) {
+            state.portals= payload
+          },
+         
             // удаление элемента
             deletePortal (state, {id}) {                          
               // находим - какой индекс у удаляемого элемента в массиве  из state
@@ -191,6 +204,11 @@ class AddPortal {
               commit('pageName',payload)
             },  
 
+            selectedPortals({commit},payload) {
+              commit('selectedPortals',payload)
+            },  
+
+
 
             // Удаление интеграций из массива в state
             // payload- полученный удаляемый элемент (деструктурируем до id)
@@ -228,7 +246,10 @@ class AddPortal {
          },
        pageName(state) {
          return state.pageName
-       }  
+       }
+       
+
+
 
 
 

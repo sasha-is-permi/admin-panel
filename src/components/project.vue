@@ -343,8 +343,9 @@ export default {
             editPortals(selectedPortals){
 
             this.$store.dispatch('pageName', "project");
+            this.$store.dispatch('selectedPortals',selectedPortals);
 
-            console.log("portals",selectedPortals)  
+          //  console.log("portals",selectedPortals)  
             this.$router.push('/portal')        },                          
 
             // Вызывается при нажатии на кнопку "редактировать элемент"
