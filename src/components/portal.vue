@@ -135,6 +135,15 @@ public class IntegrationTypeDto {
                     >
 
             </v-data-table>
+ 
+                 <v-btn
+                 color= "#E1F5FE"
+                 @click="returnBack()"
+                  >
+                   Вернуться обратно
+                  </v-btn>
+   
+
         </v-card>
 
 
@@ -149,17 +158,10 @@ public class IntegrationTypeDto {
                         <v-container grid-list-md>
                             <v-layout wrap>                    
                                <v-flex xs12>
-                                    <v-text-field :label="'Название интеграции'" v-model="name"                                    
+                                    <v-text-field :label="'Название портала'" v-model="portalId"                                    
                                                   required></v-text-field>
                                 </v-flex>
-                                 <v-flex xs12>
-                                    <v-text-field :label="'логин'" v-model="username"
-                                                  required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'пароль'" v-model="password"
-                                                  required></v-text-field>
-                                </v-flex>
+
                                 <v-flex xs12>                                               
                                <template>
                                  <p> Тип интеграции: </p>                               
@@ -202,10 +204,8 @@ export default {
     data() {
         return {                
                 id:'',
-                name:'',
-                username:"",
-                password:"",                       
-                type:{id:"",name:"",code:""},        
+                portalId:'',
+                integrationType:{id:"",name:"",code:""},        
                 dialog: false,
                 edit:false,
                 selected: [],
@@ -214,7 +214,7 @@ export default {
                 commonHeaders: [
                     {text: 'id', align: 'left', value: 'id'},
                     {text: 'имя портала', align: 'left', value: 'portalId'},
-                    {text: 'Тип интеграции', align: 'left', value: 'type.name'},
+                    {text: 'Тип интеграции', align: 'left', value: 'integrationType.name'},
 
                 ],
                 selectedType: {id:"",
@@ -224,7 +224,12 @@ export default {
 
             }
         },
- methods: {
+ methods: { 
+            returnBack(){
+           // console.log("portals",selectedPortals)  
+            this.$router.push('/employee')        },
+
+
             // Вызывается при нажатии на кнопку "редактировать элемент"
             // Затем вызывается диалоговое окно Dilog
             // (описанно выше)
@@ -235,30 +240,28 @@ export default {
                 console.log(this.selected[0]);
                 // Запоминаем выбранный галочкой элемент
                  this.id=this.selected[0].id;
-                 this.name=this.selected[0].name;      
-                 this.username=this.selected[0].username;  
-                 this.password=this.selected[0].password;                                   
-                 // Нужно сделать:             
-                 // this.type = this.selected[0].type
+                 this.portalId=this.selected[0].portalId;      
+                // Нужно сделать:             
+                 // this.integrationType = this.selected[0].integrationType
                  // Но напрямую нельзя, нужно поэтапно:
                  let a =   this.selected[0] 
                  let b={}                  
-                 b.id =      a.type.id
-                 b.name =    a.type.name 
-                 b.code =    a.type.code           
+                 b.id =      a.integrationType.id
+                 b.name =    a.integrationType.name 
+                 b.code =    a.integrationType.code           
                  
-                this.type = b 
+                this.integrationType = b 
 
-                 //console.log('a.type.id',a.type.id)  
+                 //console.log('a.integrationType.id',a.integrationType.id)  
                 // console.log('b.id',b.id) 
-                // console.log('this.type ',this.type ) 
+                // console.log('this.integrationType ',this.integrationType ) 
                  
                 // Передаем поле- рабочая область выбранного элемента
                 // в список выброра рабочей области 
                 // (чтобы по умолчанию у элемента была та область,
                 // которая раньше была )
                 // Нужно сделать:
-                // this.selectedType =  this.selected[0].type
+                // this.selectedType =  this.selected[0].integrationType
                 // Но напрямую нельзя, нужно поэтапно
                 this.selectedType = b;
                 console.log('this.selectedType ',this.selectedType ) 
@@ -277,10 +280,8 @@ export default {
                 if (this.edit === false) {
                 let form = {
                     id: this.id,
-                    name: this.name,
-                    username: this.username,
-                    password: this.password,
-                    type: this.selectedType
+                    portalId: this.portalId,
+                    integrationType: this.selectedType
                 };
 
                     this.$store.dispatch('addPortal', form);
@@ -293,10 +294,8 @@ export default {
 
                 let form = {
                     id: this.id,
-                    name: this.name,
-                    username: this.username,
-                    password: this.password,                   
-                    type: this.selectedType
+                    portalId: this.portalId,
+                    integrationType: this.selectedType
                 };
 
                     const msg = 'Сохранить изменения для интеграции?';
@@ -353,7 +352,7 @@ export default {
             portals() {
                     return this.$store.getters.portals
             },
-        // Получаем весь массив типов интеграций type
+        // Получаем весь массив типов интеграций integrationTypes
             integrationTypes() {
               return this.$store.getters.integrationTypes
             }
