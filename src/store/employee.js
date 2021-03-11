@@ -48,8 +48,7 @@ public class EmployeeDto {
 
     @JsonProperty("team")
     private TeamDto team;
-}
-
+} 
 
 
 Команда team. Может быть только одна у сотрудника
