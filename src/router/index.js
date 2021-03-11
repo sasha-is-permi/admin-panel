@@ -22,7 +22,7 @@ import logout     from  '@/components/logout'
 // metric         метрики
 // integration    интеграции
 // workspace      рабочие области
-
+// portal         порталы
 
 import employee from '@/components/employee'
 import project   from '@/components/project'
@@ -32,6 +32,7 @@ import process  from '@/components/process'
 import metric    from '@/components/metric'
 import integration from '@/components/integration'
 import workspace from '@/components/workspace'
+import portal from '@/components/portal'
 
 Vue.use(Router)
 
@@ -81,7 +82,12 @@ export default new Router ({
       { path:'/workspace',
       name:'workspace',
       component:workspace,
+      beforeEnter:AuthGuard},
+      { path:'/portal',
+      name:'portal',
+      component:portal,
       beforeEnter:AuthGuard}
+
    ]
 })
 

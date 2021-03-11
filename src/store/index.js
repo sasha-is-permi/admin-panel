@@ -20,7 +20,7 @@ import process from './process'
 import metric from './metric'
 import workspace from './workspace'
 import integration from './integration'
-import portals from './portals'
+import portal from './portal'
 
 
 
@@ -32,6 +32,6 @@ export default new Vuex.Store({
   modules: {
     user, shared,
     employee, project, projectgroup, team, process,
-    metric, workspace, integration, portals
+    metric, workspace, integration, portal
   }
 })

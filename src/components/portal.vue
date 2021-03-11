@@ -1,4 +1,53 @@
-<template>
+ 
+<!--
+
+https://gitlab.com/datsteam/project/dev-bro/-/blob/DEVBRO-14/api/src/main/java/com/devbro/api/dto/PortalDto.java
+
+public class PortalDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("integrationType")
+    private IntegrationTypeDto integrationType;
+
+    @JsonProperty("portalId")
+    private String portalId;
+}
+
+public class IntegrationTypeDto {
+    @JsonProperty("id")
+    private String id;
+
+    @JsonProperty("name")
+    private String name;
+
+    @JsonProperty("code")
+    private String code;
+}
+
+ portals:[
+                {id:"2",
+                integrationType:{
+                 id:"2",
+                 name:"jira ServiceDesk",
+                 code:"jiraServiceDesk "                  
+                },
+                portalId:"http://jiraServiceDesk2"
+                },
+                {id:"3",
+                integrationType:{
+                 id:"3",
+                 name:"Git",
+                 code:"Git"                  
+                },
+                portalId:"http://git3"
+                }                 
+                    ]
+
+
+
+-->
+ <template>
     <div class="root">
         <v-card text>
                      <v-toolbar text prominent class="no-padding-toolbar">
@@ -11,7 +60,7 @@
                             <v-icon medium>add</v-icon>
                         </v-btn>
                         </template>
-                        <span> Добавить сотрудника </span>
+                        <span> Добавить портал </span>
                     </v-tooltip>
                       <v-tooltip bottom>
                         <template v-slot:activator="{ on }"  >
@@ -27,7 +76,7 @@
                            <v-icon medium>delete</v-icon>
                         </v-btn>
                         </template>
-                        <span>Удалить сотрудника</span>
+                        <span>Удалить портал</span>
                     </v-tooltip>
                 </v-toolbar-items>
                 <!-- Окно фильтрации -->
@@ -62,7 +111,7 @@
             v-model="search"   label="Search" создание фильтрации
             :headers="commonHeaders" - загрузка заголовков из массива commonHeaders
 
-            :items="developers" - загрузка данных из массива developers
+            :items="portals" - загрузка данных из массива portals
 
             class="fixed-headers" - тип таблицы
 
@@ -70,10 +119,10 @@
            -->   
             
             <!-- Вывод заголовка таблицы  (commonHeaders)
-            и самой таблицы (из объекта employees  )-->
+            и самой таблицы (из объекта portals  )-->
             <v-data-table
                     :headers="commonHeaders"
-                    :items="employees"
+                    :items="portals"
                     :search="search"
                     v-model="selected"
                     item-key="id"
@@ -98,52 +147,37 @@
                 <v-form ref="form">
                     <v-card-text>
                         <v-container grid-list-md>
-                            <v-layout wrap>
-                              <v-flex xs12>
-                                    <v-text-field :label="'id'" v-model="id"
-                                                  required></v-text-field>
-                                </v-flex>                            
+                            <v-layout wrap>                    
                                <v-flex xs12>
-                                    <v-text-field :label="'ФИО'" v-model="fio"
+                                    <v-text-field :label="'Название интеграции'" v-model="name"                                    
+                                                  required></v-text-field>
+                                </v-flex>
+                                 <v-flex xs12>
+                                    <v-text-field :label="'логин'" v-model="username"
                                                   required></v-text-field>
                                 </v-flex>
                                 <v-flex xs12>
-                                    <v-text-field :label="'Команда'" v-model="team"
+                                    <v-text-field :label="'пароль'" v-model="password"
                                                   required></v-text-field>
                                 </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'Проект'" required
-                                                  v-model="project"></v-text-field>
+                                <v-flex xs12>                                               
+                               <template>
+                                 <p> Тип интеграции: </p>                               
+                               </template>
+                               
+                             <v-combobox
+                                   v-model="selectedType"
+                                   :items="integrationTypes"
+                                   item-text="name"
+                                   item-value="name"
+                                   label="Тип интеграции"
+                                   dense
+                                   filled
+                                   outlined
+                                   solo
+                                ></v-combobox> 
+          
                                 </v-flex>
-                             <v-flex xs12>
-                                    <v-text-field :label="'Логин'" v-model="login"
-                                                  required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'e-mail'" v-model="email"
-                                                  required></v-text-field>
-                                </v-flex>
-                                <v-flex xs12>
-                                    <v-text-field :label="'jira'" v-model="jira"
-                                                  required></v-text-field>
-                                </v-flex>
-                              <v-flex xs12>
-                                    <v-text-field :label="'telegram'" v-model="telegram"
-                                                  required></v-text-field>
-                                </v-flex>
-                              <v-flex xs12>
-                                    <v-text-field :label="'git'" v-model="git"
-                                                  required></v-text-field>
-                                </v-flex>
-                              <v-flex xs12>
-                                    <v-text-field :label="'confluence'" v-model="confluence"
-                                                  required></v-text-field>
-                                </v-flex>
-                            <v-flex xs12>
-                                    <v-text-field :label="'bitrixportal'" v-model="bitrixportal"
-                                                  required></v-text-field>
-                                </v-flex>
-
 
 
                             </v-layout>
@@ -168,16 +202,10 @@ export default {
     data() {
         return {                
                 id:'',
-                fio:'',
-                team:'',
-                project:'', 
-                login:'',
-                email:'',  
-                jira:'',
-                telegram:'',
-                git:'',
-                confluence:'',
-                bitrixportal:'',        
+                name:'',
+                username:"",
+                password:"",                       
+                type:{id:"",name:"",code:""},        
                 dialog: false,
                 edit:false,
                 selected: [],
@@ -185,40 +213,56 @@ export default {
                 singleSelect:true,
                 commonHeaders: [
                     {text: 'id', align: 'left', value: 'id'},
-                    {text: 'ФИО', align: 'left', value: 'fio'},
-                    {text: 'Команда', align: 'left', value: 'team'},
-                    {text: 'Проект', align: 'left', value: 'project'},
-                    {text: 'Логин', align: 'left', value: 'login'},
-                    {text: 'e-mail', align: 'left', value: 'email'},
-                    {text: 'jira', align: 'left',value: 'connections.jira'},
-                    {text: 'telegram', align: 'left',value: 'connections.telegram'},
-                    {text: 'git', align: 'left',value: 'connections.git'},
-                    {text: 'confluence', align: 'left',value: 'connections.confluence'},
-                    {text: 'bitrixportal', align: 'left',value: 'connections.bitrixportal'},  
-                    
-                ]
+                    {text: 'имя портала', align: 'left', value: 'portalId'},
+                    {text: 'Тип интеграции', align: 'left', value: 'type.name'},
+
+                ],
+                selectedType: {id:"",
+                name:"Тип интеграции", 
+                code:""}
+
+
             }
         },
-        methods: {
+ methods: {
             // Вызывается при нажатии на кнопку "редактировать элемент"
             // Затем вызывается диалоговое окно Dilog
             // (описанно выше)
                editItem() {
                   if (this.selected.length === 0) {
-                    alert('Для редактирования нужно выбрать cотрудника')
+                    alert('Для редактирования нужно выбрать портал')
                 } else {
                 console.log(this.selected[0]);
+                // Запоминаем выбранный галочкой элемент
                  this.id=this.selected[0].id;
-                 this.fio=this.selected[0].fio;
-                 this.team=this.selected[0].team;
-                 this.project=this.selected[0].project;
-                 this.login=this.selected[0].login;
-                 this.email=this.selected[0].email;
-                 this.jira=this.selected[0].connections.jira;  
-                 this.telegram=this.selected[0].connections.telegram;   
-                 this.git=this.selected[0].connections.git;  
-                 this.confluence=this.selected[0].connections.confluence;     
-                 this.bitrixportal=this.selected[0].connections.bitrixportal;     
+                 this.name=this.selected[0].name;      
+                 this.username=this.selected[0].username;  
+                 this.password=this.selected[0].password;                                   
+                 // Нужно сделать:             
+                 // this.type = this.selected[0].type
+                 // Но напрямую нельзя, нужно поэтапно:
+                 let a =   this.selected[0] 
+                 let b={}                  
+                 b.id =      a.type.id
+                 b.name =    a.type.name 
+                 b.code =    a.type.code           
+                 
+                this.type = b 
+
+                 //console.log('a.type.id',a.type.id)  
+                // console.log('b.id',b.id) 
+                // console.log('this.type ',this.type ) 
+                 
+                // Передаем поле- рабочая область выбранного элемента
+                // в список выброра рабочей области 
+                // (чтобы по умолчанию у элемента была та область,
+                // которая раньше была )
+                // Нужно сделать:
+                // this.selectedType =  this.selected[0].type
+                // Но напрямую нельзя, нужно поэтапно
+                this.selectedType = b;
+                console.log('this.selectedType ',this.selectedType ) 
+
                  this.edit=true
                  this.dialog = true                 
                 }
@@ -233,17 +277,13 @@ export default {
                 if (this.edit === false) {
                 let form = {
                     id: this.id,
-                    fio: this.fio,
-                    team: this.ruName,
-                    project: this.project,
-                    login: this.login,
-                    email: this.email,
-                    connections: {jira: this.jira,telegram: this.telegram,
-                    git: this.git,confluence: this.confluence,
-                    bitrixportal: this.bitrixportal}
+                    name: this.name,
+                    username: this.username,
+                    password: this.password,
+                    type: this.selectedType
                 };
 
-                    this.$store.dispatch('addItem', form);
+                    this.$store.dispatch('addPortal', form);
                     this.$refs.form.reset()
                                       }
                 // Если была нажата кнопка редактирования элемента
@@ -253,18 +293,14 @@ export default {
 
                 let form = {
                     id: this.id,
-                    fio: this.fio,
-                    team: this.ruName,
-                    project: this.project,
-                    login: this.login,
-                    email: this.email,
-                    connections: {jira: this.jira,telegram: this.telegram,
-                    git: this.git,confluence: this.confluence,
-                    bitrixportal: this.bitrixportal}
+                    name: this.name,
+                    username: this.username,
+                    password: this.password,                   
+                    type: this.selectedType
                 };
 
-                    const msg = 'Сохранить изменения для сотрудника?';
-                    let boo = confirm(msg) && this.$store.dispatch('editItem', form);
+                    const msg = 'Сохранить изменения для интеграции?';
+                    let boo = confirm(msg) && this.$store.dispatch('editPortal', form);
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -286,10 +322,10 @@ export default {
              // Удаляем выбранный элемент
             delItem() {
                 if (this.selected.length === 0) {
-                    alert('Для удаления нужно выбрать cотрудника')
+                    alert('Для удаления нужно выбрать портал')
                 } else {
-                    const msg = 'Удалить сотрудника?';
-                    let boo = confirm(msg) && this.$store.dispatch('deleteItem', this.selected[0])
+                    const msg = 'Удалить портал?';
+                    let boo = confirm(msg) && this.$store.dispatch('deletePortal', this.selected[0])
                     if (boo === true) {
                         this.selected = [];
                     } else {
@@ -299,9 +335,10 @@ export default {
             },
     
             setData() {
-           //     this.$store.dispatch('employees')
+           //     this.$store.dispatch('portals')
             }
         },
+
 
         created() {
            //  this.setData();
@@ -311,14 +348,15 @@ export default {
        
         },
 
-        computed: {
-
-           
-
-            employees() {
-                    return this.$store.getters.employees
+        computed: {           
+        // получаем весь массив объектов portals из store/portals
+            portals() {
+                    return this.$store.getters.portals
+            },
+        // Получаем весь массив типов интеграций type
+            integrationTypes() {
+              return this.$store.getters.integrationTypes
             }
-            
         }
     }
 

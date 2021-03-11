@@ -278,7 +278,16 @@ public class IntegrationTypeDto {
                                    solo
                                    multiple
                                 ></v-combobox> 
+                                
+                                <v-btn
+                                color= "#E1F5FE"
+                                @click="editPortals(selectedPortals)"
+                                >
+                                  Редактировать порталы
+                                </v-btn>
+
           
+
                                 </v-flex>
 
                                 
@@ -331,6 +340,10 @@ export default {
             }
         },
  methods: {
+            editPortals(selectedPortals){
+            console.log("portals",selectedPortals)  
+            this.$router.push('/portal')        },                          
+
             // Вызывается при нажатии на кнопку "редактировать элемент"
             // Затем вызывается диалоговое окно Dilog
             // (описанно выше)
