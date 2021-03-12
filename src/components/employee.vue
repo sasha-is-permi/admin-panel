@@ -285,19 +285,24 @@ employees
                     <v-card-text>
                         <v-container grid-list-md>
                             <v-layout wrap>                    
-                               <v-flex xs12>
+                               <v-flex xs6>
                                     <v-text-field :label="'Фамилия сотрудника'" v-model="lastName"
                                                   required></v-text-field>
                                 </v-flex>
-                               <v-flex xs12>
+                               <v-flex xs6>
                                     <v-text-field :label="'Имя сотрудника'" v-model="firstName"
                                                   required></v-text-field>
                                 </v-flex>
-                              <v-flex xs12>
+                              <v-flex xs6>
                                     <v-text-field :label="'Отчество сотрудника'" v-model="middleName"
                                                   required></v-text-field>
                                 </v-flex>
-                             
+
+                                <v-flex xs6>
+                                    <v-text-field :label="'День рождения'" v-model="birthDate"
+                                                  required></v-text-field>
+                                </v-flex>
+
                               <v-flex xs12>                                               
                                <template>
                                  <p> Пол: </p>                               
@@ -317,16 +322,12 @@ employees
           
                                 </v-flex>
 
-
-                                  <v-flex xs12>
-                                    <v-text-field :label="'День рождения'" v-model="birthDate"
-                                                  required></v-text-field>
-                                </v-flex>
-                                 <v-flex xs12>
+  
+                                 <v-flex xs6>
                                     <v-text-field :label="'email'" v-model="email"
                                                   required></v-text-field>
                                 </v-flex>
-                                <v-flex xs12>
+                                <v-flex xs6>
                                     <v-text-field :label="'login'" v-model="login"
                                                   required></v-text-field>
                                 </v-flex>
