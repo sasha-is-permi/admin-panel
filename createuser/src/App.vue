@@ -50,9 +50,8 @@
                   <v-btn
                   @click="onSubmit"
                   color="primary"
-                  :loading="loading"
                   :disabled="!valid"
-                  >Войти</v-btn>
+                  >Задать</v-btn>
                 </v-card-actions>
               </v-card>
             </v-col>
@@ -96,9 +95,11 @@ if (this.$refs.form.validate()) {
       this.$store.dispatch('loginUser',user)
          .then(()=>{
             // this.$store.dispatch('Auth',user)
-			let user = this.$store.getters.user
-			
-            alert("логин и пароль заданы: {{user.username}}, {{user.password}}")       
+			let user = this.$store.getters.user;
+           console.log('username',user.username);
+           console.log('password',user.password);
+
+          alert(`логин и пароль заданы: ${user.username}, ${user.password}`)       
                
           })
         .catch(()=>{})

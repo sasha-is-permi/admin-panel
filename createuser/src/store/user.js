@@ -12,8 +12,8 @@ export default {
   },
   mutations: {
     setUser(state,payload) {
-        state.username = payload.username
-	    state.password = payload.password
+        state.user.username = payload.username
+        state.user.password = payload.password
     }
 
   },
@@ -23,7 +23,7 @@ export default {
 	
     // payload деструктурируем на {login,password}
     async loginUser({commit},payload){
-      commit('clearError')
+ //    commit('clearError')
  //    try {
  //    const user = await fb.auth().signInWithEmailAndPassword(email, password)
  //    commit('setUser',new User(user.uid))
