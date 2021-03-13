@@ -303,7 +303,7 @@ employees
                                                   required></v-text-field>
                                 </v-flex>
 
-                              <v-flex xs12>                                               
+                              <v-flex xs12>                                                
                                <template>
                                  <p> Пол: </p>                               
                                </template>       
